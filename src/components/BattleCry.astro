@@ -1,6 +1,7 @@
 <div class="battle-cry-section">
   <h1 class="battle-cry">PRIVACY. SECURITY. SOVEREIGNTY.</h1>
   <p class="tagline">We're building the infrastructure for a post-surveillance web.</p>
+  <p class="tagline-secondary">Decentralization isn't enough. We have to anonymize.</p>
   <slot />
 </div>
 
@@ -25,5 +26,12 @@
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     color: var(--text-secondary);
     margin-bottom: var(--space-xl);
+  }
+  
+  .tagline-secondary {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--urgent-amber);
+    margin-top: var(--space-sm);
+    font-weight: 600;
   }
 </style>

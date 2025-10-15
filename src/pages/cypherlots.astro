@@ -95,6 +95,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p>Close, but focused on data portability rather than privacy. Metadata is still readable, and sharing models are too crude for real-world use.</p>
     </div>
     
+    <h2>Decentralization Isn't Enough</h2>
+
+    <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(37, 99, 235, 0.1)); padding: var(--space-lg); border-radius: 8px; margin: var(--space-lg) 0; border-left: 4px solid var(--urgent-amber);">
+      <h3>The Critical Insight</h3>
+      <p><strong>You can't just decentralize—you have to anonymize.</strong></p>
+      
+      <p>Mastodon and other federated systems solved centralization but created new surveillance vectors:</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin: var(--space-lg) 0;">
+        <div style="background: var(--void-lighter); padding: var(--space-md); border-radius: 6px;">
+          <h4 style="color: var(--urgent-amber); margin-bottom: var(--space-xs);">❌ What Decentralization Alone Gives You</h4>
+          <ul style="margin-left: var(--space-md); font-size: 0.9rem;">
+            <li>Your data on your server (good!)</li>
+            <li>Metadata still exposed to network observers</li>
+            <li>Traffic patterns reveal who you talk to</li>
+            <li>IP addresses correlate to real identity</li>
+            <li>Encrypted data can be seized and stored</li>
+            <li>Quantum computers will eventually decrypt it</li>
+          </ul>
+        </div>
+        
+        <div style="background: var(--void-lighter); padding: var(--space-md); border-radius: 6px;">
+          <h4 style="color: var(--encrypted-green); margin-bottom: var(--space-xs);">✓ What Anonymization Adds</h4>
+          <ul style="margin-left: var(--space-md); font-size: 0.9rem;">
+            <li><strong>Metadata minimization:</strong> Blind relays can't see who's talking</li>
+            <li><strong>Traffic obfuscation:</strong> OHTTP hides patterns</li>
+            <li><strong>Capability tokens:</strong> No central identity registry</li>
+            <li><strong>Selective exfiltration:</strong> Prevents bulk data seizure</li>
+            <li><strong>Forward secrecy:</strong> Even quantum can't decrypt retroactively</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>The China Problem</h3>
+
+    <blockquote style="background: var(--void-lighter); padding: var(--space-lg); border-left: 4px solid var(--urgent-amber); margin: var(--space-lg) 0;">
+      <p><strong>"Even though the data is encrypted, you still don't want it shared with everyone on the Internet. You don't want China to download all your data and then build a post-quantum computer and decrypt everything you've ever said."</strong></p>
+    </blockquote>
+
+    <p><strong>Cypherlots solves this through:</strong></p>
+    <ul>
+      <li><strong>Selective exfiltration:</strong> Your vault only shares encrypted data with authorized capability holders</li>
+      <li><strong>Rate limiting:</strong> Prevent bulk download attacks</li>
+      <li><strong>Blind relays:</strong> Servers that aggregate content can't see who it's from</li>
+      <li><strong>Forward secrecy:</strong> Keys rotate, old data becomes mathematically unrecoverable</li>
+    </ul>
+    
     <h2>Current Status</h2>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0;">

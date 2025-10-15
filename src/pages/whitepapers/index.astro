@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../utils/date';
+
+const allWhitepapers = (await getCollection('whitepapers'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout 
+  title="Whitepapers — Journal Foundation"
+  description="Research papers and technical analysis on privacy infrastructure."
+>
+  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <header style="text-align: center; margin-bottom: var(--space-xl);">
+      <h1>Whitepapers</h1>
+      <p class="lead">Research papers and technical analysis on privacy infrastructure and digital sovereignty.</p>
+    </header>
+    
+    {allWhitepapers.length === 0 ? (
+      <div style="text-align: center; padding: var(--space-3xl) 0;">
+        <p style="color: var(--text-muted); font-size: 1.125rem;">Whitepapers coming soon.</p>
+      </div>
+    ) : (
+      <div class="whitepapers-grid">
+        {allWhitepapers.map((paper) => (
+          <article class="whitepaper-card">
+            <header>
+              <h2>{paper.data.title}</h2>
+              <div class="paper-meta">
+                <div>Version {paper.data.version}</div>
+                <div>·</div>
+                <time datetime={paper.data.date.toISOString()}>
+                  {formatDate(paper.data.date)}
+                </time>
+              </div>
+              <div class="paper-authors">
+                By {paper.data.authors.join(', ')}
+              </div>
+            </header>
+            
+            <div class="paper-abstract">
+              <h4>Abstract</h4>
+              <p>{paper.data.abstract}</p>
+            </div>
+            
+            <footer>
+              <a href={paper.data.pdfFile} class="download-pdf" download>
+                📄 Download PDF
+              </a>
+            </footer>
+          </article>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .whitepapers-grid {
+    display: grid;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+  
+  .whitepaper-card {
+    background: var(--void-lighter);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all var(--transition-base);
+  }
+  
+  .whitepaper-card:hover {
+    border-color: var(--electric-blue);
+    transform: translateY(-2px);
+  }
+  
+  .whitepaper-card h2 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+  }
+  
+  .paper-meta {
+    display: flex;
+    gap: var(--space-xs);
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .paper-authors {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .paper-abstract h4 {
+    color: var(--electric-blue);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .paper-abstract p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .download-pdf {
+    background: var(--electric-blue);
+    color: var(--void);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+    display: inline-block;
+  }
+  
+  .download-pdf:hover {
+    background: var(--encrypted-green);
+    color: var(--void);
+    transform: translateY(-2px);
+  }
+</style>

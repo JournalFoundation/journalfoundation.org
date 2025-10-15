@@ -19,16 +19,42 @@ A Cypherlot is a personal, encrypted data node that enables sovereignty over dig
 
 ### 1.1 Motivation
 
-Existing social and data-sharing platforms centralize control over user data, enabling:
+**Decentralization alone is insufficient for digital sovereignty.**
 
-- Algorithmic manipulation at scale
-- Surveillance capitalism business models
-- Metadata correlation and profiling
-- Platform lock-in effects
+Existing decentralized systems (Mastodon, Diaspora, ActivityPub) solve the centralization problem but create new vulnerabilities:
 
-Cypherlots provide an alternative architecture where users retain cryptographic control over their data.
+- **Metadata exposure:** Federation protocols reveal who talks to whom
+- **Instance admin surveillance:** Server operators see all user activity  
+- **Traffic correlation:** Network observers can build social graphs
+- **Bulk seizure:** Encrypted data can be downloaded and stored for future decryption
+- **Quantum threat:** Post-quantum computers will retroactively decrypt today's traffic
 
-### 1.2 Requirements
+**Cypherlots provides anonymization, not just decentralization:**
+
+- **Metadata minimization:** Blind relays that can't see message contents or routing
+- **Traffic obfuscation:** OHTTP prevents correlation of communication patterns
+- **Selective disclosure:** Capability-based sharing prevents bulk data exfiltration
+- **Forward secrecy:** Cryptographic ratcheting makes old data unrecoverable
+- **No identity registry:** Decentralized capabilities eliminate central correlation points
+
+### 1.2 Threat Model
+
+Cypherlots defends against:
+
+1. **Platform surveillance** (Facebook, Google model)
+2. **Federation surveillance** (Mastodon admin model)  
+3. **Metadata correlation** (NSA bulk collection model)
+4. **Bulk seizure + quantum decryption** (China problem)
+5. **Traffic analysis** (Tor adversary model)
+
+Cypherlots does NOT defend against:
+
+- Compromised end-user devices
+- Physical coercion with key disclosure
+- Real-time MITM if user accepts bad certificates
+- Social engineering attacks
+
+### 1.3 Requirements
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
 
