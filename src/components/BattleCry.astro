@@ -1,0 +1,29 @@
+<div class="battle-cry-section">
+  <h1 class="battle-cry">PRIVACY. SECURITY. SOVEREIGNTY.</h1>
+  <p class="tagline">We're building the infrastructure for a post-surveillance web.</p>
+  <slot />
+</div>
+
+<style>
+  .battle-cry-section {
+    text-align: center;
+    padding: var(--space-3xl) 0;
+  }
+  
+  .battle-cry {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--encrypted-green), var(--electric-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.03em;
+  }
+  
+  .tagline {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+</style>

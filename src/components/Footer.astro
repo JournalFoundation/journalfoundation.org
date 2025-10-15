@@ -1,0 +1,91 @@
+<footer style="padding: var(--space-xl) 0; border-top: 1px solid var(--void-lighter); margin-top: var(--space-3xl);">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-xl);">
+      <div>
+        <h4>Foundation</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/governance">Governance</a></li>
+          <li><a href="/governance#transparency">Transparency</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Technical</h4>
+        <ul>
+          <li><a href="/specs">Specifications</a></li>
+          <li><a href="/docs">Documentation</a></li>
+          <li><a href="https://github.com/journalfoundation">GitHub</a></li>
+          <li><a href="/security">Security</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/podcast">Podcast</a></li>
+          <li><a href="/whitepapers">Whitepapers</a></li>
+          <li><a href="/press">Press Kit</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms</a></li>
+          <li><a href="/trademark">Trademark</a></li>
+          <li><a href="/.well-known/security.txt">Security.txt</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--void-lighter); text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+      <p>© {new Date().getFullYear()} Journal Foundation. Open source under Apache 2.0.</p>
+      <div class="privacy-badge">
+        <span>🔒</span>
+        <span>Privacy: On — Zero trackers, zero surveillance</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  h4 {
+    margin-bottom: var(--space-md);
+    color: var(--encrypted-green);
+    font-size: 1rem;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    margin-bottom: var(--space-xs);
+  }
+  
+  a {
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--text-primary);
+  }
+  
+  .privacy-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: var(--void-lighter);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 999px;
+    margin-top: var(--space-md);
+    color: var(--encrypted-green);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+</style>

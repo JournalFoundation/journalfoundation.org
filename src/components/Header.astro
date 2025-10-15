@@ -1,0 +1,75 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header style="padding: var(--space-lg) 0; border-bottom: 1px solid var(--void-lighter);">
+  <nav class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md);">
+      <a href="/" class="logo">
+        <span class="logo-sigil">⚡</span>
+        <span>Journal Foundation</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="/about" class:list={[{ active: currentPath === '/about' }]}>About</a></li>
+        <li><a href="/cypherlots" class:list={[{ active: currentPath === '/cypherlots' }]}>Cypherlots</a></li>
+        <li><a href="/specs" class:list={[{ active: currentPath.startsWith('/specs') }]}>Specs</a></li>
+        <li><a href="/blog" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a></li>
+        <li><a href="/podcast" class:list={[{ active: currentPath.startsWith('/podcast') }]}>Podcast</a></li>
+        <li><a href="/governance" class:list={[{ active: currentPath === '/governance' }]}>Governance</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+  }
+  
+  .logo:hover {
+    color: var(--text-primary);
+  }
+  
+  .logo-sigil {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--encrypted-green), var(--electric-blue));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--void);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  
+  .nav-links a {
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--text-primary);
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: var(--space-md);
+    }
+  }
+</style>

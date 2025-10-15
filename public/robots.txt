@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://journalfoundation.org/sitemap-index.xml

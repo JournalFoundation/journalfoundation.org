@@ -1,0 +1,157 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../utils/date';
+
+const allBlogPosts = (await getCollection('blog'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout 
+  title="Blog — Journal Foundation"
+  description="Essays on privacy, security, sovereignty, and the fight against surveillance capitalism."
+>
+  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <header style="text-align: center; margin-bottom: var(--space-xl);">
+      <h1>Blog</h1>
+      <p class="lead">Essays on privacy, security, sovereignty, and the fight against surveillance capitalism.</p>
+    </header>
+    
+    {allBlogPosts.length === 0 ? (
+      <div style="text-align: center; padding: var(--space-3xl) 0;">
+        <p style="color: var(--text-muted); font-size: 1.125rem;">No blog posts yet. Check back soon for insights on digital sovereignty.</p>
+      </div>
+    ) : (
+      <div class="posts-grid">
+        {allBlogPosts.map((post) => (
+          <article class="post-card">
+            <header>
+              <h2>
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h2>
+              <div class="post-meta">
+                <time datetime={post.data.date.toISOString()}>
+                  {formatDate(post.data.date)}
+                </time>
+                {post.data.author && <span> · {post.data.author}</span>}
+              </div>
+            </header>
+            
+            <p class="post-description">{post.data.description}</p>
+            
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            
+            <footer>
+              <a href={`/blog/${post.slug}`} class="read-more">
+                Read full post →
+              </a>
+            </footer>
+          </article>
+        ))}
+      </div>
+    )}
+    
+    <div style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-3xl); text-align: center;">
+      <h3>Stay Updated</h3>
+      <p>Get notified when we publish new essays on digital sovereignty.</p>
+      <div style="margin-top: var(--space-md);">
+        <a href="/feed.xml" style="background: var(--electric-blue); color: var(--void); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none; margin-right: var(--space-sm);">RSS Feed</a>
+        <a href="/newsletter" style="border: 2px solid var(--encrypted-green); color: var(--encrypted-green); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .posts-grid {
+    display: grid;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+  
+  .post-card {
+    background: var(--void-lighter);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all var(--transition-base);
+  }
+  
+  .post-card:hover {
+    border-color: var(--encrypted-green);
+    transform: translateY(-2px);
+  }
+  
+  .post-card h2 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
+  }
+  
+  .post-card h2 a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  
+  .post-card h2 a:hover {
+    color: var(--encrypted-green);
+  }
+  
+  .post-meta {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .post-description {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+  
+  .post-tags {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+  }
+  
+  .tag {
+    background: var(--void);
+    border: 1px solid var(--electric-blue);
+    color: var(--electric-blue);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  .read-more {
+    color: var(--electric-blue);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .read-more:hover {
+    color: var(--encrypted-green);
+  }
+  
+  h3 {
+    color: var(--encrypted-green);
+    margin-bottom: var(--space-sm);
+  }
+</style>

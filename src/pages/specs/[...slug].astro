@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import RFC from '../../layouts/RFC.astro';
+
+export async function getStaticPaths() {
+  const specEntries = await getCollection('specs');
+  
+  return specEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<RFC frontmatter={entry.data}>
+  <Content />
+</RFC>

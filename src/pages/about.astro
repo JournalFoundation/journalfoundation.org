@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="About — Journal Foundation"
+  description="The story behind the Journal Foundation and our mission for digital sovereignty."
+>
+  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <h1>About the Journal Foundation</h1>
+    
+    <p class="lead">We exist to build infrastructure for digital sovereignty—not another platform, but the foundation that makes platforms obsolete.</p>
+    
+    <h2>Our Mission</h2>
+    <p>The Journal Foundation develops open protocols and tools that enable individuals to reclaim control over their digital lives. We believe privacy, security, and sovereignty are fundamental human rights in the digital age.</p>
+    
+    <h2>The Problem We're Solving</h2>
+    <p>Today's internet is dominated by surveillance capitalism. Every click, scroll, and pause is tracked, analyzed, and monetized. Your data powers algorithmic manipulation designed to change your behavior for corporate profit.</p>
+    
+    <blockquote>
+      <p>"Mark Zuckerberg and Elon Musk have their clutches in us collectively as Americans and humans. We're down bleeding on the mat as these two behemoths tighten and tighten the screws."</p>
+    </blockquote>
+    
+    <p>This isn't just about privacy—it's about preserving human agency and diversity of thought in an age of algorithmic monoculture.</p>
+    
+    <h2>Our Approach</h2>
+    <p>Unlike previous attempts at "decentralization," we focus on sovereignty rather than federation:</p>
+    
+    <ul>
+      <li><strong>Encryption by default:</strong> Not optional, not bolted-on</li>
+      <li><strong>Capability-based sharing:</strong> Precise, revocable permissions</li>
+      <li><strong>Metadata minimization:</strong> What you can't see, you can't abuse</li>
+      <li><strong>Self-hostable:</strong> Your data in your basement, not Zuckerberg's data center</li>
+    </ul>
+    
+    <h2>Cypherlots</h2>
+    <p>Our flagship protocol is Cypherlots—personal, encrypted data nodes that enable sharing without surveillance. Think of them as digital safe deposit boxes that you control completely, with the ability to grant specific, limited access to others.</p>
+    
+    <p><a href="/cypherlots">Learn more about Cypherlots →</a></p>
+    
+    <h2>Leadership</h2>
+    <div style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin: var(--space-lg) 0;">
+      <h3>John Benac, Founder</h3>
+      <p>I get emotional when I repeat my battle cry because this is a hill I'm willing to die on. I believe technology should serve human flourishing, not corporate surveillance.</p>
+      <p>Previously: Rapid7, Black Hills Information Security, various security consulting. Currently obsessed with building the escape route from surveillance capitalism.</p>
+    </div>
+    
+    <h2>Funding & Transparency</h2>
+    <p>The Journal Foundation operates with radical transparency. All funding sources, expenditures, and decision-making processes are public.</p>
+    
+    <p><a href="/governance">View our governance and transparency dashboard →</a></p>
+    
+    <h2>Get Involved</h2>
+    <p>Join the resistance against surveillance capitalism:</p>
+    
+    <ul>
+      <li><strong>Developers:</strong> <a href="/specs">Review our specifications</a> and contribute code</li>
+      <li><strong>Advocates:</strong> Help spread the message of digital sovereignty</li>
+      <li><strong>Funders:</strong> Support development of privacy infrastructure</li>
+      <li><strong>Users:</strong> Run a Cypherlot and reclaim your data</li>
+    </ul>
+    
+    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1)); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-xl); text-align: center;">
+      <h3>Ready to Take Back Control?</h3>
+      <p>The future of human agency depends on infrastructure we build today.</p>
+      <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-md);">
+        <a href="/docs/quickstart" style="background: var(--encrypted-green); color: var(--void); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Run a Cypherlot</a>
+        <a href="/governance#funding" style="border: 2px solid var(--electric-blue); color: var(--electric-blue); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Support the Foundation</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+  }
+  
+  h3 {
+    color: var(--encrypted-green);
+    margin-bottom: var(--space-sm);
+  }
+</style>

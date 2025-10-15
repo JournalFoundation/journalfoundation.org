@@ -1,0 +1,33 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { formatDate } from '../utils/date';
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout 
+  title={`${frontmatter.title} — Journal Foundation Blog`}
+  description={frontmatter.description}
+>
+  <article class="container prose">
+    <header style="margin-top: var(--space-xl); margin-bottom: var(--space-lg);">
+      <h1>{frontmatter.title}</h1>
+      <div style="color: var(--text-muted); margin-top: var(--space-sm); font-size: 0.9rem;">
+        <time datetime={frontmatter.date.toISOString()}>
+          {formatDate(frontmatter.date)}
+        </time>
+        {frontmatter.author && <span> · {frontmatter.author}</span>}
+      </div>
+    </header>
+    
+    <div class="markdown-content" style="margin-bottom: var(--space-3xl);">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  article {
+    padding-bottom: var(--space-3xl);
+  }
+</style>

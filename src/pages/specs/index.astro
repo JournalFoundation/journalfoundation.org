@@ -1,0 +1,219 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../utils/date';
+
+const allSpecs = (await getCollection('specs'))
+  .sort((a, b) => a.data.rfc - b.data.rfc);
+
+const statusColors = {
+  'Draft': 'var(--urgent-amber)',
+  'Stable': 'var(--encrypted-green)',
+  'Deprecated': 'var(--text-muted)'
+};
+---
+
+<BaseLayout 
+  title="Technical Specifications — Journal Foundation"
+  description="RFC specifications for Cypherlots and related privacy infrastructure protocols."
+>
+  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <header style="text-align: center; margin-bottom: var(--space-xl);">
+      <h1>Technical Specifications</h1>
+      <p class="lead">RFC specifications for Cypherlots and related privacy infrastructure protocols.</p>
+    </header>
+    
+    <div style="background: var(--void-lighter); border-left: 4px solid var(--electric-blue); padding: var(--space-lg); margin: var(--space-lg) 0;">
+      <h3>RFC Process</h3>
+      <p>All technical specifications follow an open RFC (Request for Comments) process. Community input is actively solicited during the Draft phase.</p>
+      <ul>
+        <li><strong>Draft:</strong> Initial proposal, subject to change</li>
+        <li><strong>Stable:</strong> Finalized specification, ready for implementation</li>
+        <li><strong>Deprecated:</strong> Superseded by newer specifications</li>
+      </ul>
+    </div>
+    
+    {allSpecs.length === 0 ? (
+      <div style="text-align: center; padding: var(--space-3xl) 0;">
+        <p style="color: var(--text-muted); font-size: 1.125rem;">Specifications coming soon. The first RFC will define the core Cypherlot protocol.</p>
+      </div>
+    ) : (
+      <div class="specs-grid">
+        {allSpecs.map((spec) => (
+          <article class="spec-card">
+            <header>
+              <div class="spec-header">
+                <span class="rfc-number">RFC-{String(spec.data.rfc).padStart(4, '0')}</span>
+                <span 
+                  class="status-badge"
+                  style={`
+                    background: ${statusColors[spec.data.status]}22;
+                    color: ${statusColors[spec.data.status]};
+                    border: 1px solid ${statusColors[spec.data.status]};
+                  `}
+                >
+                  {spec.data.status}
+                </span>
+              </div>
+              
+              <h2>
+                <a href={`/specs/${spec.slug}`}>{spec.data.title}</a>
+              </h2>
+              
+              <div class="spec-meta">
+                <div>Authors: {spec.data.authors.join(', ')}</div>
+                <div>Date: {formatDate(spec.data.date)}</div>
+              </div>
+            </header>
+            
+            <div class="spec-abstract">
+              <h4>Abstract</h4>
+              <p>{spec.data.abstract}</p>
+            </div>
+            
+            <footer>
+              <a href={`/specs/${spec.slug}`} class="read-spec">
+                Read full specification →
+              </a>
+            </footer>
+          </article>
+        ))}
+      </div>
+    )}
+    
+    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1)); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-3xl);">
+      <h3>Contributing to Specifications</h3>
+      <p>We welcome technical review and feedback on all specifications. Join the discussion to help shape the future of privacy infrastructure.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg);">
+        <div>
+          <h4>💬 Discuss</h4>
+          <p>Join technical discussions about protocol design and implementation.</p>
+          <a href="https://github.com/journalfoundation/discussions">GitHub Discussions →</a>
+        </div>
+        
+        <div>
+          <h4>🔧 Implement</h4>
+          <p>Build reference implementations and interoperability tests.</p>
+          <a href="https://github.com/journalfoundation">View Repositories →</a>
+        </div>
+        
+        <div>
+          <h4>🛡️ Security Review</h4>
+          <p>Help identify potential security issues in protocol design.</p>
+          <a href="/security">Security Program →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .specs-grid {
+    display: grid;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+  
+  .spec-card {
+    background: var(--void-lighter);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all var(--transition-base);
+  }
+  
+  .spec-card:hover {
+    border-color: var(--electric-blue);
+    transform: translateY(-2px);
+  }
+  
+  .spec-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .rfc-number {
+    font-family: var(--font-mono);
+    color: var(--electric-blue);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .spec-card h2 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.5rem;
+  }
+  
+  .spec-card h2 a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  
+  .spec-card h2 a:hover {
+    color: var(--electric-blue);
+  }
+  
+  .spec-meta {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .spec-abstract {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .spec-abstract h4 {
+    color: var(--electric-blue);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .spec-abstract p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  
+  .read-spec {
+    color: var(--electric-blue);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .read-spec:hover {
+    color: var(--encrypted-green);
+  }
+  
+  h3 {
+    color: var(--encrypted-green);
+    margin-bottom: var(--space-sm);
+  }
+  
+  h4 {
+    color: var(--electric-blue);
+    margin-bottom: var(--space-xs);
+  }
+</style>

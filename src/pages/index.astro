@@ -1,0 +1,476 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BattleCry from '../components/BattleCry.astro';
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <BattleCry>
+    <div class="hero-quote">
+      <p><strong>Mark Zuckerberg and Elon Musk have their clutches in us</strong>—tightening the screws while we bleed on the mat.</p>
+      <p>Every screen, every algorithm, every "curated" feed is training you to be a biological robot for advertisers.</p>
+      <p>When robots come with smiling faces, every 10th sentence an ad—it's lights out for human free thought and diversity.</p>
+      <p><strong>We're building the escape route.</strong></p>
+    </div>
+    
+    <div class="cta-group">
+      <a href="/docs/quickstart" class="cta cta-primary">
+        🛠️ Run a Cypherlot
+      </a>
+      <a href="/about" class="cta cta-secondary">
+        📢 Join the Movement
+      </a>
+      <a href="/governance" class="cta cta-tertiary">
+        💰 Support the Foundation
+      </a>
+    </div>
+  </BattleCry>
+  
+  <!-- Three Part Explainer -->
+  <section class="explainer-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why This Matters</h2>
+        <p class="subtitle">We're not building another app. We're building the foundation for digital sovereignty.</p>
+      </div>
+      
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <div class="explainer-number">1</div>
+          <h3>The Problem</h3>
+          <p>We're living in a monoculture controlled by algorithmic manipulation:</p>
+          <ul>
+            <li>Facebook feeds controlled by Zuckerberg</li>
+            <li>Twitter weaponized by Musk</li>
+            <li>TikTok optimizing for addiction</li>
+            <li>Every screen training us to be puppets</li>
+            <li>The boa constrictor keeps tightening</li>
+          </ul>
+        </div>
+        
+        <div class="explainer-card">
+          <div class="explainer-number">2</div>
+          <h3>Why Others Failed</h3>
+          <p>Mastodon, Diaspora, Solid Pods—they tried to compete on features instead of sovereignty:</p>
+          <ul>
+            <li>Built platforms, not protocols</li>
+            <li>Asked for sacrifice, not empowerment</li>
+            <li>Federation still centralizes power</li>
+            <li>Metadata remains readable</li>
+            <li>Privacy bolted on, not built in</li>
+          </ul>
+        </div>
+        
+        <div class="explainer-card">
+          <div class="explainer-number">3</div>
+          <h3>The Cypherlots Difference</h3>
+          <p>Infrastructure for sovereignty, not another social network:</p>
+          <ul>
+            <li>Encrypted by default, not optional</li>
+            <li>Capability-based sharing (scoped, revocable)</li>
+            <li>Metadata minimization through blind relays</li>
+            <li>Self-hostable without sacrifice</li>
+            <li>Your data in YOUR basement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Urgency -->
+  <section class="urgency-section">
+    <div class="container urgency-content">
+      <h2>The Stakes Are Existential</h2>
+      
+      <div class="urgency-quote">
+        <p>We're not breathing. We're just getting squeezed.</p>
+        
+        <p>All our screens, all the time, giving us algorithmic manipulation. The top 10 on Netflix. The news feeds. Even the music. <strong>It's called the monoculture.</strong></p>
+        
+        <p>Right now it's a screen next to us. Soon it's a smiling face—your best friend—and every 10th sentence is an advertisement.</p>
+        
+        <p>The hypnotism by robots is coming, whether we act or not.</p>
+        
+        <p><strong>If we don't create this free, radical way for humans to have THEIR OWN robots—then it's lights out for human free thought and diversity. It's a new dark ages.</strong></p>
+      </div>
+      
+      <p class="urgency-conclusion">That's why Cypherlots exist. That's why this foundation exists.</p>
+    </div>
+  </section>
+  
+  <!-- Get Started -->
+  <section class="get-started-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get Started</h2>
+        <p class="subtitle">Three ways to join the resistance</p>
+      </div>
+      
+      <div class="explainer-grid">
+        <div class="explainer-card">
+          <h3>🛠️ For Developers</h3>
+          <p>Run a Cypherlot in under 60 seconds:</p>
+          <pre><code>docker run -d --name cypherlot \
+  -p 443:443 \
+  -v $HOME/cypherlot:/data \
+  ghcr.io/journalfoundation/cypherlot:0.1</code></pre>
+          <p class="card-link"><a href="/docs/quickstart">View full documentation →</a></p>
+        </div>
+        
+        <div class="explainer-card">
+          <h3>📢 For Advocates</h3>
+          <p>Help build the movement:</p>
+          <ul>
+            <li>Share the battle cry</li>
+            <li>Join community discussions</li>
+            <li>Download advocacy toolkit</li>
+            <li>Speak at events</li>
+          </ul>
+          <p class="card-link"><a href="/community">Join the conversation →</a></p>
+        </div>
+        
+        <div class="explainer-card">
+          <h3>💰 For Funders</h3>
+          <p>Support the foundation:</p>
+          <ul>
+            <li>Fund specification development</li>
+            <li>Sponsor security audits</li>
+            <li>Enable advocacy work</li>
+            <li>Support open source</li>
+          </ul>
+          <p class="card-link"><a href="/governance#funding">View transparency dashboard →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Cypherlots Explainer -->
+  <section class="cypherlots-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Is a Cypherlot?</h2>
+        <p class="subtitle">A personal, encrypted data node that lets you share exactly what you intend—with no platform in the middle.</p>
+      </div>
+      
+      <div class="cypherlots-content">
+        <p class="intro">A <strong>Cypherlot</strong> is a privacy primitive for people, not platforms:</p>
+        
+        <ul class="feature-list">
+          <li>
+            <span class="checkmark">✓</span>
+            <div>
+              <strong>Encrypted by default:</strong> All data is encrypted at rest and in transit
+            </div>
+          </li>
+          <li>
+            <span class="checkmark">✓</span>
+            <div>
+              <strong>Capability-based sharing:</strong> Grant scoped, expiring, revocable access
+            </div>
+          </li>
+          <li>
+            <span class="checkmark">✓</span>
+            <div>
+              <strong>Metadata minimization:</strong> Blind relays that can't read your data
+            </div>
+          </li>
+          <li>
+            <span class="checkmark">✓</span>
+            <div>
+              <strong>Self-hostable:</strong> Run it on a Raspberry Pi in your basement
+            </div>
+          </li>
+          <li>
+            <span class="checkmark">✓</span>
+            <div>
+              <strong>Not a platform:</strong> It's infrastructure—apps interoperate without surveillance
+            </div>
+          </li>
+        </ul>
+        
+        <blockquote class="founder-quote">
+          "Your data in your basement, not Zuckerberg's data center. That's the whole point."
+        </blockquote>
+        
+        <div class="cta-group" style="justify-content: center; margin-top: var(--space-xl);">
+          <a href="/cypherlots" class="cta cta-secondary">Learn More About Cypherlots →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Quote */
+  .hero-quote {
+    background: var(--void-lighter);
+    border-left: 4px solid var(--urgent-amber);
+    padding: var(--space-lg);
+    margin: var(--space-xl) auto;
+    max-width: 900px;
+    text-align: left;
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  
+  .hero-quote p {
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+  
+  .hero-quote p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .hero-quote strong {
+    color: var(--encrypted-green);
+    font-weight: 700;
+  }
+  
+  /* CTAs */
+  .cta-group {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-xl);
+  }
+  
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+    text-align: center;
+  }
+  
+  .cta-primary {
+    background: var(--encrypted-green);
+    color: var(--void);
+  }
+  
+  .cta-primary:hover {
+    background: #0D9668;
+    color: var(--void);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+  }
+  
+  .cta-secondary {
+    background: transparent;
+    border-color: var(--electric-blue);
+    color: var(--electric-blue);
+  }
+  
+  .cta-secondary:hover {
+    background: var(--electric-blue);
+    color: var(--void);
+    transform: translateY(-2px);
+  }
+  
+  .cta-tertiary {
+    background: transparent;
+    border-color: var(--text-muted);
+    color: var(--text-secondary);
+  }
+  
+  .cta-tertiary:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+  
+  /* Sections */
+  section {
+    padding: var(--space-3xl) 0;
+    border-top: 1px solid var(--void-lighter);
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .section-header h2 {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Explainer Grid */
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+  
+  .explainer-card {
+    background: var(--void-lighter);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all var(--transition-base);
+  }
+  
+  .explainer-card:hover {
+    border-color: var(--encrypted-green);
+    transform: translateY(-4px);
+  }
+  
+  .explainer-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--void);
+    border: 2px solid var(--encrypted-green);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--encrypted-green);
+    margin-bottom: var(--space-md);
+  }
+  
+  .explainer-card h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--encrypted-green);
+  }
+  
+  .explainer-card ul {
+    list-style: none;
+    margin-top: var(--space-md);
+  }
+  
+  .explainer-card li {
+    padding-left: var(--space-md);
+    position: relative;
+    margin-bottom: var(--space-xs);
+    color: var(--text-secondary);
+  }
+  
+  .explainer-card li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--electric-blue);
+  }
+  
+  .explainer-card pre {
+    background: var(--void);
+    padding: var(--space-md);
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-top: var(--space-md);
+    font-size: 0.875rem;
+  }
+  
+  .explainer-card code {
+    color: var(--encrypted-green);
+    font-family: var(--font-mono);
+  }
+  
+  .card-link {
+    margin-top: var(--space-md);
+  }
+  
+  /* Urgency Section */
+  .urgency-section {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(37, 99, 235, 0.1));
+    border-left: 4px solid var(--urgent-amber);
+  }
+  
+  .urgency-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .urgency-content h2 {
+    color: var(--urgent-amber);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .urgency-quote {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+    font-style: italic;
+  }
+  
+  .urgency-quote p {
+    margin-bottom: var(--space-md);
+  }
+  
+  .urgency-conclusion {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: var(--space-lg);
+  }
+  
+  /* Cypherlots Section */
+  .cypherlots-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .intro {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .feature-list {
+    list-style: none;
+    margin: var(--space-lg) 0;
+  }
+  
+  .feature-list li {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    align-items: flex-start;
+  }
+  
+  .checkmark {
+    color: var(--encrypted-green);
+    font-weight: bold;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+  
+  .feature-list strong {
+    color: var(--text-primary);
+  }
+  
+  .founder-quote {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    background: var(--void-lighter);
+    border-left: 4px solid var(--electric-blue);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-style: italic;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .cta-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .cta {
+      justify-content: center;
+    }
+  }
+</style>

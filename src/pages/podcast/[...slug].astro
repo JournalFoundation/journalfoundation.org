@@ -1,0 +1,142 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../utils/date';
+
+export async function getStaticPaths() {
+  const podcastEntries = await getCollection('podcast');
+  
+  return podcastEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout 
+  title={`Episode ${entry.data.episode}: ${entry.data.title} — Journal Foundation Podcast`}
+  description={entry.data.description}
+>
+  <article class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <header style="margin-bottom: var(--space-lg);">
+      <div style="margin-bottom: var(--space-md);">
+        <a href="/podcast" style="color: var(--electric-blue); text-decoration: none; font-weight: 500;">
+          ← Back to Podcast
+        </a>
+      </div>
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm); flex-wrap: wrap; gap: var(--space-sm);">
+        <span style="font-family: var(--font-mono); color: var(--electric-blue); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">
+          Episode {entry.data.episode}
+        </span>
+        <span style="color: var(--text-muted); font-size: 0.875rem; font-family: var(--font-mono);">
+          {entry.data.duration}
+        </span>
+      </div>
+      
+      <h1>{entry.data.title}</h1>
+      
+      <div style="color: var(--text-muted); margin-top: var(--space-sm); font-size: 0.9rem;">
+        <time datetime={entry.data.date.toISOString()}>
+          {formatDate(entry.data.date)}
+        </time>
+      </div>
+    </header>
+    
+    <!-- Audio Player & Download -->
+    {entry.data.audioFile && (
+      <div style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin-bottom: var(--space-lg);">
+        <h3 style="margin-bottom: var(--space-md); color: var(--encrypted-green);">Listen</h3>
+        
+        <audio controls style="width: 100%; margin-bottom: var(--space-md);" preload="metadata">
+          <source src={entry.data.audioFile} type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+          <a 
+            href={entry.data.audioFile} 
+            download
+            style="background: var(--electric-blue); color: var(--void); padding: var(--space-sm) var(--space-md); border-radius: 6px; font-weight: 600; text-decoration: none; transition: all var(--transition-base);"
+          >
+            ⬇️ Download MP3
+          </a>
+          
+          <a 
+            href="/podcast/feed.xml"
+            style="border: 2px solid var(--urgent-amber); color: var(--urgent-amber); padding: var(--space-sm) var(--space-md); border-radius: 6px; font-weight: 600; text-decoration: none; transition: all var(--transition-base);"
+          >
+            📡 Subscribe to RSS
+          </a>
+        </div>
+      </div>
+    )}
+    
+    <!-- Episode Description -->
+    <div style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin-bottom: var(--space-lg);">
+      <h3 style="margin-bottom: var(--space-sm); color: var(--encrypted-green);">About This Episode</h3>
+      <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 0;">
+        {entry.data.description}
+      </p>
+    </div>
+    
+    <!-- Show Notes / Content -->
+    <div class="markdown-content" style="margin-bottom: var(--space-xl);">
+      <Content />
+    </div>
+    
+    <!-- Transcript (if available) -->
+    {entry.data.transcript && (
+      <details style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-lg);">
+        <summary style="cursor: pointer; font-weight: 600; color: var(--electric-blue); margin-bottom: var(--space-md);">
+          📝 Show Transcript
+        </summary>
+        <div style="white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
+          {entry.data.transcript}
+        </div>
+      </details>
+    )}
+    
+    <!-- Navigation -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-3xl); padding-top: var(--space-lg); border-top: 1px solid var(--void-lighter);">
+      <div>
+        {entry.data.episode > 1 && (
+          <a href={`/podcast/episode-${String(entry.data.episode - 1).padStart(3, '0')}`} style="color: var(--electric-blue); text-decoration: none; font-weight: 500;">
+            ← Previous Episode
+          </a>
+        )}
+      </div>
+      
+      <a href="/podcast" style="color: var(--text-muted); text-decoration: none; font-weight: 500;">
+        All Episodes
+      </a>
+      
+      <div>
+        <a href={`/podcast/episode-${String(entry.data.episode + 1).padStart(3, '0')}`} style="color: var(--electric-blue); text-decoration: none; font-weight: 500;">
+          Next Episode →
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  audio {
+    border-radius: 4px;
+  }
+  
+  audio::-webkit-media-controls-panel {
+    background-color: var(--void);
+  }
+  
+  details[open] summary {
+    margin-bottom: var(--space-md);
+  }
+  
+  summary:hover {
+    color: var(--encrypted-green);
+  }
+</style>

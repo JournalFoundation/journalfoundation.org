@@ -1,0 +1,53 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { frontmatter } = Astro.props;
+
+const statusColor = {
+  'Draft': 'var(--urgent-amber)',
+  'Stable': 'var(--encrypted-green)',
+  'Deprecated': 'var(--text-muted)'
+};
+---
+
+<BaseLayout 
+  title={`RFC-${String(frontmatter.rfc).padStart(4, '0')}: ${frontmatter.title}`}
+  description={frontmatter.abstract}
+>
+  <article class="container prose">
+    <header style="margin-top: var(--space-xl); margin-bottom: var(--space-lg);">
+      <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
+        <span style="font-family: var(--font-mono); color: var(--electric-blue); font-size: 1.25rem;">
+          RFC-{String(frontmatter.rfc).padStart(4, '0')}
+        </span>
+        <span 
+          style={`
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: ${statusColor[frontmatter.status]}22;
+            color: ${statusColor[frontmatter.status]};
+            border: 1px solid ${statusColor[frontmatter.status]};
+          `}
+        >
+          {frontmatter.status}
+        </span>
+      </div>
+      <h1>{frontmatter.title}</h1>
+      <div style="color: var(--text-muted); margin-top: var(--space-sm); font-size: 0.9rem;">
+        <div>Authors: {frontmatter.authors.join(', ')}</div>
+        <div>Date: {frontmatter.date.toLocaleDateString()}</div>
+      </div>
+    </header>
+    
+    <section style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin-bottom: var(--space-lg);">
+      <h2 style="margin-top: 0; font-size: 1.25rem;">Abstract</h2>
+      <p style="margin-bottom: 0;">{frontmatter.abstract}</p>
+    </section>
+    
+    <div class="markdown-content" style="margin-bottom: var(--space-3xl);">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
