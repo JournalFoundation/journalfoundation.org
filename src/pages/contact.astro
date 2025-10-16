@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact — Journal Foundation"
+  description="How to reach the Journal Foundation — dedicated channels for developers, advisors, funders, press, and security disclosures."
+>
+  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <h1>Contact</h1>
+    <p class="lead">We’re early. If you’re a privacy-minded <strong>developer</strong>, <strong>researcher</strong>, <strong>advisor</strong>, or <strong>funder</strong> who wants to help build the post-surveillance web, we’d love to hear from you.</p>
+
+    <h2>Primary Channels</h2>
+    <ul class="channel-list">
+      <li>
+        <p><strong>General &amp; Partnerships —</strong> <a href="mailto:hello@journalfoundation.org" rel="nofollow">hello@journalfoundation.org</a></p>
+        <p class="channel-note">Short proposals, partnership ideas, intros.</p>
+      </li>
+      <li>
+        <p><strong>Specifications &amp; Engineering —</strong> <a href="mailto:specs@journalfoundation.org" rel="nofollow">specs@journalfoundation.org</a></p>
+        <p class="channel-note">
+          Protocol/RFC feedback and reference implementation questions. Please also open public threads in
+          <a class="button-link" href="https://github.com/journalfoundation/discussions" rel="noopener noreferrer">GitHub Discussions →</a>
+          github.com/journalfoundation/discussions
+        </p>
+      </li>
+      <li>
+        <p><strong>Press &amp; Speaking —</strong> <a href="mailto:press@journalfoundation.org" rel="nofollow">press@journalfoundation.org</a></p>
+        <p class="channel-note">Media requests, interviews, event invitations.</p>
+      </li>
+      <li>
+        <p><strong>Funding &amp; Grants —</strong> <a href="mailto:grants@journalfoundation.org" rel="nofollow">grants@journalfoundation.org</a></p>
+        <p class="channel-note">Philanthropy, research grants, programmatic support.</p>
+      </li>
+    </ul>
+
+    <h2>Community &amp; Code</h2>
+    <p>
+      <strong>GitHub Discussions:</strong>
+      <a class="button-link" href="https://github.com/journalfoundation/discussions" rel="noopener noreferrer">GitHub Discussions →</a>
+      <span class="url-text">github.com/journalfoundation/discussions</span><br />
+      Best for public questions, RFC debates, and roadmap ideas.
+    </p>
+
+    <h2>Security / Responsible Disclosure</h2>
+    <p>
+      Report vulnerabilities to <a href="mailto:security@journalfoundation.org" rel="nofollow">security@journalfoundation.org</a>. Encrypt mail with our PGP key:
+    </p>
+    <pre><code>Fingerprint: A1B2 C3D4 EF56 789A BCDE  F012 3456 789A BCDE F012
+Key: https://journalfoundation.org/pgp/security.asc</code></pre>
+    <p>We publish <strong>/.well-known/security.txt</strong> (RFC 9116) with these details.</p>
+
+    <h2>Tips for Sensitive Outreach</h2>
+    <p>
+      You may use Signal: <strong>+1-000-000-0000</strong>. Signal shares your number with us; feel free to use a secondary number. We may introduce heavier-weight options (e.g., SecureDrop) as the program matures.
+    </p>
+
+    <h2>Response Policy</h2>
+    <p>We triage new messages weekly. If we miss you, please nudge us or open a GitHub Discussion. Security reports are prioritized and acknowledged within <strong>72 hours</strong>.</p>
+
+    <h2>Privacy</h2>
+    <p>No forms. No trackers. Email us or open a public thread; we don’t harvest, resell, or profile your contact info.</p>
+
+    <!-- Optional scheduling once you have a privacy-first booking flow -->
+    <!-- <p><a href="https://cal.yourdomain.example/briefing">Request a briefing (privacy-friendly scheduling)</a></p> -->
+
+    <!-- Optional mailing address once a PO Box or registered agent is ready -->
+    <!-- <p>Mail: Journal Foundation, PO Box 12345, City, ST 00000</p> -->
+  </div>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .channel-list {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .channel-list li {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    background: var(--void-lighter);
+  }
+
+  .channel-note {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+
+  .channel-list li p:first-of-type {
+    margin-bottom: var(--space-xs);
+    color: var(--text-primary);
+  }
+
+  .button-link {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin-right: var(--space-xs);
+    border-radius: 6px;
+    border: 1px solid var(--electric-blue);
+    background: transparent;
+    color: var(--electric-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+
+  .button-link:hover,
+  .button-link:focus {
+    background: var(--electric-blue);
+    color: var(--void);
+  }
+
+  .url-text {
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    margin-left: var(--space-xs);
+  }
+</style>
