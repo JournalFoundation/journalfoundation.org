@@ -164,9 +164,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     
     <h2>Get Started</h2>
     
-    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1)); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-xl);">
+    <div class="launch-panel">
       <h3>Ready to Run Your Own Cypherlot?</h3>
-      
+
       <div style="margin: var(--space-md) 0;">
         <h4>For Early Adopters:</h4>
         <pre style="background: var(--void); padding: var(--space-md); border-radius: 4px; margin: var(--space-sm) 0;"><code>docker run -d --name cypherlot \
@@ -174,15 +174,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   -v $HOME/cypherlot:/data \
   ghcr.io/journalfoundation/cypherlot:0.1</code></pre>
       </div>
-      
-      <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-lg);">
-        <a href="/specs" style="background: var(--electric-blue); color: var(--void); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Read the Specs</a>
-        <a href="/docs/quickstart" style="border: 2px solid var(--encrypted-green); color: var(--encrypted-green); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Quick Start Guide</a>
+
+      <div class="cta-stack">
+        <a href="/specs" class="btn btn--primary">Read the Specs</a>
+        <a href="/docs/quickstart" class="btn btn--secondary">Quick Start Guide</a>
         <a
           href="https://github.com/journalfoundation"
           target="_blank"
           rel="noopener noreferrer"
-          style="border: 2px solid var(--text-muted); color: var(--text-muted); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;"
+          class="btn btn--tertiary"
         >
           View on GitHub
         </a>
@@ -199,11 +199,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   
   h3 {
-    color: var(--encrypted-green);
+    color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
   }
-  
+
   h4 {
     margin-bottom: var(--space-xs);
+  }
+
+  .launch-panel {
+    background: linear-gradient(135deg, rgba(13, 210, 128, 0.12), rgba(45, 125, 255, 0.12));
+    border: 1px solid rgba(45, 125, 255, 0.35);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-top: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cta-stack {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+  }
+
+  .cta-stack .btn {
+    min-width: min(220px, 100%);
   }
 </style>

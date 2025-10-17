@@ -60,12 +60,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li><strong>Users:</strong> Run a Cypherlot and reclaim your data</li>
     </ul>
     
-    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1)); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-xl); text-align: center;">
+    <div class="callout-panel">
       <h3>Ready to Take Back Control?</h3>
       <p>The future of human agency depends on infrastructure we build today.</p>
-      <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-md);">
-        <a href="/docs/quickstart" style="background: var(--encrypted-green); color: var(--void); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Run a Cypherlot</a>
-        <a href="/governance#funding" style="border: 2px solid var(--electric-blue); color: var(--electric-blue); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Support the Foundation</a>
+      <div class="cta-stack">
+        <a href="/docs/quickstart" class="btn btn--primary">Run a Cypherlot</a>
+        <a href="/governance#funding" class="btn btn--secondary">Support the Foundation</a>
       </div>
     </div>
   </div>
@@ -79,7 +79,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   
   h3 {
-    color: var(--encrypted-green);
+    color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
+  }
+
+  .callout-panel {
+    background: linear-gradient(135deg, rgba(13, 210, 128, 0.12), rgba(45, 125, 255, 0.12));
+    border: 1px solid rgba(45, 125, 255, 0.35);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-top: var(--space-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cta-stack {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+  }
+
+  .cta-stack .btn {
+    min-width: min(220px, 100%);
   }
 </style>

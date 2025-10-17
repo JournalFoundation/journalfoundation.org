@@ -25,7 +25,7 @@ const allBlogPosts = (await getCollection('blog'))
     ) : (
       <div class="posts-grid">
         {allBlogPosts.map((post) => (
-          <article class="post-card">
+          <article class="post-card card">
             <header>
               <h2>
                 <a href={`/blog/${post.slug}`}>{post.data.title}</a>
@@ -58,12 +58,12 @@ const allBlogPosts = (await getCollection('blog'))
       </div>
     )}
     
-    <div style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-3xl); text-align: center;">
+    <div class="updates-panel">
       <h3>Stay Updated</h3>
       <p>Get notified when we publish new essays on digital sovereignty.</p>
-      <div style="margin-top: var(--space-md);">
-        <a href="/feed.xml" style="background: var(--electric-blue); color: var(--void); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none; margin-right: var(--space-sm);">RSS Feed</a>
-        <a href="/newsletter" style="border: 2px solid var(--encrypted-green); color: var(--encrypted-green); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Newsletter</a>
+      <div class="cta-stack">
+        <a href="/feed.xml" class="btn btn--primary">RSS Feed</a>
+        <a href="/newsletter" class="btn btn--secondary">Newsletter</a>
       </div>
     </div>
   </div>
@@ -84,16 +84,14 @@ const allBlogPosts = (await getCollection('blog'))
   }
   
   .post-card {
-    background: var(--void-lighter);
-    padding: var(--space-lg);
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: all var(--transition-base);
+    gap: var(--space-sm);
+    transition: border-color var(--duration-base) var(--easing-standard),
+      background-color var(--duration-base) var(--easing-standard);
   }
-  
+
   .post-card:hover {
-    border-color: var(--encrypted-green);
-    transform: translateY(-2px);
+    border-color: rgba(45, 125, 255, 0.35);
+    background: rgba(45, 125, 255, 0.08);
   }
   
   .post-card h2 {
@@ -102,12 +100,12 @@ const allBlogPosts = (await getCollection('blog'))
   }
   
   .post-card h2 a {
-    color: var(--text-primary);
+    color: var(--color-text-primary);
     text-decoration: none;
   }
-  
+
   .post-card h2 a:hover {
-    color: var(--encrypted-green);
+    color: var(--color-accent-emerald);
   }
   
   .post-meta {
@@ -117,7 +115,7 @@ const allBlogPosts = (await getCollection('blog'))
   }
   
   .post-description {
-    color: var(--text-secondary);
+    color: var(--color-text-secondary);
     margin-bottom: var(--space-md);
     line-height: 1.6;
   }
@@ -130,28 +128,52 @@ const allBlogPosts = (await getCollection('blog'))
   }
   
   .tag {
-    background: var(--void);
-    border: 1px solid var(--electric-blue);
-    color: var(--electric-blue);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    background: rgba(45, 125, 255, 0.12);
+    border: 1px solid rgba(45, 125, 255, 0.35);
+    color: var(--color-accent-azure);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
   
   .read-more {
-    color: var(--electric-blue);
+    color: var(--color-accent-azure);
     font-weight: 600;
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: color var(--duration-base) var(--easing-standard);
   }
-  
+
   .read-more:hover {
-    color: var(--encrypted-green);
+    color: var(--color-accent-emerald);
   }
-  
+
+  .updates-panel {
+    background: linear-gradient(135deg, rgba(13, 210, 128, 0.12), rgba(45, 125, 255, 0.12));
+    border: 1px solid rgba(45, 125, 255, 0.35);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-top: var(--space-3xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cta-stack {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+  }
+
+  .cta-stack .btn {
+    min-width: min(200px, 100%);
+  }
+
   h3 {
-    color: var(--encrypted-green);
+    color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
   }
 </style>

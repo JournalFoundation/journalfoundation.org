@@ -16,16 +16,10 @@ const allEpisodes = (await getCollection('podcast'))
       <h1>The Journal Foundation Podcast</h1>
       <p class="lead">Deep conversations about privacy, security, digital sovereignty, and building the post-surveillance web.</p>
       
-      <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-lg);">
-        <a href="/podcast/feed.xml" class="subscribe-button" style="background: var(--urgent-amber); color: var(--void);">
-          📡 RSS Feed
-        </a>
-        <a href="#" class="subscribe-button" style="border: 2px solid var(--electric-blue); color: var(--electric-blue);">
-          🎵 Apple Podcasts
-        </a>
-        <a href="#" class="subscribe-button" style="border: 2px solid var(--encrypted-green); color: var(--encrypted-green);">
-          ▶️ Spotify
-        </a>
+      <div class="subscribe-actions">
+        <a href="/podcast/feed.xml" class="btn btn--primary">📡 RSS Feed</a>
+        <a href="#" class="btn btn--secondary">🎵 Apple Podcasts</a>
+        <a href="#" class="btn btn--secondary">▶️ Spotify</a>
       </div>
     </header>
     
@@ -36,7 +30,7 @@ const allEpisodes = (await getCollection('podcast'))
     ) : (
       <div class="episodes-grid">
         {allEpisodes.map((episode) => (
-          <article class="episode-card">
+          <article class="episode-card card">
             <header>
               <div class="episode-header">
                 <span class="episode-number">Episode {episode.data.episode}</span>
@@ -59,11 +53,11 @@ const allEpisodes = (await getCollection('podcast'))
             </div>
             
             <footer class="episode-actions">
-              <a href={`/podcast/${episode.slug}`} class="listen-button">
+              <a href={`/podcast/${episode.slug}`} class="btn btn--primary listen-button">
                 🎧 Listen & Read Notes
               </a>
               {episode.data.audioFile && (
-                <a href={episode.data.audioFile} class="download-button">
+                <a href={episode.data.audioFile} class="btn btn--secondary download-button">
                   ⬇️ Download MP3
                 </a>
               )}
@@ -100,11 +94,11 @@ const allEpisodes = (await getCollection('podcast'))
       </div>
     </div>
     
-    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1)); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-xl); text-align: center;">
+    <div class="podcast-callout">
       <h3>Suggest Topics or Guests</h3>
       <p>Have ideas for podcast topics or guests who should share their expertise on privacy infrastructure?</p>
-      <div style="margin-top: var(--space-md);">
-        <a href="/contact" style="background: var(--encrypted-green); color: var(--void); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Get in Touch</a>
+      <div class="podcast-callout__actions">
+        <a href="/contact" class="btn btn--primary">Get in Touch</a>
       </div>
     </div>
   </div>
@@ -118,17 +112,16 @@ const allEpisodes = (await getCollection('podcast'))
     margin: 0 auto;
   }
   
-  .subscribe-button {
-    padding: var(--space-sm) var(--space-lg);
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all var(--transition-base);
-    border: 2px solid transparent;
+  .subscribe-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
   }
-  
-  .subscribe-button:hover {
-    transform: translateY(-2px);
+
+  .subscribe-actions .btn {
+    min-width: min(220px, 100%);
   }
   
   .episodes-grid {
@@ -136,18 +129,16 @@ const allEpisodes = (await getCollection('podcast'))
     gap: var(--space-xl);
     margin-top: var(--space-xl);
   }
-  
+
   .episode-card {
-    background: var(--void-lighter);
-    padding: var(--space-lg);
-    border-radius: 8px;
-    border: 1px solid transparent;
-    transition: all var(--transition-base);
+    gap: var(--space-sm);
+    transition: border-color var(--duration-base) var(--easing-standard),
+      background-color var(--duration-base) var(--easing-standard);
   }
-  
+
   .episode-card:hover {
-    border-color: var(--encrypted-green);
-    transform: translateY(-2px);
+    border-color: rgba(45, 125, 255, 0.35);
+    background: rgba(45, 125, 255, 0.08);
   }
   
   .episode-header {
@@ -178,12 +169,12 @@ const allEpisodes = (await getCollection('podcast'))
   }
   
   .episode-card h2 a {
-    color: var(--text-primary);
+    color: var(--color-text-primary);
     text-decoration: none;
   }
-  
+
   .episode-card h2 a:hover {
-    color: var(--encrypted-green);
+    color: var(--color-accent-emerald);
   }
   
   .episode-meta {
@@ -204,50 +195,42 @@ const allEpisodes = (await getCollection('podcast'))
   
   .episode-actions {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     flex-wrap: wrap;
   }
-  
-  .listen-button {
-    background: var(--encrypted-green);
-    color: var(--void);
-    padding: var(--space-sm) var(--space-md);
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all var(--transition-base);
-  }
-  
-  .listen-button:hover {
-    background: #0D9668;
-    color: var(--void);
-    transform: translateY(-1px);
-  }
-  
-  .download-button {
-    border: 2px solid var(--electric-blue);
-    color: var(--electric-blue);
-    padding: var(--space-sm) var(--space-md);
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all var(--transition-base);
-  }
-  
-  .download-button:hover {
-    background: var(--electric-blue);
-    color: var(--void);
-    transform: translateY(-1px);
+
+  .episode-actions .btn {
+    flex: 1 1 220px;
+    justify-content: center;
+    gap: var(--space-3xs);
   }
   
   h3 {
-    color: var(--encrypted-green);
+    color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
   }
   
   h4 {
-    color: var(--electric-blue);
+    color: var(--color-accent-azure);
     margin-bottom: var(--space-xs);
     font-size: 1rem;
+  }
+
+  .podcast-callout {
+    background: linear-gradient(135deg, rgba(13, 210, 128, 0.12), rgba(45, 125, 255, 0.12));
+    border: 1px solid rgba(45, 125, 255, 0.35);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-top: var(--space-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .podcast-callout__actions {
+    margin-top: var(--space-md);
+  }
+
+  .podcast-callout__actions .btn {
+    min-width: min(240px, 100%);
   }
 </style>
