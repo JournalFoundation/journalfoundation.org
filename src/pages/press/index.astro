@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// centralize asset paths
+const kitZip = '/press/journal-press-kit.zip';
+const assets = {
+  logoPrimary: '/press/journal_logo_primary.png',
+  logoWordmark: '/press/journal_logo_wordmark.png',
+  screenshot: '/press/journal_landing_mockup.png',
+  background: '/press/journal_network_background.png',
+  placeholder: '/press/placeholder_light_gray_block.png',
+  readme: '/press/README.md',
+};
+
+// basic facts (edit as you like)
+const boilerplate = `Journal Foundation is an open, non-profit effort to build
+privacy-first communications infrastructure—so people, teams, and products can
+collaborate without surveillance. We steward open specifications, reference
+implementations, and a conformance program to keep the ecosystem interoperable.`;
+
+const fastFacts = [
+  { k: 'Founded', v: '2025' },
+  { k: 'Type', v: 'Independent, non-profit foundation' },
+  { k: 'Focus', v: 'Open protocols, security, privacy' },
+  { k: 'HQ', v: 'Baltimore, Maryland, USA' },
+  { k: 'Projects', v: 'Cypherlots, Journal Core Protocol (draft)' },
+];
+
+const brand = {
+  colors: [
+    { name: 'Electric Blue', hex: '#2563EB' },
+    { name: 'Encrypted Green', hex: '#10B981' },
+    { name: 'Void (Background)', hex: '#0B0F14' }
+  ],
+  type: [
+    { role: 'Headings', family: 'Inter, system UI' },
+    { role: 'Body', family: 'Inter, system UI' },
+    { role: 'Monospace', family: 'JetBrains Mono / system mono' },
+  ]
+};
+
+// JSON-LD for richer previews (Organization + logo)
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Journal Foundation',
+  url: 'https://journalfoundation.org/',
+  logo: `https://journalfoundation.org${assets.logoPrimary}`,
+  sameAs: [
+    'https://github.com/journalfoundation'
+  ],
+  contactPoint: [{
+    '@type': 'ContactPoint',
+    contactType: 'media inquiries',
+    email: 'press@journalfoundation.org'
+  }]
+};
+---
+
+<BaseLayout
+  title="Press — Journal Foundation"
+  description="Press resources: media contacts, boilerplate, fast facts, logos, and screenshots."
+>
+  <script type="application/ld+json">
+    {JSON.stringify(jsonLd)}
+  </script>
+
+  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <header class="hero">
+      <h1>Press</h1>
+      <p class="lead">
+        Media resources for reporters, analysts, and event organizers.
+        Download logos, screenshots, and our boilerplate in one place.
+      </p>
+      <p class="cta">
+        <a class="btn" href={kitZip} download>Download full press kit (.zip) →</a>
+        <span class="secondary">or email <a href="mailto:press@journalfoundation.org">press@journalfoundation.org</a></span>
+      </p>
+    </header>
+
+    <section>
+      <h2>Boilerplate</h2>
+      <p>{boilerplate}</p>
+    </section>
+
+    <section>
+      <h2>Fast Facts</h2>
+      <ul class="facts">
+        {fastFacts.map(i => <li><strong>{i.k}:</strong> {i.v}</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Logos</h2>
+      <p>Use the primary logo on dark backgrounds and the wordmark where a horizontal mark is required.</p>
+      <div class="asset-grid">
+        <figure>
+          <img src={assets.logoPrimary} alt="Journal Foundation primary logo"/>
+          <figcaption>
+            Primary Logo — PNG<br/>
+            <a href={assets.logoPrimary} download>Download</a>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src={assets.logoWordmark} alt="Journal Foundation wordmark logo"/>
+          <figcaption>
+            Wordmark — PNG<br/>
+            <a href={assets.logoWordmark} download>Download</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Screenshots & Backgrounds</h2>
+      <div class="asset-grid">
+        <figure>
+          <img src={assets.screenshot} alt="Mock landing page screenshot"/>
+          <figcaption>
+            Product / Site mock — PNG<br/>
+            <a href={assets.screenshot} download>Download</a>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src={assets.background} alt="Abstract network background"/>
+          <figcaption>
+            Abstract network background — PNG<br/>
+            <a href={assets.background} download>Download</a>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src={assets.placeholder} alt="Neutral light gray block"/>
+          <figcaption>
+            Neutral placeholder block — PNG<br/>
+            <a href={assets.placeholder} download>Download</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Brand Basics</h2>
+      <div class="brand">
+        <div>
+          <h3>Color</h3>
+          <ul class="swatches">
+            {brand.colors.map(c => (
+              <li>
+                <span class="chip" style={`--chip:${c.hex}`}></span>
+                <span class="chip-label">{c.name} — {c.hex}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3>Typography</h3>
+          <ul>
+            {brand.type.map(t => <li><strong>{t.role}:</strong> {t.family}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div class="usage">
+        <h3>Usage</h3>
+        <ul>
+          <li>Do keep clear space around the logo equal to the height of the bolt icon.</li>
+          <li>Do not distort, recolor, or place on low-contrast backgrounds.</li>
+          <li>Prefer the primary logo on dark backgrounds; for very light backgrounds, request a light variant at <a href="mailto:press@journalfoundation.org">press@journalfoundation.org</a>.</li>
+          <li>Licensing: logo marks © Journal Foundation; permitted for editorial coverage and linkbacks. See <a href={assets.readme}>README</a> for details.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        Media inquiries: <a href="mailto:press@journalfoundation.org">press@journalfoundation.org</a><br/>
+        Speaking & events: <a href="mailto:press@journalfoundation.org">press@journalfoundation.org</a>
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .lead { color: var(--text-secondary); max-width: 720px; }
+  .cta { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+  .btn {
+    display:inline-block; background: var(--electric-blue); color: white;
+    padding: .6rem 1rem; border-radius: 8px; text-decoration: none;
+  }
+  .btn:hover { background: var(--encrypted-green); }
+  .secondary { color: var(--text-secondary); }
+
+  .facts { columns: 2; max-width: 760px; }
+  .asset-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-lg);
+  }
+  figure { background: var(--void-lighter); padding: var(--space-md); border-radius: 8px; }
+  figure img { width:100%; height:auto; border-radius: 6px; }
+  figcaption { font-size: .875rem; color: var(--text-secondary); margin-top: .5rem; }
+  figcaption a { color: var(--electric-blue); text-decoration:none; }
+  figcaption a:hover { text-decoration: underline; }
+
+  .brand { display:grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+  .swatches { list-style:none; padding:0; margin:0; }
+  .swatches li { display:flex; align-items:center; gap:.5rem; margin:.25rem 0; }
+  .chip { display:inline-block; width:20px; height:20px; border-radius:4px; background: var(--chip); border:1px solid #0003; }
+  .chip-label { font-family: var(--font-mono); font-size: .9rem; }
+  .usage ul { margin-top: .5rem; }
+  @media (max-width: 720px) {
+    .facts { columns: 1; }
+    .brand { grid-template-columns: 1fr; }
+  }
+</style>
