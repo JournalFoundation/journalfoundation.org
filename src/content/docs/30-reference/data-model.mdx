@@ -1,0 +1,32 @@
+---
+title: "Capability token data model"
+kind: reference
+spec_ref: ["rfc-0001-core"]
+summary: "Field definitions for capability tokens issued by the Vault."
+date: 2025-01-22
+tags: ["capabilities", "data-model"]
+version: "current"
+weight: 20
+---
+
+> Informative description of token structure. Consult the spec for normative validation rules.
+
+```cddl
+capability-token = {
+  version: tstr .default "1",
+  resource: tstr,
+  scope: [+ tstr],
+  exp: uint,
+  nonce: bstr,
+  signature: bstr
+}
+```
+
+### Field notes
+
+- `resource`: SHOULD be a URI pointing to the protected asset.
+- `scope`: MUST list at least one capability verb. Supported values are `read`, `write`, and `admin`.
+- `exp`: MUST encode a UNIX timestamp in seconds.
+- `nonce`: SHOULD be generated with at least 128 bits of entropy.
+
+For the authoritative rules see [RFC-0001 §3](/specs/rfc-0001-core#3-capability-based-sharing).

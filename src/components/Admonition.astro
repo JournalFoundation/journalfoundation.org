@@ -1,0 +1,29 @@
+---
+const { type = 'note', title = 'Note' } = Astro.props as { type?: string; title?: string };
+---
+
+<div class={`admonition ${type}`} role="note">
+  <strong>{title}:</strong> <slot />
+</div>
+
+<style>
+  .admonition {
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--void-light);
+    background: var(--void-lighter);
+    border-radius: 4px;
+    margin: 1rem 0;
+  }
+
+  .admonition.warning {
+    border-color: #f59e0b;
+  }
+
+  .admonition.tip {
+    border-color: #10b981;
+  }
+
+  .admonition.info {
+    border-color: var(--electric-blue);
+  }
+</style>

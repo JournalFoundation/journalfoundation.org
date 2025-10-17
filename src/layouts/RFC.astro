@@ -1,7 +1,25 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const { frontmatter } = Astro.props;
+
+const specSlug = Astro.url.pathname
+  .replace(/^\/specs\//, '')
+  .replace(/\/$/, '');
+
+const identifierCandidates = [
+  specSlug || undefined,
+  frontmatter?.slug,
+  frontmatter?.rfc ? String(frontmatter.rfc) : undefined,
+  frontmatter?.rfc ? `rfc-${String(frontmatter.rfc).padStart(4, '0')}` : undefined,
+];
+
+const identifiers = identifierCandidates.filter((value): value is string => Boolean(value));
+
+const relatedDocs = (await getCollection('docs'))
+  .filter((doc) => doc.data.spec_ref.some((ref) => identifiers.includes(ref)))
+  .sort((a, b) => (a.data.weight ?? 0) - (b.data.weight ?? 0));
 
 const statusColor = {
   'Draft': 'var(--urgent-amber)',
@@ -49,5 +67,55 @@ const statusColor = {
     <div class="markdown-content" style="margin-bottom: var(--space-3xl);">
       <slot />
     </div>
+
+    {relatedDocs.length ? (
+      <aside class="related-docs">
+        <h2>Related documentation</h2>
+        <ul>
+          {relatedDocs.map((doc) => (
+            <li>
+              <a href={`/docs/${doc.slug}`}>{doc.data.title}</a>
+              {' '}
+              <small>({doc.data.kind})</small>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    ) : null}
   </article>
 </BaseLayout>
+
+<style>
+  .related-docs {
+    background: var(--void-lighter);
+    border-left: 4px solid var(--electric-blue);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .related-docs h2 {
+    margin-top: 0;
+    color: var(--encrypted-green);
+  }
+
+  .related-docs ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .related-docs li {
+    margin: 0.35rem 0;
+  }
+
+  .related-docs a {
+    color: var(--electric-blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .related-docs a:hover {
+    text-decoration: underline;
+  }
+</style>

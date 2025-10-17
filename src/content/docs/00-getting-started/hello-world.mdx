@@ -1,0 +1,45 @@
+---
+title: "Hello, Journal"
+kind: tutorial
+spec_ref: ["rfc-0001-core"]
+summary: "Create a sandbox Cypherlot Vault and explore the developer workflow."
+date: 2025-01-20
+tags: ["getting-started", "vault"]
+version: "current"
+weight: 0
+---
+
+> This tutorial is **informative** and does not define conformance requirements. Refer to the linked specifications for normative guidance.
+
+## Goal
+
+By the end of this tutorial you will have a local Vault and client exchanging encrypted messages using the core Cypherlot protocol.
+
+## Prerequisites
+
+- Node.js 20+
+- Docker 24+
+- Git
+
+## Steps
+
+1. **Clone the quickstart repo.**
+   ```bash
+   git clone https://github.com/journalfoundation/vault-quickstart.git
+   cd vault-quickstart
+   ```
+2. **Start the Vault container.**
+   ```bash
+   docker compose up vault
+   ```
+3. **Install client dependencies.**
+   ```bash
+   npm install
+   npm run dev
+   ```
+4. **Send a test message.** Follow the prompts in your terminal to create a capability token and exchange a message.
+
+## Next steps
+
+- [Run a Vault locally (Docker)](/docs/10-how-to/run-a-vault-locally)
+- Review the normative requirements in [RFC-0001](/specs/rfc-0001-core)
