@@ -4,6 +4,15 @@ import BattleCry from '../components/BattleCry.astro';
 ---
 
 <BaseLayout>
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Journal Foundation',
+      url: 'https://journalfoundation.org',
+      publishingPrinciples: 'https://journalfoundation.org/privacy'
+    })}
+  </script>
   <!-- Hero -->
   <BattleCry>
     <div class="hero-quote">
