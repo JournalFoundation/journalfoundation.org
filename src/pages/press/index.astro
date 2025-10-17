@@ -84,7 +84,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
         Download logos, screenshots, and our boilerplate in one place.
       </p>
       <p class="cta">
-        <a class="btn" href={kitZip} download>Download full press kit (.zip) →</a>
+        <a class="btn btn--primary" href={kitZip} download>Download full press kit (.zip) →</a>
         <span class="secondary">or email <a href="mailto:press@journalfoundation.org">press@journalfoundation.org</a></span>
       </p>
     </header>
@@ -226,12 +226,7 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 
 <style>
   .lead { color: var(--text-secondary); max-width: 720px; }
-  .cta { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
-  .btn {
-    display:inline-block; background: var(--electric-blue); color: white;
-    padding: .6rem 1rem; border-radius: 8px; text-decoration: none;
-  }
-  .btn:hover { background: var(--encrypted-green); }
+  .cta { display:flex; gap:var(--space-sm); align-items:center; flex-wrap:wrap; }
   .secondary { color: var(--text-secondary); }
 
   .facts { columns: 2; max-width: 760px; }
