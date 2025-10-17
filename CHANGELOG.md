@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.2.0...v0.3.0) (2025-10-17)
+
+
+### Features
+
+* add press page and update contact information ([1b990ae](https://github.com/JournalFoundation/journalfoundation.org/commit/1b990aee009ccfffd8e784470852682911c6a5e7))
+
 # [0.2.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.1.0...v0.2.0) (2025-10-17)
 
 
