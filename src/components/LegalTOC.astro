@@ -1,0 +1,33 @@
+---
+const { sections = [] } = Astro.props;
+---
+<nav aria-label="On this page" class="legal-toc">
+  <strong>On this page</strong>
+  <ol>
+    {sections.map((s) => (
+      <li><a href={`#${s.id}`}>{s.label}</a></li>
+    ))}
+  </ol>
+  <style>
+    .legal-toc {
+      background: var(--void-lighter);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .legal-toc ol {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .legal-toc a {
+      color: var(--electric-blue);
+      text-decoration: none;
+    }
+
+    .legal-toc a:hover,
+    .legal-toc a:focus {
+      text-decoration: underline;
+    }
+  </style>
+</nav>
