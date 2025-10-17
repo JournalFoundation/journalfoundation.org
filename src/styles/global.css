@@ -200,23 +200,6 @@ blockquote {
   margin-inline: auto;
 }
 
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: var(--space-md);
-  background: var(--color-accent-emerald);
-  color: var(--color-text-inverted);
-  padding: var(--space-2xs) var(--space-sm);
-  border-radius: var(--radius-pill);
-  z-index: 1000;
-  font-weight: 600;
-  transition: top var(--duration-base) var(--easing-standard);
-}
-
-.skip-link:focus {
-  top: var(--space-2xs);
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
