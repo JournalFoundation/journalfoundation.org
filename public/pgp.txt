@@ -1,0 +1,6 @@
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: TODO — replace with the Journal Foundation security key before publishing.
+
+mDMEZPlaceholderABECAwQDAgeADA0K
+=XXXX
+-----END PGP PUBLIC KEY BLOCK-----
