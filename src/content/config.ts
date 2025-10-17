@@ -53,6 +53,18 @@ const docs = defineCollection({
   }),
 });
 
+const press = defineCollection({
+  type: 'content',
+  schema: z.object({
+    date: z.coerce.date(),
+    title: z.string(),
+    link: z.string().url().optional(),
+    kind: z.enum(['release', 'mention']).default('mention'),
+    summary: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 const whitepapers = defineCollection({
   type: 'content',
   schema: z.object({
@@ -70,5 +82,6 @@ export const collections = {
   podcast,
   specs,
   docs,
+  press,
   whitepapers,
 };

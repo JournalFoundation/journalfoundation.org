@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // centralize asset paths
@@ -55,6 +56,16 @@ const jsonLd = {
     email: 'press@journalfoundation.org'
   }]
 };
+
+const pressItems = await getCollection('press');
+const pressEntries = [...pressItems]
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
 ---
 
 <BaseLayout
@@ -175,6 +186,35 @@ const jsonLd = {
     </section>
 
     <section>
+      <h2>Press Releases & Mentions</h2>
+      {pressEntries.length > 0 ? (
+        <ul class="press-list">
+          {pressEntries.map((item) => (
+            <li>
+              <article>
+                <h3>
+                  {item.data.link ? (
+                    <a href={item.data.link} rel="nofollow noopener" target="_blank">{item.data.title}</a>
+                  ) : (
+                    item.data.title
+                  )}
+                </h3>
+                <p class="press-meta">
+                  {dateFormatter.format(item.data.date)} • {item.data.kind === 'release' ? 'Press Release' : 'Mention'}
+                </p>
+                {item.data.summary && <p class="press-summary">{item.data.summary}</p>}
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="press-empty">
+          No announcements yet—email <a href="mailto:press@journalfoundation.org">press@journalfoundation.org</a> for embargoed updates.
+        </p>
+      )}
+    </section>
+
+    <section>
       <h2>Contact</h2>
       <p>
         Media inquiries: <a href="mailto:press@journalfoundation.org">press@journalfoundation.org</a><br/>
@@ -212,6 +252,14 @@ const jsonLd = {
   .chip { display:inline-block; width:20px; height:20px; border-radius:4px; background: var(--chip); border:1px solid #0003; }
   .chip-label { font-family: var(--font-mono); font-size: .9rem; }
   .usage ul { margin-top: .5rem; }
+  .press-list { list-style:none; padding:0; margin: var(--space-md) 0 0; display:grid; gap: var(--space-md); }
+  .press-list li { background: var(--void-lighter); padding: var(--space-md); border-radius: 8px; }
+  .press-list h3 { margin: 0; font-size: 1.1rem; }
+  .press-list a { color: var(--electric-blue); text-decoration:none; }
+  .press-list a:hover { text-decoration: underline; }
+  .press-meta { margin: .5rem 0 0; font-size: .875rem; color: var(--text-secondary); }
+  .press-summary { margin-top: .5rem; }
+  .press-empty { color: var(--text-secondary); }
   @media (max-width: 720px) {
     .facts { columns: 1; }
     .brand { grid-template-columns: 1fr; }
