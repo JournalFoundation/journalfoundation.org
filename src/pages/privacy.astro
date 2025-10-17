@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GPCStatus from '../components/GPCStatus.astro';
+
+const updated = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+---
+<BaseLayout
+  title="Privacy — Journal Foundation"
+  description="Plain-language privacy policy. No trackers. No ads. We honor Global Privacy Control."
+>
+  <div class="container prose" style="margin-top:var(--space-xl);margin-bottom:var(--space-3xl);">
+    <header style="text-align:center;margin-bottom:var(--space-xl);">
+      <h1>Privacy</h1>
+      <p class="lead">Privacy: On — zero trackers, zero surveillance.</p>
+      <p style="color:var(--text-muted)">Last updated: {updated}</p>
+      <GPCStatus />
+    </header>
+
+    <!-- Snapshot -->
+    <section style="background:var(--void-lighter);border-left:4px solid var(--encrypted-green);padding:var(--space-lg);margin-bottom:var(--space-xl);">
+      <h2>In short</h2>
+      <ul>
+        <li>We don’t run ads, analytics beacons, or social trackers.</li>
+        <li>Server logs (IP, user-agent, URL, timestamp) are kept only for security and abuse prevention, then deleted.</li>
+        <li>We honor <strong>Global Privacy Control (GPC)</strong> signals automatically.</li>
+        <li>No cookies, unless you sign in to contributor areas—then we set only essential session cookies.</li>
+        <li>You can request access or deletion any time at <a href="mailto:privacy@journalfoundation.org">privacy@journalfoundation.org</a>.</li>
+      </ul>
+    </section>
+
+    <!-- Full policy -->
+    <section>
+      <h2>1. What we collect & why</h2>
+      <p>When you browse this site, our servers may record minimal logs (IP address, user-agent, URL, timestamp) to keep the site reliable, mitigate abuse, and detect fraud or intrusion. We don’t use third-party analytics, fingerprints, or advertising identifiers.</p>
+
+      <h3>Lawful bases (EU/UK)</h3>
+      <ul>
+        <li><strong>Legitimate interests:</strong> site reliability, abuse prevention, and security operations.</li>
+        <li><strong>Consent:</strong> only where we explicitly ask (e.g., optional newsletters).</li>
+        <li><strong>Contract:</strong> if you sign agreements with us as a contributor or vendor.</li>
+      </ul>
+      <p>We provide this information to satisfy GDPR Article 13 duties to disclose what data we collect, purposes, and retention in a concise, intelligible form. </p>
+
+      <h2>2. Signals & choices</h2>
+      <h3>Global Privacy Control (GPC)</h3>
+      <p>We treat a valid GPC signal from your browser or extension as a request to opt-out of any sale/sharing of personal information and as a “do not profile for cross-context behavioral advertising” signal. GPC is published at the W3C and recognized by California regulators (see the Sephora enforcement and CPRA regulations). </p>
+      <p>How to verify: enable GPC and visit this page—your browser should report the signal. We also publish <code>/.well-known/gpc.json</code> for transparency.</p>
+
+      <h3>Do Not Track</h3>
+      <p>We do not track you, regardless of DNT settings.</p>
+
+      <h2>3. Cookies</h2>
+      <ul>
+        <li><strong>None</strong> for normal browsing.</li>
+        <li><strong>Essential session cookies only</strong> if you authenticate to contributor areas (e.g., Docs editor). No third-party cookies.</li>
+      </ul>
+
+      <h2>4. Retention</h2>
+      <ul>
+        <li><strong>Server logs:</strong> delete after <strong>14 days</strong> unless needed for active security investigations.</li>
+        <li><strong>Emails:</strong> keep for <strong>12 months</strong> to respond and maintain records, then archive or delete.</li>
+      </ul>
+
+      <h2>5. Processors</h2>
+      <p>We rely on a small number of service providers who process data on our behalf:</p>
+      <ul>
+        <li>Hosting/CDN: Vercel, Inc. (transient logs, DDoS protection)</li>
+        <li>Email: Fastmail Pty Ltd (inbound email and replies)</li>
+        <li>Source control: GitHub (public issues/PRs you choose to post)</li>
+      </ul>
+
+      <h2>6. Security</h2>
+      <p>We harden this site with standard security headers (CSP, Referrer-Policy, X-Content-Type-Options, minimal Permissions-Policy) and follow defense-in-depth best practices. See our <a href="/security">security</a> page and <code>/.well-known/security.txt</code>. </p>
+
+      <h2>7. Your rights</h2>
+      <p>Depending on where you live, you may have rights to access, delete, correct, restrict, object, port data, or lodge a complaint with a regulator. Contact <a href="mailto:privacy@journalfoundation.org">privacy@journalfoundation.org</a> and we’ll help.</p>
+
+      <h2>8. Children</h2>
+      <p>This site is for a general audience and not directed to children. If you believe a child provided us data, contact us for deletion.</p>
+
+      <h2>9. International transfers</h2>
+      <p>Where data leaves your region, we use appropriate safeguards (e.g., SCCs for EU/UK).</p>
+
+      <h2>10. Contact</h2>
+      <p><strong>Email:</strong> <a href="mailto:privacy@journalfoundation.org">privacy@journalfoundation.org</a></p>
+
+      <h2>Change log</h2>
+      <ul>
+        <li>{updated}: Initial publication.</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .lead { font-size:1.1rem; color:var(--text-secondary); }
+  h2 { color: var(--encrypted-green); margin-top: var(--space-xl); }
+  h3 { color: var(--electric-blue); margin-top: var(--space-lg); }
+  code { background: var(--void-lighter); padding: 0.1rem 0.35rem; border-radius: 4px; }
+</style>

@@ -1,0 +1,21 @@
+---
+const id = 'gpc-status';
+---
+<div id={id} style="font-size:.9rem;color:var(--text-muted);margin:var(--space-md) 0;">
+  <span>Global Privacy Control: <em>checking…</em></span>
+</div>
+
+<script is:inline>
+  (function() {
+    const el = document.getElementById('gpc-status');
+    if (!el) return;
+    const statusEl = el.querySelector('span');
+    if (!statusEl) return;
+    if (typeof navigator !== 'undefined' && 'globalPrivacyControl' in navigator) {
+      const gpc = navigator.globalPrivacyControl;
+      statusEl.innerHTML = `Global Privacy Control: <strong style="color:${gpc ? 'var(--encrypted-green)' : 'var(--urgent-amber)'}">${gpc ? 'ON' : 'OFF'}</strong>`;
+    } else {
+      statusEl.innerHTML = 'Global Privacy Control: <em>not detected</em>';
+    }
+  })();
+</script>
