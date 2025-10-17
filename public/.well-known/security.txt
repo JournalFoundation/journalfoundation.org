@@ -1,4 +1,7 @@
 Contact: mailto:security@journalfoundation.org
-Encryption: https://journalfoundation.org/pgp/security.asc
-Policy: https://journalfoundation.org/security
+Encryption: https://journalfoundation.org/pgp.txt
 Preferred-Languages: en
+Policy: https://journalfoundation.org/security
+Acknowledgments: https://journalfoundation.org/security#hall-of-fame
+Hiring: https://journalfoundation.org/about#careers
+Expires: 2026-10-17T00:00:00.000Z

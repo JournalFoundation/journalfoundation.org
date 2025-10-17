@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Security — Journal Foundation"
+  description="Responsible disclosure policy, cryptography posture, and supply-chain security commitments at the Journal Foundation."
+>
+  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <h1>Security</h1>
+    <p class="intro">
+      We design for privacy, resilience, and verifiability. This page documents how to report vulnerabilities, what to expect from our response, and how to validate the software we publish.
+    </p>
+
+    <section>
+      <h2 id="report">Report a vulnerability</h2>
+      <p>
+        Email <a href="mailto:security@journalfoundation.org">security@journalfoundation.org</a>. Encrypt sensitive reports with our PGP key (<a href="/pgp.txt">download</a>) and include the fingerprint below when verifying it.
+      </p>
+      <ul>
+        <li><strong>Preferred languages:</strong> English</li>
+        <li><strong>PGP fingerprint:</strong> <code>0000 0000 0000 0000 0000  0000 0000 0000 0000 0000</code></li>
+        <!-- TODO: Replace fingerprint (and pgp.txt) with the production key details before launch. -->
+        <li><strong>Service-level objectives:</strong> acknowledge within <strong>3 business days</strong>, provide triage updates within <strong>7 days</strong>, and remediate or share a mitigation plan within <strong>90 days</strong>.</li>
+      </ul>
+
+      <h3 id="disclosure">Coordinated Vulnerability Disclosure</h3>
+      <p>
+        We follow a 90-day disclosure window (extensions are available for complex fixes or coordinated releases). If we observe active exploitation or you encounter evidence of it, we may accelerate disclosure to protect users. We appreciate early notification and collaboration on timing.
+      </p>
+
+      <h3 id="safe-harbor">Safe Harbor for good-faith research</h3>
+      <p>
+        If you make a good-faith effort to comply with this policy:
+      </p>
+      <ul>
+        <li>We will not pursue legal action or referral under anti-hacking laws, anti-circumvention rules, or our Terms for in-scope testing.</li>
+        <li>Authorization covers inadvertent Terms of Service violations that stem solely from security testing.</li>
+        <li>Limit testing to the scope below and avoid privacy harm. If you encounter personal data, stop, protect it, and report immediately.</li>
+      </ul>
+
+      <h3 id="scope">Scope &amp; rules of engagement</h3>
+      <div class="grid">
+        <div>
+          <h4>In scope</h4>
+          <ul>
+            <li><code>journalfoundation.org</code> and subdomains we operate</li>
+            <li>Open-source repositories under the Journal Foundation GitHub organization</li>
+            <li>Signed release artifacts we distribute (containers, packages, archives)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Out of scope</h4>
+          <ul>
+            <li>Third-party platforms or services (cloud providers, SaaS, vendors)</li>
+            <li>Social engineering, phishing, or physical attacks</li>
+            <li>Denial-of-service or volumetric traffic testing</li>
+            <li>Exfiltration or persistence of personal or confidential data</li>
+          </ul>
+        </div>
+      </div>
+      <p class="rules">
+        When testing, avoid degrading services, spamming, or destroying data. If unsure whether something is in scope, contact us before testing.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="privacy">Privacy &amp; cryptography commitments</h2>
+      <p>
+        Our protocols prioritize content confidentiality, metadata minimization (including the use of blind relays such as Oblivious HTTP), and capability-based sharing. Explore the latest drafts in our <a href="/specs">Specifications</a> and <a href="/whitepapers">Whitepapers</a> libraries.
+      </p>
+      <h3>Web &amp; application hardening</h3>
+      <ul>
+        <li><strong>HTTP Strict Transport Security (HSTS)</strong> with preload</li>
+        <li><strong>Content Security Policy (CSP)</strong> enforced with per-request nonces</li>
+        <li><strong>Referrer-Policy</strong>: <code>no-referrer</code></li>
+        <li><strong>X-Content-Type-Options</strong>: <code>nosniff</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="supply-chain">Release integrity &amp; supply chain</h2>
+      <ul>
+        <li><strong>Signed artifacts:</strong> Container images and release archives are signed with Sigstore/cosign. Verify with <code>cosign verify ghcr.io/journalfoundation/cypherlot:&lt;TAG&gt;</code>.</li>
+        <li><strong>Provenance attestations:</strong> We publish SLSA-compliant provenance to document what was built, by whom, and from which sources.</li>
+        <li><strong>Software Bills of Materials:</strong> Each release ships an SPDX or CycloneDX SBOM so you can audit dependencies.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="advisories">Security advisories</h2>
+      <p>
+        Confirmed vulnerabilities receive public remediation guidance. We currently publish advisories through GitHub Security Advisories and assign CVE identifiers when available. Severity is scored using CVSS v4.0, or v3.1 where tooling has not yet caught up.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="hall-of-fame">Hall of Fame</h2>
+      <p>
+        We appreciate researchers who help us improve. Unless you opt out, we’ll list acknowledgments here once we validate a report. (Bounties and swag are not yet available.)
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Researcher</th>
+            <th>Handle / URL</th>
+            <th>Issue</th>
+            <th>Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" class="placeholder">Be the first to land here.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2 id="transparency">Transparency &amp; further reading</h2>
+      <ul>
+        <li><a href="/.well-known/security.txt">/.well-known/security.txt</a> — machine-readable contact policy</li>
+        <li><a href="/contact#security-disclosure">Contact page security section</a> — additional outreach tips</li>
+        <li><a href="https://github.com/JournalFoundation">GitHub organization</a> — repository-level <code>SECURITY.md</code> files</li>
+        <li>Quarterly security notes (coming soon)</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .intro {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+
+  section {
+    margin-top: var(--space-2xl);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .rules {
+    margin-top: var(--space-md);
+    color: var(--text-secondary);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-md);
+    background: var(--void-lighter);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th,
+  td {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--void-lightest);
+    text-align: left;
+  }
+
+  thead {
+    background: rgba(49, 196, 141, 0.1);
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .placeholder {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+</style>
