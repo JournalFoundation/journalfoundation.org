@@ -2,15 +2,25 @@
 const currentPath = Astro.url.pathname;
 ---
 
-<header style="padding: var(--space-lg) 0; border-bottom: 1px solid var(--void-lighter);">
-  <nav class="container">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md);">
-      <a href="/" class="logo">
-        <span class="logo-sigil">⚡</span>
-        <span>Journal Foundation</span>
-      </a>
-      
-      <ul class="nav-links">
+<header class="site-header" data-nav-state="closed">
+  <div class="container site-header__inner">
+    <a href="/" class="logo">
+      <span class="logo-sigil" aria-hidden="true">⚡</span>
+      <span class="logo-label">Journal Foundation</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+    >
+      <span class="menu-toggle__icon" aria-hidden="true"></span>
+      <span class="menu-toggle__label">Menu</span>
+    </button>
+
+    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+      <ul class="primary-nav__list">
         <li><a href="/about" class:list={[{ active: currentPath === '/about' }]}>About</a></li>
         <li><a href="/cypherlots" class:list={[{ active: currentPath === '/cypherlots' }]}>Cypherlots</a></li>
         <li><a href="/specs" class:list={[{ active: currentPath.startsWith('/specs') }]}>Specs</a></li>
@@ -21,58 +31,248 @@ const currentPath = Astro.url.pathname;
         <li><a href="/security" class:list={[{ active: currentPath === '/security' }]}>Security</a></li>
         <li><a href="/press" class:list={[{ active: currentPath === '/press' }]}>Press</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 
+<script is:inline>
+  if (typeof window !== 'undefined') {
+    const header = document.querySelector('.site-header');
+    const toggle = header?.querySelector('.menu-toggle');
+    const nav = header?.querySelector('#primary-navigation');
+    const focusableSelectors = 'a[href], button:not([disabled])';
+
+    const mq = window.matchMedia('(max-width: 960px)');
+
+    const setNavHidden = (hidden) => {
+      if (!nav || !toggle || !header) return;
+      if (hidden) {
+        nav.setAttribute('hidden', '');
+        header.dataset.navState = 'closed';
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
+        nav.removeAttribute('hidden');
+        header.dataset.navState = 'open';
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    const syncToViewport = (event) => {
+      if (!nav || !toggle) return;
+      if (event.matches) {
+        if (toggle.getAttribute('aria-expanded') === 'false') {
+          setNavHidden(true);
+        }
+      } else {
+        nav.removeAttribute('hidden');
+        header?.setAttribute('data-nav-state', 'desktop');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    };
+
+    const openNav = () => {
+      setNavHidden(false);
+      const firstLink = nav?.querySelector('a');
+      firstLink?.focus();
+    };
+
+    const closeNav = () => {
+      setNavHidden(true);
+      toggle?.focus();
+    };
+
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    });
+
+    nav?.addEventListener('click', (event) => {
+      if (event.target instanceof HTMLAnchorElement && mq.matches) {
+        closeNav();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+        closeNav();
+      }
+    });
+
+    const trapFocus = (event) => {
+      if (toggle?.getAttribute('aria-expanded') !== 'true' || !nav || !mq.matches) return;
+      const focusableEls = nav.querySelectorAll(focusableSelectors);
+      if (focusableEls.length === 0) return;
+      const first = focusableEls[0];
+      const last = focusableEls[focusableEls.length - 1];
+      if (event.key === 'Tab') {
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          toggle.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', trapFocus);
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', syncToViewport);
+    } else if (typeof mq.addListener === 'function') {
+      mq.addListener(syncToViewport);
+    }
+    syncToViewport(mq);
+  }
+</script>
+
 <style>
+  .site-header {
+    padding-block: var(--space-lg);
+    border-bottom: 1px solid var(--color-border-subtle);
+    position: relative;
+    background: rgba(5, 7, 10, 0.65);
+    backdrop-filter: blur(14px);
+    z-index: var(--z-header, 50);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
   .logo {
-    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    color: var(--color-text-primary);
     font-weight: 700;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
+    font-size: var(--step-1);
     text-decoration: none;
+    letter-spacing: -0.01em;
   }
-  
+
   .logo:hover {
-    color: var(--text-primary);
+    color: var(--color-text-primary);
   }
-  
+
   .logo-sigil {
-    width: 32px;
-    height: 32px;
-    background: linear-gradient(135deg, var(--encrypted-green), var(--electric-blue));
-    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--color-accent-emerald), var(--color-accent-azure));
+    border-radius: var(--radius-md);
+    color: var(--color-text-inverted);
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    gap: var(--space-3xs);
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    padding: calc(var(--space-3xs) + 2px) var(--space-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--duration-base) var(--easing-standard),
+      color var(--duration-base) var(--easing-standard),
+      border-color var(--duration-base) var(--easing-standard);
+  }
+
+  .menu-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(45, 125, 255, 0.4);
+  }
+
+  .menu-toggle__icon {
+    display: inline-block;
+    position: relative;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    box-shadow: 0 6px 0 currentColor, 0 -6px 0 currentColor;
+  }
+
+  .menu-toggle__label {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .primary-nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: var(--void);
   }
-  
-  .nav-links {
+
+  .primary-nav__list {
     display: flex;
-    gap: var(--space-lg);
+    gap: clamp(var(--space-2xs), 2vw, var(--space-lg));
     list-style: none;
-    flex-wrap: wrap;
   }
-  
-  .nav-links a {
-    font-weight: 500;
-    color: var(--text-secondary);
-    transition: color var(--transition-fast);
+
+  .primary-nav__list a {
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    padding-block: var(--space-3xs);
   }
-  
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--text-primary);
+
+  .primary-nav__list a.active,
+  .primary-nav__list a:hover {
+    color: var(--color-text-primary);
   }
-  
-  @media (max-width: 768px) {
-    .nav-links {
-      gap: var(--space-md);
+
+  @media (max-width: 960px) {
+    .site-header__inner {
+      align-items: flex-start;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+    }
+
+    .primary-nav {
+      position: absolute;
+      top: calc(100% + var(--space-2xs));
+      right: var(--space-md);
+      left: var(--space-md);
+      background: rgba(17, 24, 33, 0.95);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-lg);
+      padding: var(--space-sm);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+    }
+
+    .primary-nav[hidden] {
+      display: none;
+    }
+
+    .primary-nav__list {
+      flex-direction: column;
+      gap: var(--space-2xs);
+      width: 100%;
+    }
+
+    .primary-nav__list a {
+      display: block;
+      width: 100%;
+      padding: var(--space-3xs) var(--space-2xs);
+      border-radius: var(--radius-md);
+    }
+
+    .primary-nav__list a:focus-visible,
+    .primary-nav__list a:hover {
+      background: rgba(45, 125, 255, 0.12);
     }
   }
 </style>

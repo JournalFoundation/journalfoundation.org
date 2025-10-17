@@ -1,18 +1,18 @@
-<footer style="padding: var(--space-xl) 0; border-top: 1px solid var(--void-lighter); margin-top: var(--space-3xl);">
-  <div class="container">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-xl);">
-      <div>
-        <h4>Foundation</h4>
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__columns">
+      <section class="footer-column" aria-labelledby="footer-foundation">
+        <h2 id="footer-foundation">Foundation</h2>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/governance">Governance</a></li>
           <li><a href="/governance#transparency">Transparency</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
-      </div>
-      
-      <div>
-        <h4>Technical</h4>
+      </section>
+
+      <section class="footer-column" aria-labelledby="footer-technical">
+        <h2 id="footer-technical">Technical</h2>
         <ul>
           <li><a href="/specs">Specifications</a></li>
           <li><a href="/docs">Documentation</a></li>
@@ -21,33 +21,33 @@
           </li>
           <li><a href="/security">Security</a></li>
         </ul>
-      </div>
-      
-      <div>
-        <h4>Community</h4>
+      </section>
+
+      <section class="footer-column" aria-labelledby="footer-community">
+        <h2 id="footer-community">Community</h2>
         <ul>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/podcast">Podcast</a></li>
           <li><a href="/whitepapers">Whitepapers</a></li>
           <li><a href="/press">Press Kit</a></li>
         </ul>
-      </div>
-      
-      <div>
-        <h4>Legal</h4>
+      </section>
+
+      <section class="footer-column" aria-labelledby="footer-legal">
+        <h2 id="footer-legal">Legal</h2>
         <ul>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms</a></li>
           <li><a href="/trademark">Trademark</a></li>
           <li><a href="/.well-known/security.txt">Security.txt</a></li>
         </ul>
-      </div>
+      </section>
     </div>
-    
-    <div style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--void-lighter); text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+
+    <div class="site-footer__meta">
       <p>© {new Date().getFullYear()} Journal Foundation. Open source under Apache 2.0.</p>
-      <div class="privacy-badge">
-        <span>🔒</span>
+      <div class="privacy-badge" role="status" aria-live="polite">
+        <span aria-hidden="true">🔒</span>
         <span>Privacy: On — Zero trackers, zero surveillance</span>
       </div>
     </div>
@@ -55,39 +55,88 @@
 </footer>
 
 <style>
-  h4 {
-    margin-bottom: var(--space-md);
-    color: var(--encrypted-green);
-    font-size: 1rem;
+  .site-footer {
+    margin-top: var(--space-3xl);
+    padding-block: var(--space-2xl);
+    background: linear-gradient(180deg, rgba(17, 24, 33, 0.92) 0%, rgba(5, 7, 10, 0.98) 100%);
+    border-top: 1px solid var(--color-border-strong);
   }
-  
-  ul {
+
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+
+  .site-footer__columns {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .footer-column h2 {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2xs);
+  }
+
+  .footer-column ul {
     list-style: none;
+    display: grid;
+    gap: var(--space-3xs);
   }
-  
-  li {
-    margin-bottom: var(--space-xs);
+
+  .footer-column a {
+    color: var(--color-text-secondary);
+    font-size: var(--step--1);
   }
-  
-  a {
-    color: var(--text-muted);
-    transition: color var(--transition-fast);
+
+  .footer-column a:hover,
+  .footer-column a:focus-visible {
+    color: var(--color-accent-emerald);
   }
-  
-  a:hover {
-    color: var(--text-primary);
+
+  .site-footer__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-sm);
+    color: var(--color-text-muted);
+    font-size: var(--step--1);
+    text-align: center;
   }
-  
+
+  .site-footer__meta p {
+    margin: 0 auto;
+  }
+
   .privacy-badge {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-xs);
-    background: var(--void-lighter);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: 999px;
-    margin-top: var(--space-md);
-    color: var(--encrypted-green);
+    justify-content: center;
+    gap: var(--space-3xs);
+    background: rgba(13, 210, 128, 0.12);
+    border: 1px solid rgba(13, 210, 128, 0.4);
+    color: var(--color-accent-emerald);
+    border-radius: var(--radius-pill);
+    padding: calc(var(--space-3xs) + 2px) var(--space-sm);
     font-weight: 600;
-    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .site-footer {
+      padding-block: var(--space-xl);
+    }
+
+    .site-footer__columns {
+      gap: var(--space-lg);
+    }
+
+    .site-footer__meta {
+      font-size: 0.85rem;
+    }
   }
 </style>

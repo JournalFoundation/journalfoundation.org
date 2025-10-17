@@ -61,10 +61,10 @@ const byKind = (kind: string) =>
       </section>
     </div>
 
-    <div class="cta">
+    <div class="docs-cta card">
       <h3>Contribute to Docs</h3>
       <p>Docs are open to contributions. Improvements, corrections, and examples are welcome.</p>
-      <a class="btn" href="https://github.com/journalfoundation" target="_blank" rel="noopener noreferrer">
+      <a class="btn btn--secondary" href="https://github.com/journalfoundation" target="_blank" rel="noopener noreferrer">
         Open an Issue →
       </a>
     </div>
@@ -111,23 +111,15 @@ const byKind = (kind: string) =>
     text-decoration: underline;
   }
 
-  .cta {
-    background: var(--void-lighter);
-    padding: var(--space-lg);
-    border-radius: 8px;
+  .docs-cta {
+    gap: var(--space-sm);
     margin-top: var(--space-2xl);
-    border-left: 4px solid var(--encrypted-green);
+    border-left: 4px solid var(--color-accent-emerald);
   }
 
   .btn {
-    display: inline-block;
-    margin-top: 0.5rem;
-    color: var(--electric-blue);
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .btn:hover {
-    color: var(--encrypted-green);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
   }
 </style>

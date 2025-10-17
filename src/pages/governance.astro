@@ -176,7 +176,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     
     <h2>Contact & Accountability</h2>
     
-    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1)); padding: var(--space-lg); border-radius: 8px; margin-top: var(--space-xl);">
+    <div class="contact-panel">
       <h3>Questions? Concerns? Feedback?</h3>
       <p>We welcome all inquiries about foundation governance, funding, or decision-making.</p>
       
@@ -188,13 +188,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </ul>
       </div>
       
-      <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--space-lg);">
-        <a href="/contact" style="background: var(--encrypted-green); color: var(--void); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;">Contact Us</a>
+      <div class="cta-stack">
+        <a href="/contact" class="btn btn--primary">Contact Us</a>
         <a
           href="https://github.com/JournalFoundation/cipherlot/discussions"
           target="_blank"
           rel="noopener noreferrer"
-          style="border: 2px solid var(--electric-blue); color: var(--electric-blue); padding: var(--space-sm) var(--space-lg); border-radius: 6px; font-weight: 600; text-decoration: none;"
+          class="btn btn--secondary"
         >
           Join Discussion
         </a>
@@ -211,7 +211,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   
   h3 {
-    color: var(--encrypted-green);
+    color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
   }
   
@@ -223,5 +223,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   h5 {
     color: var(--text-primary);
     margin-bottom: var(--space-xs);
+  }
+
+  .contact-panel {
+    background: linear-gradient(135deg, rgba(13, 210, 128, 0.12), rgba(45, 125, 255, 0.12));
+    border: 1px solid rgba(45, 125, 255, 0.35);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-top: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cta-stack {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+  }
+
+  .cta-stack .btn {
+    min-width: min(220px, 100%);
   }
 </style>
