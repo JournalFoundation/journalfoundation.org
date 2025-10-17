@@ -29,7 +29,7 @@ In this first episode, I sit down to explain the core problem we're solving: alg
 
 - [Cypherlots Specification](/specs/rfc-0001-core)
 - [Run Your Own Cypherlot](/docs/quickstart)
-- [Join the Discussion](https://github.com/JournalFoundation/cipherlot/discussions)
+- <a href="https://github.com/JournalFoundation/cipherlot/discussions" target="_blank" rel="noopener noreferrer">Join the Discussion</a>
 
 ## Timeline
 
