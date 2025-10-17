@@ -1,0 +1,53 @@
+---
+title: "Connect a client"
+kind: how-to
+spec_ref: ["rfc-0001-core"]
+summary: "Attach a reference client to a Vault instance using capability tokens."
+date: 2025-01-21
+tags: ["client", "capabilities"]
+version: "current"
+weight: 20
+---
+
+> Informative guidance ahead. For protocol requirements see the relevant specification sections.
+
+## Before you begin
+
+- A running Vault instance (see [Run a Vault locally (Docker)](/docs/10-how-to/run-a-vault-locally))
+- Access to the Vault admin capability
+
+## Steps
+
+1. **Create a client capability.**
+   ```bash
+   vault-cli capability create \
+     --scope=read,write \
+     --resource="vault://messages" \
+     --label="dev-client"
+   ```
+2. **Configure the client SDK.**
+   ```ts
+   import { Client } from '@journalfoundation/vault-sdk';
+
+   const client = new Client({
+     vaultEndpoint: 'https://localhost:8443',
+     capability: process.env.VAULT_CAPABILITY!,
+   });
+   ```
+3. **Exchange a message.**
+   ```ts
+   await client.messages.send({
+     channel: 'demo',
+     body: 'Hello, encrypted world!',
+   });
+   ```
+
+## Troubleshooting
+
+- Ensure your system clock is accurate; capability tokens are time-bound.
+- TLS errors? Import the development CA certificate exported by the Vault container.
+
+## See also
+
+- [Hello, Journal](/docs/00-getting-started/hello-world)
+- [Cypherlot Core Protocol](/specs/rfc-0001-core)

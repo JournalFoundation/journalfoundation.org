@@ -1,0 +1,34 @@
+---
+title: "Threat model overview"
+kind: explanation
+spec_ref: ["rfc-0001-core"]
+summary: "Understand the adversaries Cypherlots are designed to resist."
+date: 2025-01-22
+tags: ["threat-model", "security"]
+version: "current"
+weight: 5
+---
+
+> Explanatory content only; for binding requirements read the Security Considerations sections of the specs.
+
+Cypherlots assume a world where metadata surveillance is the default. Implementers must understand who we defend against and where the limits lie.
+
+## Primary adversaries
+
+- **Platform operators:** Services that monetize behavioral data.
+- **Network observers:** Entities capable of bulk packet capture and correlation.
+- **Co-located tenants:** Malicious services attempting to exfiltrate colocated data.
+
+## Non-goals
+
+- Compromised user devices.
+- Coercion that extracts secrets directly from humans.
+- Nation-state regulation compelling plaintext logging.
+
+## Design responses
+
+- Use of OHTTP relays to blind request metadata.
+- Capability tokens for least-privilege access.
+- Vault-to-client ratchets for forward secrecy.
+
+Continue with the [Cypherlot Core Protocol](/specs/rfc-0001-core) for normative requirements.

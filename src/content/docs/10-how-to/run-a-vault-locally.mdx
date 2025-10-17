@@ -1,0 +1,50 @@
+---
+title: "Run a Vault locally (Docker)"
+kind: how-to
+spec_ref: ["rfc-0001-core"]
+summary: "Start a local Vault with sensible defaults and health checks."
+date: 2025-01-21
+tags: ["vault", "docker"]
+version: "current"
+weight: 10
+---
+
+> This guide is **informative** and does not define conformance. Normative requirements live in the Cypherlot specifications.
+
+## Prerequisites
+
+- Docker 24+
+- Docker Compose plugin
+- Ports 8443 and 9443 available locally
+
+## Procedure
+
+1. **Download the compose file.**
+   ```bash
+   curl -O https://raw.githubusercontent.com/journalfoundation/vault-quickstart/main/docker-compose.yml
+   ```
+2. **Start the stack.**
+   ```bash
+   docker compose up -d vault
+   ```
+3. **Verify readiness.**
+   ```bash
+   curl -s https://localhost:8443/health | jq
+   ```
+4. **Tail logs.**
+   ```bash
+   docker compose logs -f vault
+   ```
+
+## Clean up
+
+Stop the container when finished:
+
+```bash
+docker compose down
+```
+
+## Related tasks
+
+- [Connect a client](/docs/10-how-to/connect-a-client)
+- Review [Hello, Journal](/docs/00-getting-started/hello-world)

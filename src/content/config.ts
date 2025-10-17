@@ -34,6 +34,22 @@ const specs = defineCollection({
     date: z.coerce.date(),
     authors: z.array(z.string()),
     abstract: z.string(),
+    tags: z.array(z.string()).optional(),
+    version: z.string().default('1.0'),
+  }),
+});
+
+const docs = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    kind: z.enum(['tutorial', 'how-to', 'explanation', 'reference']),
+    spec_ref: z.array(z.string()).default([]),
+    summary: z.string().optional(),
+    date: z.coerce.date().default(new Date()),
+    tags: z.array(z.string()).default([]),
+    version: z.string().default('current'),
+    weight: z.number().default(0),
   }),
 });
 
@@ -53,5 +69,6 @@ export const collections = {
   blog,
   podcast,
   specs,
+  docs,
   whitepapers,
 };

@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const docs = await getCollection('docs');
+const byKind = (kind: string) =>
+  docs
+    .filter((entry) => entry.data.kind === kind)
+    .sort((a, b) => (a.data.weight ?? 0) - (b.data.weight ?? 0));
+---
+
+<BaseLayout
+  title="Documentation — Journal Foundation"
+  description="Guides, explanations, and reference material for implementers and operators."
+>
+  <div class="container prose docs-landing">
+    <header class="landing-head">
+      <h1>Documentation</h1>
+      <p class="lead">
+        Non-normative tutorials, how-to guides, explanations, and reference material. For conformance requirements, visit the
+        <a href="/specs">Technical Specifications</a>.
+      </p>
+    </header>
+
+    <div class="grid">
+      <section>
+        <h2>Tutorials</h2>
+        <p>Step-by-step introductions that end with a working result.</p>
+        <ul>
+          {byKind('tutorial').map((page) => (
+            <li><a href={`/docs/${page.slug}`}>{page.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h2>How-to guides</h2>
+        <p>Goal-oriented recipes for deployment, operations, and troubleshooting.</p>
+        <ul>
+          {byKind('how-to').map((page) => (
+            <li><a href={`/docs/${page.slug}`}>{page.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h2>Explanations</h2>
+        <p>Background context, trade-offs, and architectural rationale.</p>
+        <ul>
+          {byKind('explanation').map((page) => (
+            <li><a href={`/docs/${page.slug}`}>{page.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h2>Reference</h2>
+        <p>Authoritative facts: APIs, schemas, CLI flags, and configuration.</p>
+        <ul>
+          {byKind('reference').map((page) => (
+            <li><a href={`/docs/${page.slug}`}>{page.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+    </div>
+
+    <div class="cta">
+      <h3>Contribute to Docs</h3>
+      <p>Docs are open to contributions. Improvements, corrections, and examples are welcome.</p>
+      <a class="btn" href="https://github.com/journalfoundation" target="_blank" rel="noopener noreferrer">
+        Open an Issue →
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .docs-landing {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .landing-head {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .lead {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  section ul {
+    margin-top: 0.5rem;
+  }
+
+  section li {
+    margin: 0.35rem 0;
+  }
+
+  section a {
+    color: var(--electric-blue);
+    text-decoration: none;
+  }
+
+  section a:hover {
+    text-decoration: underline;
+  }
+
+  .cta {
+    background: var(--void-lighter);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    margin-top: var(--space-2xl);
+    border-left: 4px solid var(--encrypted-green);
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--electric-blue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    color: var(--encrypted-green);
+  }
+</style>

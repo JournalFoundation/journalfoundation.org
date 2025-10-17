@@ -1,0 +1,33 @@
+---
+title: "Vault API endpoints"
+kind: reference
+spec_ref: ["rfc-0001-core"]
+summary: "Endpoint inventory for the Vault HTTP interface."
+date: 2025-01-22
+tags: ["api", "reference"]
+version: "current"
+weight: 10
+---
+
+> Reference only. Conformance details are defined in the relevant specification sections.
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `POST` | `/v1/messages` | Submit a message payload encrypted with the client capability. |
+| `GET` | `/v1/messages/{channel}` | Retrieve encrypted messages for a capability-scoped channel. |
+| `POST` | `/v1/capabilities` | Issue or rotate capability tokens. |
+| `GET` | `/v1/health` | Return readiness metadata for monitoring. |
+
+### Headers
+
+- `X-Capability`: REQUIRED. Capability token proving access.
+- `X-Request-Nonce`: RECOMMENDED. Unique per request to support replay mitigation.
+
+### Response codes
+
+- `200 OK`: Request succeeded.
+- `202 Accepted`: Message queued for relay delivery.
+- `401 Unauthorized`: Capability missing, expired, or revoked.
+- `429 Too Many Requests`: Rate limit enforcement.
+
+Cross-reference the normative requirements in [RFC-0001](/specs/rfc-0001-core#2-architecture).

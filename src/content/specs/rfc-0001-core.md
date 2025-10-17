@@ -7,6 +7,9 @@ authors: ["John Benac"]
 abstract: "This document specifies the core Cypherlot protocol, including encryption requirements, capability-based sharing, and discovery mechanisms."
 ---
 
+> **Status:** Draft  
+> **Conventions:** The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" are to be interpreted as described by BCP 14. Informative notes are explicitly labeled and are non-normative.
+
 ## Status of This Memo
 
 This document is a Draft RFC and may be updated, replaced, or obsoleted by other documents at any time.

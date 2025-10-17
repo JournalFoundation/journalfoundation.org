@@ -1,0 +1,184 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const { frontmatter } = Astro.props;
+const allDocs = await getCollection('docs');
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+const sections = [
+  { key: 'tutorial', title: 'Tutorials' },
+  { key: 'how-to', title: 'How-to guides' },
+  { key: 'explanation', title: 'Explanations' },
+  { key: 'reference', title: 'Reference' },
+];
+
+const nav = sections.map((section) => ({
+  ...section,
+  items: allDocs
+    .filter((entry) => entry.data.kind === section.key)
+    .sort((a, b) => (a.data.weight ?? 0) - (b.data.weight ?? 0)),
+}));
+
+const formatKind = (kind: string) => {
+  const labels: Record<string, string> = {
+    tutorial: 'Tutorial',
+    'how-to': 'How-to guide',
+    explanation: 'Explanation',
+    reference: 'Reference',
+  };
+
+  return labels[kind] ?? kind;
+};
+---
+
+<BaseLayout
+  title={`${frontmatter.title} — Docs — Journal Foundation`}
+  description={frontmatter.summary ?? `Documentation: ${frontmatter.title}`}
+>
+  <div class="docs">
+    <aside class="sidebar">
+      {nav.map((section) => (
+        <section>
+          <h4>{section.title}</h4>
+          <ul>
+            {section.items.map((item) => (
+              <li class:list={{ active: currentPath === `/docs/${item.slug}` }}>
+                <a href={`/docs/${item.slug}`}>{item.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </aside>
+
+    <main class="content">
+      <header class="page-head">
+        <div class="kicker">{formatKind(frontmatter.kind)}</div>
+        <h1>{frontmatter.title}</h1>
+        {frontmatter.summary ? (
+          <p class="summary">{frontmatter.summary}</p>
+        ) : null}
+        {frontmatter.spec_ref.length ? (
+          <p class="related">
+            Related spec:
+            {' '}
+            {frontmatter.spec_ref.map((ref, index) => (
+              <>
+                <a href={`/specs/${ref}`}>{ref}</a>
+                {index < frontmatter.spec_ref.length - 1 ? ', ' : ''}
+              </>
+            ))}
+          </p>
+        ) : null}
+      </header>
+
+      <article class="prose">
+        <slot />
+      </article>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .docs {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-xl);
+    margin: var(--space-xl) auto;
+    max-width: 1200px;
+    padding: 0 var(--space-md);
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 4rem;
+    max-height: calc(100vh - 4rem);
+    overflow: auto;
+    padding-right: var(--space-md);
+    border-right: 1px solid var(--void-lighter);
+  }
+
+  .sidebar h4 {
+    margin: var(--space-md) 0 var(--space-xs);
+    color: var(--electric-blue);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md);
+  }
+
+  .sidebar li {
+    margin: 0.25rem 0;
+  }
+
+  .sidebar li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .sidebar li a:hover {
+    color: var(--electric-blue);
+  }
+
+  .sidebar li.active > a {
+    color: var(--encrypted-green);
+    font-weight: 600;
+  }
+
+  .content {
+    min-width: 0;
+  }
+
+  .page-head {
+    margin-bottom: var(--space-xl);
+  }
+
+  .kicker {
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .summary {
+    color: var(--text-secondary);
+    margin-top: var(--space-xs);
+  }
+
+  .related {
+    margin-top: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .related a {
+    color: var(--electric-blue);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .related a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 960px) {
+    .docs {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+      max-height: none;
+      border-right: none;
+      padding-right: 0;
+      order: 2;
+    }
+  }
+</style>
