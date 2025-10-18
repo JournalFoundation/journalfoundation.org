@@ -1,107 +1,256 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Admonition from "../components/Admonition.astro";
+
+const meta = {
+  title: "About — Journal Foundation",
+  description:
+    "Self-host practical things—chat, private files, photos, and AI—then learn the open protocols (Cipherlot & Journal Vault) that make it possible.",
+  url: "https://journalfoundation.org/about",
+  image: "/images/journal_network_background.png",
+};
 ---
 
-<BaseLayout 
-  title="About — Journal Foundation"
-  description="The story behind the Journal Foundation and our mission for digital sovereignty."
->
-  <div class="container prose" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
-    <h1>About the Journal Foundation</h1>
-    
-    <p class="lead">We exist to build infrastructure for digital sovereignty—not another platform, but the foundation that makes platforms obsolete.</p>
-    
-    <h2>Our Mission</h2>
-    <p>The Journal Foundation develops open protocols and tools that enable individuals to reclaim control over their digital lives. We believe privacy, security, and sovereignty are fundamental human rights in the digital age.</p>
-    
-    <h2>The Problem We're Solving</h2>
-    <p>Today's internet is dominated by surveillance capitalism. Every click, scroll, and pause is tracked, analyzed, and monetized. Your data powers algorithmic manipulation designed to change your behavior for corporate profit.</p>
-    
-    <blockquote>
-      <p>"Mark Zuckerberg and Elon Musk have their clutches in us collectively as Americans and humans. We're down bleeding on the mat as these two behemoths tighten and tighten the screws."</p>
-    </blockquote>
-    
-    <p>This isn't just about privacy—it's about preserving human agency and diversity of thought in an age of algorithmic monoculture.</p>
-    
-    <h2>Our Approach</h2>
-    <p>Unlike previous attempts at "decentralization," we focus on sovereignty rather than federation:</p>
-    
-    <ul>
-      <li><strong>Encryption by default:</strong> Not optional, not bolted-on</li>
-      <li><strong>Capability-based sharing:</strong> Precise, revocable permissions</li>
-      <li><strong>Metadata minimization:</strong> What you can't see, you can't abuse</li>
-      <li><strong>Self-hostable:</strong> Your data in your basement, not Zuckerberg's data center</li>
-    </ul>
-    
-    <h2>Cypherlots</h2>
-    <p>Our flagship protocol is Cypherlots—personal, encrypted data nodes that enable sharing without surveillance. Think of them as digital safe deposit boxes that you control completely, with the ability to grant specific, limited access to others.</p>
-    
-    <p><a href="/cypherlots">Learn more about Cypherlots →</a></p>
-    
-    <h2>Leadership</h2>
-    <div style="background: var(--void-lighter); padding: var(--space-lg); border-radius: 8px; margin: var(--space-lg) 0;">
-      <h3>John Benac, Founder</h3>
-      <p>I get emotional when I repeat my battle cry because this is a hill I'm willing to die on. I believe technology should serve human flourishing, not corporate surveillance.</p>
-      <p>Previously: Rapid7, Black Hills Information Security, various security consulting. Currently obsessed with building the escape route from surveillance capitalism.</p>
+<BaseLayout title={meta.title} description={meta.description}>
+  <Fragment slot="head">
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:image" content={meta.image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={meta.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={meta.url} />
+  </Fragment>
+
+  <section class="hero">
+    <h1>Custody first. AI without surrender.</h1>
+    <p class="subhead">
+      Use powerful digital tools—including AI—<strong>without</strong> handing your life to a platform.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="/docs/10-how-to/run-a-vault-locally">Self-host your chat</a>
+      <a class="btn" href="/docs/10-how-to/run-a-vault-locally">Share privately</a>
+      <a class="link" href="/cypherlots">Learn the protocols</a>
     </div>
-    
-    <h2>Funding & Transparency</h2>
-    <p>The Journal Foundation operates with radical transparency. All funding sources, expenditures, and decision-making processes are public.</p>
-    
-    <p><a href="/governance">View our governance and transparency dashboard →</a></p>
-    
-    <h2>Get Involved</h2>
-    <p>Join the resistance against surveillance capitalism:</p>
-    
-    <ul>
-      <li><strong>Developers:</strong> <a href="/specs">Review our specifications</a> and contribute code</li>
-      <li><strong>Advocates:</strong> Help spread the message of digital sovereignty</li>
-      <li><strong>Funders:</strong> Support development of privacy infrastructure</li>
-      <li><strong>Users:</strong> Run a Cypherlot and reclaim your data</li>
-    </ul>
-    
-    <div class="callout-panel">
-      <h3>Ready to Take Back Control?</h3>
-      <p>The future of human agency depends on infrastructure we build today.</p>
-      <div class="cta-stack">
-        <a href="/docs/quickstart" class="btn btn--primary">Run a Cypherlot</a>
-        <a href="/governance#funding" class="btn btn--secondary">Support the Foundation</a>
-      </div>
+  </section>
+
+  <section>
+    <h2>What you can do today (in minutes)</h2>
+    <p>Four simple ways to get value—without becoming “a node operator.”</p>
+    <div class="cards">
+      <article class="card">
+        <h3>Self-host your chat (history you actually own)</h3>
+        <p>Keep conversations, system messages, and context on your own device. Add new clients any time.</p>
+        <a class="btn small" href="/docs/10-how-to/run-a-vault-locally">➡️ Self-host your chat</a>
+        <a class="link small" href="/docs/10-how-to/connect-a-client">Connect a client →</a>
+      </article>
+      <article class="card">
+        <h3>Share a private recipe (or an hour-long how-to video)</h3>
+        <p>Send the chili recipe—or a 60-minute walkthrough—to one cousin, not the whole internet. Revocable, auditable access.</p>
+        <a class="btn small" href="/docs/10-how-to/run-a-vault-locally">➡️ Share a private recipe</a>
+      </article>
+      <article class="card">
+        <h3>Share beach photos with Grandma—only Grandma</h3>
+        <p>No feeds, no trackers, no ads. Just your photos, encrypted, delivered to the one person you choose.</p>
+        <a class="btn small" href="/docs/10-how-to/run-a-vault-locally">➡️ Share photos privately</a>
+      </article>
+      <article class="card">
+        <h3>Private AI with your own data and persona</h3>
+        <p>Use AI on <em>your</em> terms: chat history + persona prompts live in your Vault; tools get capability-scoped, time-bound access.</p>
+        <a class="btn small" href="/docs/20-explanations/threat-model-overview">➡️ Run private AI with your data</a>
+      </article>
     </div>
-  </div>
+    <p class="note">(All of the above are encrypted at rest and in transit. Access is <strong>capability-based</strong> and <strong>revocable</strong>.)</p>
+  </section>
+
+  <section>
+    <h2>Under the hood (protocols, not platforms)</h2>
+    <p>
+      Platforms come and go. Protocols persist. Journal Foundation publishes open specifications and reference tools so anyone
+      can <strong>own their data</strong>, <strong>grant precise access</strong>, and enjoy rich AI experiences—without lock-in.
+    </p>
+    <h3>Cipherlot — your personal, encrypted data node</h3>
+    <p>
+      Think “safe-deposit box you control” with precise, revocable capabilities for people, apps, and AI agents. Designed for
+      <strong>easy self-hosting</strong> (no static IP required).
+    </p>
+    <h3>Journal Vault — encryption-first, graph-aware store</h3>
+    <p>
+      Holds large files <strong>and</strong> graph-structured knowledge for modern retrieval/AI. Built with <strong>segments</strong> so different agents can
+      access only what they’re allowed—no more.
+    </p>
+    <p>
+      <a class="link" href="/cypherlots">➡️ Learn the protocols (Cipherlot &amp; Journal Vault)</a>
+    </p>
+  </section>
+
+  <section>
+    <h2>Threat model &amp; tradeoffs</h2>
+    <Admonition kind="warning" title="Honest by design">
+      <p><strong>Default defense:</strong> advertisers, data brokers, corporate profiling, and political targeting.</p>
+      <p><strong>We optimize for:</strong> real-world usability and low-friction self-hosting.</p>
+      <p>
+        <strong>We do not claim by default:</strong> resistance to a <em>global passive adversary</em> (e.g., nation-state monitoring). Advanced
+        hardening paths are compatible with the spec and will be documented.
+      </p>
+      <p>
+        <em>Honest security beats perfect security nobody deploys.</em>
+        <a class="link-inline" href="/docs/20-explanations/threat-model-overview">➡️ Read the threat model</a>
+      </p>
+    </Admonition>
+  </section>
+
+  <section>
+    <h2>Why we exist</h2>
+    <p>Humans are influenceable. That isn’t good or bad—it’s human.</p>
+    <p>
+      Fire warms homes when it stays in a <em>ring</em>. Knives serve us when they live in a <em>sheath</em>. The internet and big data are tools
+      of the same kind: powerful, helpful, and—without guardrails—easily misused.
+    </p>
+    <p>
+      When personal data sits in the open, <strong>influence pools like water under gravity</strong>—flowing toward those positioned to shape what
+      we see, buy, and believe. We’re not here to fear technology. We’re here to <strong>use it safely</strong>: keep the fire in the ring, the knife in
+      the sheath, and <strong>personal data in our custody</strong>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Respect for adjacent work</h2>
+    <p>
+      We applaud Solid Pods, AT Protocol/Bluesky, Mastodon, Signal/Session, and others. They solve important problems. Our
+      focus is a different prerequisite: <strong>complete personal custody</strong> of arbitrarily large, graph-addressable data—encryption-first,
+      capability-scoped, easy to self-host, and designed for AI workflows—<strong>without</strong> tokenomics or global sharding.
+    </p>
+  </section>
+
+  <section>
+    <h2>Founder’s note</h2>
+    <p>
+      I’m <strong>John Benac</strong>. I want modern intelligence—and I refuse the bargain where my data becomes the product. When I couldn’t find
+      a protocol stack that kept data close, safe, and truly useful for AI, I followed a familiar open-source pattern. Inspired by
+      <strong>Linux</strong>, <strong>Git</strong>, and <strong>Wikipedia</strong>, Journal Foundation is building <strong>Cipherlot</strong> and <strong>Journal Vault</strong> as simple, durable primitives—so the
+      ecosystem that grows on top can be open, private, and human-serving.
+    </p>
+  </section>
+
+  <section>
+    <h2>Transparency &amp; governance</h2>
+    <p>
+      Funding, expenditures, roadmaps, and decisions are public.
+      <a class="link-inline" href="/governance">➡️ See governance &amp; transparency</a>
+    </p>
+  </section>
+
+  <section>
+    <h2>FAQ</h2>
+    <details>
+      <summary>Do I need a static IP or to “support a network”?</summary>
+      <p>No. Cipherlot favors low-friction self-hosting. You’re not “running infrastructure for others”—you’re running <em>yours</em>.</p>
+    </details>
+    <details>
+      <summary>Where does AI run?</summary>
+      <p>Use the provider you trust (local or cloud). Your Vault controls exactly what they can see and for how long.</p>
+    </details>
+    <details>
+      <summary>What about metadata?</summary>
+      <p>We minimize what’s needed to function. For stronger protections against global adversaries, follow our hardening guide.</p>
+    </details>
+    <details>
+      <summary>How is this different from federation or blockchain?</summary>
+      <p>Different missions. We avoid tokenomics and global sharding to keep custody complete and dependencies minimal.</p>
+    </details>
+    <details>
+      <summary>Can I share big files?</summary>
+      <p>Yes—Vaults support large media and graph-structured knowledge with capability-scoped, revocable access.</p>
+    </details>
+  </section>
+
+  <style>
+    .hero {
+      max-width: 72ch;
+      margin: 4rem auto 2rem;
+    }
+
+    .subhead {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+
+    .cta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 1rem 0 2rem;
+    }
+
+    .btn {
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn.small {
+      padding: 0.55rem 0.85rem;
+      font-size: 0.95rem;
+    }
+
+    .link {
+      text-decoration: underline;
+    }
+
+    .link.small {
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-top: 0.35rem;
+    }
+
+    .link-inline {
+      text-decoration: underline;
+      margin-left: 0.35rem;
+    }
+
+    section {
+      max-width: 74ch;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin: 1rem 0;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      background: var(--card-bg, #fff);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .note {
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    details {
+      border-top: 1px solid var(--border);
+      padding: 0.75rem 0;
+    }
+
+    details:first-of-type {
+      border-top: 0;
+    }
+  </style>
 </BaseLayout>
-
-<style>
-  .lead {
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    margin-bottom: var(--space-xl);
-  }
-  
-  h3 {
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-sm);
-  }
-
-  .callout-panel {
-    background: linear-gradient(135deg, rgba(13, 210, 128, 0.12), rgba(45, 125, 255, 0.12));
-    border: 1px solid rgba(45, 125, 255, 0.35);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    margin-top: var(--space-xl);
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .cta-stack {
-    display: flex;
-    gap: var(--space-sm);
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: var(--space-md);
-  }
-
-  .cta-stack .btn {
-    min-width: min(220px, 100%);
-  }
-</style>
