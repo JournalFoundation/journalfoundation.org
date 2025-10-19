@@ -22,13 +22,13 @@ const currentPath = Astro.url.pathname;
     <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
       <ul class="primary-nav__list">
         <li><a href="/about" class:list={[{ active: currentPath === '/about' }]}>About</a></li>
-        <li><a href="/cypherlots" class:list={[{ active: currentPath === '/cypherlots' }]}>Cypherlots</a></li>
+        <li><a href="/stack" class:list={[{ active: currentPath === '/stack' }]}>Stack</a></li>
+        <li><a href="/learn" class:list={[{ active: currentPath.startsWith('/learn') }]}>Learn</a></li>
         <li><a href="/specs" class:list={[{ active: currentPath.startsWith('/specs') }]}>Specs</a></li>
         <li><a href="/docs" class:list={[{ active: currentPath.startsWith('/docs') }]}>Docs</a></li>
         <li><a href="/blog" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a></li>
         <li><a href="/podcast" class:list={[{ active: currentPath.startsWith('/podcast') }]}>Podcast</a></li>
         <li><a href="/governance" class:list={[{ active: currentPath === '/governance' }]}>Governance</a></li>
-        <li><a href="/security" class:list={[{ active: currentPath === '/security' }]}>Security</a></li>
         <li><a href="/press" class:list={[{ active: currentPath === '/press' }]}>Press</a></li>
       </ul>
     </nav>

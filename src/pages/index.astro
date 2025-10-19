@@ -23,14 +23,14 @@ import BattleCry from '../components/BattleCry.astro';
     </div>
     
     <div class="cta-group">
-      <a href="/docs/quickstart" class="btn btn--primary">
-        🛠️ Build an App
+      <a href="/docs" class="btn btn--primary">
+        🛠️ Build Apps
       </a>
-      <a href="/about" class="btn btn--secondary">
-        📢 Join the Movement
+      <a href="/learn" class="btn btn--secondary">
+        📚 Learn Privacy
       </a>
-      <a href="/governance" class="btn btn--tertiary">
-        💰 Support the Foundation
+      <a href="/governance#funding" class="btn btn--tertiary">
+        💰 Support Us
       </a>
     </div>
   </BattleCry>
@@ -72,7 +72,7 @@ import BattleCry from '../components/BattleCry.astro';
         
         <div class="explainer-card card">
           <div class="explainer-number">3</div>
-          <h3>The Cypherlots Difference</h3>
+          <h3>The Stack Difference</h3>
           <p>Infrastructure for sovereignty, not another social network:</p>
           <ul>
             <li>Encrypted by default, not optional</li>
@@ -103,110 +103,90 @@ import BattleCry from '../components/BattleCry.astro';
         <p><strong>If we don't create this free, radical way for humans to have THEIR OWN robots—then it's lights out for human free thought and diversity. It's a new dark ages.</strong></p>
       </div>
       
-      <p class="urgency-conclusion">That's why Cypherlots exist. That's why this foundation exists.</p>
+      <p class="urgency-conclusion">That's why the Journal Protocol Stack exists. That's why this foundation exists.</p>
     </div>
   </section>
   
+  <!-- Stack Explainer -->
+  <section class="stack-explainer">
+    <div class="container">
+      <div class="section-header">
+        <h2>The Journal Protocol Stack</h2>
+        <p class="subtitle">Three layers that enable apps without platforms</p>
+      </div>
+
+      <div class="stack-grid">
+        <div class="stack-layer">
+          <h3>📦 Layer 1: Vault</h3>
+          <p>Encrypted storage you control</p>
+        </div>
+        <div class="stack-layer">
+          <h3>🔒 Layer 2: Cypherlot</h3>
+          <p>Capability-based sharing</p>
+        </div>
+        <div class="stack-layer">
+          <h3>📱 Layer 3: Apps</h3>
+          <p>Swappable interfaces</p>
+        </div>
+      </div>
+
+      <div class="cta-group">
+        <a href="/stack" class="btn btn--secondary">Learn How It Works →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Get Started -->
   <section class="get-started-section">
     <div class="container">
       <div class="section-header">
-        <h2>Get Started</h2>
-        <p class="subtitle">Three ways to join the resistance</p>
+        <h2>How to Engage</h2>
+        <p class="subtitle">Three ways to participate</p>
       </div>
-      
+
       <div class="explainer-grid">
         <div class="explainer-card card">
           <h3>🛠️ For Developers</h3>
-          <p>Prototype with Cypherlots in under 60 seconds:</p>
-          <pre><code>docker run -d --name cypherlot \
-  -p 443:443 \
-  -v $HOME/cypherlot:/data \
-  ghcr.io/journalfoundation/cypherlot:0.1</code></pre>
-          <p class="card-link"><a href="/docs/quickstart">View full documentation →</a></p>
-        </div>
-        
-        <div class="explainer-card card">
-          <h3>📢 For Advocates</h3>
-          <p>Help build the movement:</p>
+          <p>Build privacy-first apps on open protocols. No platform required.</p>
           <ul>
-            <li>Share the battle cry</li>
-            <li>Join community discussions</li>
-            <li>Download advocacy toolkit</li>
-            <li>Speak at events</li>
+            <li>Read the specifications</li>
+            <li>Try the quickstart guide</li>
+            <li>Join technical discussions</li>
           </ul>
-          <p class="card-link"><a href="/community">Join the conversation →</a></p>
+          <p class="card-link">
+            <a href="/docs">Start building →</a>
+          </p>
         </div>
-        
+
         <div class="explainer-card card">
-          <h3>💰 For Funders</h3>
-          <p>Support the foundation:</p>
+          <h3>📚 For Privacy Advocates</h3>
+          <p>Understand surveillance, metadata, and why decentralization alone isn't enough.</p>
           <ul>
-            <li>Fund specification development</li>
-            <li>Sponsor security audits</li>
-            <li>Enable advocacy work</li>
-            <li>Support open source</li>
+            <li>Learn privacy fundamentals</li>
+            <li>Read our whitepapers</li>
+            <li>Follow the blog &amp; podcast</li>
           </ul>
-          <p class="card-link"><a href="/governance#funding">View transparency dashboard →</a></p>
+          <p class="card-link">
+            <a href="/learn">Visit learning center →</a>
+          </p>
+        </div>
+
+        <div class="explainer-card card">
+          <h3>💰 For Funders &amp; Advisors</h3>
+          <p>Support protocol development with radical transparency.</p>
+          <ul>
+            <li>Review financial dashboard</li>
+            <li>See governance model</li>
+            <li>Contact for partnerships</li>
+          </ul>
+          <p class="card-link">
+            <a href="/governance">See transparency →</a>
+          </p>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Cypherlots Explainer -->
-  <section class="cypherlots-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>What Is a Cypherlot?</h2>
-        <p class="subtitle">A personal, encrypted data node that lets you share exactly what you intend—with no platform in the middle.</p>
-      </div>
-      
-      <div class="cypherlots-content">
-        <p class="intro">A <strong>Cypherlot</strong> is a privacy primitive for people, not platforms:</p>
-        
-        <ul class="feature-list">
-          <li>
-            <span class="checkmark">✓</span>
-            <div>
-              <strong>Encrypted by default:</strong> All data is encrypted at rest and in transit
-            </div>
-          </li>
-          <li>
-            <span class="checkmark">✓</span>
-            <div>
-              <strong>Capability-based sharing:</strong> Grant scoped, expiring, revocable access
-            </div>
-          </li>
-          <li>
-            <span class="checkmark">✓</span>
-            <div>
-              <strong>Metadata minimization:</strong> Blind relays that can't read your data
-            </div>
-          </li>
-          <li>
-            <span class="checkmark">✓</span>
-            <div>
-              <strong>Self-hostable:</strong> Run it on a Raspberry Pi in your basement
-            </div>
-          </li>
-          <li>
-            <span class="checkmark">✓</span>
-            <div>
-              <strong>Not a platform:</strong> It's infrastructure—apps interoperate without surveillance
-            </div>
-          </li>
-        </ul>
-        
-        <blockquote class="founder-quote">
-          "Your data in your basement, not Zuckerberg's data center. That's the whole point."
-        </blockquote>
-        
-        <div class="cta-group" style="justify-content: center; margin-top: var(--space-xl);">
-          <a href="/cypherlots" class="btn btn--secondary">Learn More About Cypherlots →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+
 </BaseLayout>
 
 <style>
@@ -383,47 +363,33 @@ import BattleCry from '../components/BattleCry.astro';
     margin-top: var(--space-lg);
   }
   
-  /* Cypherlots Section */
-  .cypherlots-content {
-    max-width: 800px;
-    margin: 0 auto;
+  /* Stack Explainer */
+  .stack-explainer {
+    background: rgba(45, 125, 255, 0.06);
   }
-  
-  .intro {
-    margin-bottom: var(--space-lg);
-  }
-  
-  .feature-list {
-    list-style: none;
-    margin: var(--space-lg) 0;
-  }
-  
-  .feature-list li {
-    display: flex;
-    gap: var(--space-md);
-    margin-bottom: var(--space-md);
-    align-items: flex-start;
-  }
-  
-  .checkmark {
-    color: var(--encrypted-green);
-    font-weight: bold;
-    font-size: 1.25rem;
-    flex-shrink: 0;
-  }
-  
-  .feature-list strong {
-    color: var(--text-primary);
-  }
-  
-  .founder-quote {
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
     margin-top: var(--space-xl);
-    padding: var(--space-lg);
+  }
+
+  .stack-layer {
     background: var(--void-lighter);
-    border-left: 4px solid var(--electric-blue);
-    border-radius: 4px;
-    color: var(--text-primary);
-    font-style: italic;
+    border: 1px solid rgba(45, 125, 255, 0.25);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: left;
+  }
+
+  .stack-layer h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-primary);
+  }
+
+  .stack-layer p {
+    color: var(--text-secondary);
   }
   
   /* Responsive */
