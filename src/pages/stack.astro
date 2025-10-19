@@ -1,0 +1,463 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="The Journal Protocol Stack — Journal Foundation"
+  description="Learn how Journal Foundation stewards the three-layer stack that powers privacy-first applications."
+>
+  <div class="stack container">
+    <header class="stack__hero">
+      <h1>The Journal Protocol Stack</h1>
+      <p class="lead">Open protocols for privacy-first applications.</p>
+      <p>
+        Journal Foundation stewards the infrastructure that lets developers build human-serving apps without handing power to
+        surveillance platforms. The stack is designed for custody, cryptographic trust, and metadata minimization from the
+        ground up.
+      </p>
+      <p class="problem-statement">
+        Existing "decentralized" solutions still leak metadata, depend on centralized directories, and fail to keep data under
+        user control. The Journal stack solves the problem they left behind: <strong>anonymized sharing with personal
+        custody</strong>.
+      </p>
+    </header>
+
+    <section class="stack__layers">
+      <div class="section-header">
+        <h2>Three Layers</h2>
+        <p class="subtitle">Protocols that separate storage, sharing, and experiences.</p>
+      </div>
+
+      <div class="layer-grid">
+        <article class="layer-card">
+          <h3>📦 Layer 1: Journal Vault</h3>
+          <p class="layer-summary">Encrypted, graph-aware personal data storage.</p>
+          <p><strong>Purpose:</strong> Where your data lives.</p>
+          <ul>
+            <li>Encrypted at rest (AES-256-GCM)</li>
+            <li>Segmented access control</li>
+            <li>Graph-structured for AI and retrieval</li>
+            <li>Self-hostable on commodity hardware</li>
+          </ul>
+          <p class="layer-link"><a href="/specs">Technical details →</a></p>
+        </article>
+
+        <article class="layer-card">
+          <h3>🔒 Layer 2: Cypherlot</h3>
+          <p class="layer-summary">Capability-based network access and sharing.</p>
+          <p><strong>Purpose:</strong> How data is shared safely.</p>
+          <ul>
+            <li>Capability tokens (scoped, expiring, revocable)</li>
+            <li>Blind relays using Oblivious HTTP</li>
+            <li>NAT traversal—no static IP required</li>
+            <li>Selective exfiltration to prevent bulk grabs</li>
+          </ul>
+          <p class="layer-link"><a href="/specs/rfc-0001-core">Technical details →</a></p>
+        </article>
+
+        <article class="layer-card">
+          <h3>📱 Layer 3: Apps</h3>
+          <p class="layer-summary">User-facing experiences built on open protocols.</p>
+          <p><strong>Purpose:</strong> How humans interact with their data.</p>
+          <p class="highlight">Apps are swappable—data stays in <strong>your</strong> vault.</p>
+          <h4>Example apps developers could build:</h4>
+          <ul>
+            <li>Private messaging for families or teams</li>
+            <li>Photo and media sharing without trackers</li>
+            <li>Social networking with capability-scoped feeds</li>
+            <li>Voice memos and personal knowledge bases</li>
+            <li>AI assistants grounded in personal history</li>
+          </ul>
+          <p class="layer-link"><a href="/docs">For developers →</a></p>
+        </article>
+      </div>
+
+      <figure class="stack-diagram" aria-labelledby="stack-diagram-title">
+        <figcaption id="stack-diagram-title">Three-layer architecture for privacy-first ecosystems</figcaption>
+        <div class="diagram">
+          <div class="diagram-layer diagram-layer--apps">
+            <span>Layer 3</span>
+            <strong>Apps</strong>
+            <small>Interfaces for humans and agents</small>
+          </div>
+          <div class="diagram-layer diagram-layer--cypherlot">
+            <span>Layer 2</span>
+            <strong>Cypherlot</strong>
+            <small>Capability-based networking</small>
+          </div>
+          <div class="diagram-layer diagram-layer--vault">
+            <span>Layer 1</span>
+            <strong>Journal Vault</strong>
+            <small>Encrypted personal storage</small>
+          </div>
+        </div>
+      </figure>
+    </section>
+
+    <section class="anonymization" id="why-anonymization">
+      <div class="section-header">
+        <h2>Why Anonymization Matters</h2>
+        <p class="subtitle">Decentralization alone still leaks the data that surveillance capitalism feeds on.</p>
+      </div>
+
+      <div class="anonymization-grid">
+        <div class="anonymization-card">
+          <h3 class="anonymization-title">Decentralization Isn't Enough</h3>
+          <p><strong>You can't just decentralize—you have to anonymize.</strong></p>
+          <p>
+            Federated systems solved central control but left metadata exposed. Instance admins and network observers still know
+            who talks to whom, when, and how often. Encrypted blobs can be seized today and decrypted later.
+          </p>
+          <ul>
+            <li>Metadata still exposed to observers</li>
+            <li>Traffic patterns reveal identity and intent</li>
+            <li>IP addresses correlate to real-world identity</li>
+            <li>Bulk data can be exfiltrated and stored</li>
+            <li>Quantum decryption threatens historical data</li>
+          </ul>
+        </div>
+        <div class="anonymization-card anonymization-card--success">
+          <h3 class="anonymization-title">What Anonymization Adds</h3>
+          <ul>
+            <li><strong>Metadata minimization:</strong> Blind relays can't see who's talking</li>
+            <li><strong>Traffic obfuscation:</strong> OHTTP hides patterns</li>
+            <li><strong>Capability tokens:</strong> No central identity registry</li>
+            <li><strong>Selective exfiltration:</strong> Prevents bulk data seizure</li>
+            <li><strong>Forward secrecy:</strong> Keys rotate so old data is unrecoverable</li>
+          </ul>
+          <p>
+            <a href="/whitepapers/why-decentralization-failed">Read the whitepaper →</a>
+          </p>
+        </div>
+      </div>
+
+      <blockquote class="anonymization-quote">
+        "Even though the data is encrypted, you still don't want it shared with everyone on the Internet. You don't want China to
+        download all your data and then build a post-quantum computer and decrypt everything you've ever said."
+      </blockquote>
+    </section>
+
+    <section class="status">
+      <div class="section-header">
+        <h2>Current Status</h2>
+        <p class="subtitle">Where each layer of the stack stands today.</p>
+      </div>
+
+      <div class="status-table-wrapper">
+        <table class="status-table">
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Focus</th>
+              <th>Status</th>
+              <th>Links</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Journal Vault</strong></td>
+              <td>Encrypted personal storage</td>
+              <td><span class="status-pill status-pill--draft">Draft</span></td>
+              <td><a href="/specs">Specs</a></td>
+            </tr>
+            <tr>
+              <td><strong>Cypherlot</strong></td>
+              <td>Capability-based networking</td>
+              <td><span class="status-pill status-pill--dev">In Development</span></td>
+              <td><a href="/specs/rfc-0001-core">RFC 0001</a></td>
+            </tr>
+            <tr>
+              <td><strong>Reference Apps &amp; SDKs</strong></td>
+              <td>Developer tooling &amp; examples</td>
+              <td><span class="status-pill status-pill--alpha">Alpha</span></td>
+              <td><a href="/docs">Docs</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="get-started">
+      <div class="section-header">
+        <h2>Get Started</h2>
+        <p class="subtitle">Choose your path into the ecosystem.</p>
+      </div>
+
+      <div class="persona-grid">
+        <article class="persona-card">
+          <h3>🛠️ Developers</h3>
+          <p>Build privacy-first apps on open protocols. No platform required.</p>
+          <ul>
+            <li>Read the specifications</li>
+            <li>Spin up a local vault</li>
+            <li>Join technical discussions</li>
+          </ul>
+          <p class="card-link"><a href="/docs">Start building →</a></p>
+        </article>
+
+        <article class="persona-card">
+          <h3>💰 Funders &amp; Advisors</h3>
+          <p>Support protocol development with radical transparency.</p>
+          <ul>
+            <li>Review governance and finance</li>
+            <li>Sponsor security reviews</li>
+            <li>Fund roadmap milestones</li>
+          </ul>
+          <p class="card-link"><a href="/governance#funding">Support the mission →</a></p>
+        </article>
+
+        <article class="persona-card">
+          <h3>📚 Privacy Learners</h3>
+          <p>Understand surveillance, metadata, and digital sovereignty.</p>
+          <ul>
+            <li>Learn privacy fundamentals</li>
+            <li>Explore practical guides</li>
+            <li>Share resources with your community</li>
+          </ul>
+          <p class="card-link"><a href="/learn">Visit the learning center →</a></p>
+        </article>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .stack {
+    margin: var(--space-3xl) auto;
+    padding-bottom: var(--space-4xl);
+  }
+
+  .stack__hero {
+    max-width: 72ch;
+    margin: 0 auto var(--space-3xl);
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .problem-statement {
+    background: var(--void-lighter);
+    border-left: 4px solid var(--electric-blue);
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    border-radius: var(--radius-md);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+
+  .layer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .layer-card {
+    background: var(--void-lighter);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .layer-summary {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .highlight {
+    color: var(--electric-blue);
+    font-weight: 600;
+  }
+
+  .layer-card ul {
+    margin-left: var(--space-lg);
+    color: var(--text-secondary);
+  }
+
+  .layer-link {
+    margin-top: auto;
+  }
+
+  .stack-diagram {
+    margin: var(--space-3xl) auto 0;
+    max-width: 520px;
+    text-align: center;
+  }
+
+  .stack-diagram .diagram {
+    display: grid;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .diagram-layer {
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border-subtle);
+    background: rgba(45, 125, 255, 0.08);
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2xs);
+  }
+
+  .diagram-layer strong {
+    font-size: 1.15rem;
+  }
+
+  .diagram-layer small {
+    color: var(--text-muted);
+  }
+
+  .diagram-layer--apps {
+    background: rgba(45, 125, 255, 0.1);
+  }
+
+  .diagram-layer--cypherlot {
+    background: rgba(16, 185, 129, 0.1);
+  }
+
+  .diagram-layer--vault {
+    background: rgba(245, 158, 11, 0.12);
+  }
+
+  .anonymization {
+    margin-top: var(--space-4xl);
+  }
+
+  .anonymization-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .anonymization-card {
+    background: var(--void-lighter);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .anonymization-card--success {
+    border-color: rgba(16, 185, 129, 0.45);
+    background: rgba(16, 185, 129, 0.1);
+  }
+
+  .anonymization-title {
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .anonymization-card ul {
+    margin-left: var(--space-lg);
+  }
+
+  .anonymization-quote {
+    margin: 0 auto;
+    max-width: 68ch;
+    padding: var(--space-lg);
+    border-left: 4px solid var(--urgent-amber);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(37, 99, 235, 0.08));
+    border-radius: var(--radius-md);
+    font-style: italic;
+  }
+
+  .status-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .status-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--void-lighter);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .status-table th,
+  .status-table td {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-border-subtle);
+    text-align: left;
+  }
+
+  .status-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .status-pill--draft {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--urgent-amber);
+  }
+
+  .status-pill--dev {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--electric-blue);
+  }
+
+  .status-pill--alpha {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--encrypted-green);
+  }
+
+  .get-started {
+    margin-top: var(--space-4xl);
+  }
+
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .persona-card {
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg);
+    background: var(--void-lighter);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .persona-card ul {
+    margin-left: var(--space-lg);
+  }
+
+  .card-link {
+    margin-top: auto;
+  }
+
+  @media (max-width: 768px) {
+    .stack {
+      margin-top: var(--space-2xl);
+    }
+
+    .stack-diagram {
+      max-width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy Learning Center — Journal Foundation"
+  description="Understand digital privacy, security, and sovereignty with plain-language guides from Journal Foundation."
+>
+  <div class="learn container">
+    <header class="learn__hero">
+      <h1>Privacy Learning Center</h1>
+      <p class="lead">Understand digital privacy, security, and sovereignty—whether or not you ever use our protocols.</p>
+      <p>
+        Journal Foundation believes literacy is a prerequisite to freedom. This center distills the core ideas behind our work
+        and offers practical guides you can use today.
+      </p>
+    </header>
+
+    <section class="section">
+      <h2>Why Privacy Matters</h2>
+      <p>
+        Surveillance capitalism profits from predicting and influencing human behavior. Platforms harvest every click, pause,
+        and conversation. Metadata about who you talk to, when you're active, and what communities you join is weaponized for
+        manipulation and control.
+      </p>
+      <p>
+        Privacy is not secrecy—it's the right to decide who sees your life. When you lose that right, algorithms shape what you
+        believe, who you trust, and how you vote.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Essential Concepts</h2>
+
+      <article class="concept">
+        <h3>What Is Metadata?</h3>
+        <p>
+          Metadata is data about data—timestamps, IP addresses, location, who messaged whom. It's the pattern that reveals the
+          story even when the content stays encrypted.
+        </p>
+        <p class="example">Example: A messaging app might hide the text of your conversation but still know every person you talk to and when.</p>
+      </article>
+
+      <article class="concept">
+        <h3>What Is End-to-End Encryption?</h3>
+        <p>
+          End-to-end encryption (E2EE) ensures only the sender and receiver can read the content. Apps like Signal and WhatsApp
+          use E2EE so servers can't see message bodies.
+        </p>
+        <p>
+          E2EE does <em>not</em> hide metadata. Phone numbers, contact lists, and message timing still leak information unless
+          additional protections exist.
+        </p>
+      </article>
+
+      <article class="concept">
+        <h3>What Is Decentralization?</h3>
+        <p>
+          Decentralized systems distribute infrastructure across many operators instead of a single company. Examples include
+          Mastodon and the wider Fediverse.
+        </p>
+        <p>
+          Decentralization alone doesn't guarantee privacy. Server admins often see user data, and metadata remains exposed to
+          surveillance.
+        </p>
+      </article>
+
+      <article class="concept">
+        <h3>What Is Anonymization?</h3>
+        <p>
+          Anonymization reduces the metadata that links digital actions back to real people. It focuses on traffic analysis,
+          capability-scoped sharing, and minimizing what observers can learn.
+        </p>
+        <p>
+          Without anonymization, decentralized systems still enable mass profiling and retroactive surveillance.
+        </p>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>Practical Guides</h2>
+      <ul class="guide-list">
+        <li>How to evaluate a "privacy-focused" app</li>
+        <li>How to read a privacy policy</li>
+        <li>How to enable Global Privacy Control</li>
+        <li>How to use Signal safely</li>
+        <li>How to understand app permissions</li>
+        <li>How to protect yourself from surveillance</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Advanced Topics</h2>
+      <ul class="guide-list">
+        <li>Understanding threat models</li>
+        <li>The China problem (quantum + bulk seizure)</li>
+        <li>Why "I have nothing to hide" is wrong</li>
+        <li>How influence works at scale</li>
+      </ul>
+      <p>
+        These explorations inform why the Journal Protocol Stack prioritizes anonymization and custody. Learn how the stack fits
+        together on the <a href="/stack">Stack page</a>.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Resources</h2>
+      <ul class="guide-list">
+        <li><a href="/whitepapers">Journal Foundation whitepapers</a></li>
+        <li><a href="/stack">The Journal Protocol Stack</a></li>
+        <li><a href="https://www.eff.org" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation</a></li>
+        <li><a href="https://www.torproject.org" target="_blank" rel="noopener noreferrer">Tor Project</a></li>
+        <li><a href="https://ssd.eff.org" target="_blank" rel="noopener noreferrer">Surveillance Self-Defense Guide</a></li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .learn {
+    margin: var(--space-3xl) auto var(--space-4xl);
+  }
+
+  .learn__hero {
+    max-width: 72ch;
+    margin: 0 auto var(--space-3xl);
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .section {
+    max-width: 72ch;
+    margin: 0 auto var(--space-2xl);
+  }
+
+  .concept {
+    background: var(--void-lighter);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .concept h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .example {
+    background: rgba(45, 125, 255, 0.12);
+    border-left: 4px solid var(--electric-blue);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+  }
+
+  .guide-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-lg) 0;
+  }
+
+  .guide-list li {
+    padding-left: var(--space-lg);
+    position: relative;
+    margin-bottom: var(--space-sm);
+  }
+
+  .guide-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--electric-blue);
+  }
+
+  @media (max-width: 768px) {
+    .learn {
+      margin-top: var(--space-2xl);
+    }
+  }
+</style>
