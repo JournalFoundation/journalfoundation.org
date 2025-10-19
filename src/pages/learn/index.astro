@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Learning Center — Journal Foundation"
+  description="Understand digital privacy, metadata, encryption, and surveillance with approachable guides from Journal Foundation."
+>
+  <div class="learn-page">
+    <header class="hero">
+      <h1>Privacy Learning Center</h1>
+      <p class="lead">
+        Understand digital privacy, security, and sovereignty—whether or not you ever use our protocols.
+      </p>
+    </header>
+
+    <section class="why">
+      <h2>Why Privacy Matters</h2>
+      <p>
+        Surveillance capitalism treats attention and behavior as raw material. Platforms harvest every click,
+        pause, and scroll to predict and influence what you will do next. Even when content is encrypted, the
+        surrounding metadata powers algorithmic manipulation.
+      </p>
+      <p>
+        Sovereignty means choosing who sees your life. It means preventing bulk data seizure, resisting
+        behavioral profiling, and keeping human agency at the center of every digital interaction.
+      </p>
+    </section>
+
+    <section class="concepts">
+      <h2>Essential Concepts</h2>
+      <article>
+        <h3>What is Metadata?</h3>
+        <p>
+          Metadata is "data about data." It includes who you talk to, when messages are sent, how large files
+          are, and where requests originate. It can reveal habits, relationships, and sensitive routines—even if
+          the message contents are encrypted.
+        </p>
+        <p>
+          Example: A 2 a.m. call from the same location every night says more about your life than the words
+          exchanged. Metadata fuels ad targeting, insurance decisions, and even political intimidation.
+        </p>
+      </article>
+      <article>
+        <h3>What is End-to-End Encryption?</h3>
+        <p>
+          End-to-end encryption (E2EE) means only the sender and intended recipient can read message contents.
+          Apps like Signal and WhatsApp use E2EE so service providers cannot decrypt your texts.
+        </p>
+        <p>
+          But encryption alone doesn't hide <em>who</em> is talking, <em>when</em>, or <em>how often</em>. Those
+          metadata trails are often more revealing than the words themselves.
+        </p>
+      </article>
+      <article>
+        <h3>What is Decentralization?</h3>
+        <p>
+          Decentralization distributes infrastructure across many operators, like Mastodon or the broader
+          Fediverse. It removes single points of failure and corporate control.
+        </p>
+        <p>
+          However, decentralization without anonymization leaves metadata exposed. Instance admins or network
+          observers can still map social graphs, download encrypted blobs, and correlate identities.
+        </p>
+      </article>
+      <article>
+        <h3>What is Anonymization?</h3>
+        <p>
+          Anonymization limits the metadata that can be collected in the first place. Techniques like capability
+          tokens, blind relays, traffic padding, and selective exfiltration make it difficult to track who is
+          communicating or what they're accessing.
+        </p>
+        <p>
+          Without anonymization, decentralization becomes surveillance with extra steps. The Journal Protocol
+          Stack is designed to solve both.
+        </p>
+      </article>
+    </section>
+
+    <section class="guides">
+      <h2>Practical Guides</h2>
+      <ul>
+        <li>How to evaluate a "privacy-focused" app</li>
+        <li>How to read a privacy policy without falling asleep</li>
+        <li>How to enable Global Privacy Control in your browser</li>
+        <li>How to use Signal safely for sensitive conversations</li>
+        <li>How to understand app permissions on iOS and Android</li>
+        <li>How to protect yourself from workplace or school surveillance</li>
+      </ul>
+      <p class="note">
+        These guides are written in accessible language. Share them with family members, students, and colleagues
+        who need practical steps—not jargon.
+      </p>
+    </section>
+
+    <section class="advanced">
+      <h2>Advanced Topics</h2>
+      <article>
+        <h3>Understanding Threat Models</h3>
+        <p>
+          A threat model is a structured way to ask: who could harm me, what do they want, and what resources do
+          they control? Answering those questions tells you which protections matter most.
+        </p>
+      </article>
+      <article>
+        <h3>The China Problem</h3>
+        <p>
+          Bulk data seizure paired with future decryption power is a real risk. Nation-states can collect
+          encrypted content today, store it indefinitely, and wait for quantum breakthroughs. The stack counters
+          this with selective exfiltration, rapid key rotation, and compartmentalized access.
+        </p>
+      </article>
+      <article>
+        <h3>Why "I have nothing to hide" is wrong</h3>
+        <p>
+          Privacy isn't about secrecy. It's about power. When only governments and corporations control data,
+          they control narratives, markets, and democratic processes. Privacy preserves the ability to dissent,
+          to explore new ideas, and to be fully human.
+        </p>
+      </article>
+      <article>
+        <h3>How Influence Works at Scale</h3>
+        <p>
+          Influence campaigns combine metadata analysis, behavioral nudging, and algorithmic amplification. They
+          don't need to read your messages to shape your worldview—they just need to know when to push, pull, or
+          distract. Learning how these systems operate helps you build communities that resist them.
+        </p>
+      </article>
+    </section>
+
+    <section class="resources">
+      <h2>Resources</h2>
+      <ul>
+        <li><a href="/whitepapers">Journal Foundation whitepapers</a></li>
+        <li><a href="/blog">Journal Foundation blog</a></li>
+        <li><a href="/podcast">Podcast conversations on privacy and sovereignty</a></li>
+        <li><a href="https://www.eff.org" target="_blank" rel="noopener">Electronic Frontier Foundation</a></li>
+        <li><a href="https://www.torproject.org" target="_blank" rel="noopener">Tor Project</a></li>
+        <li><a href="https://privacyguides.org" target="_blank" rel="noopener">Privacy Guides</a></li>
+      </ul>
+      <p>
+        Want updates when we publish new explainers? Subscribe to the newsletter or follow the RSS feed on the
+        <a href="/blog">blog</a>.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .learn-page {
+    padding: 0 var(--space-md) var(--space-3xl);
+  }
+
+  .hero {
+    max-width: 72ch;
+    margin: var(--space-3xl) auto var(--space-xl);
+    text-align: left;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+    margin-top: var(--space-md);
+  }
+
+  section {
+    max-width: 960px;
+    margin: var(--space-3xl) auto;
+  }
+
+  section h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .concepts article,
+  .advanced article {
+    background: var(--void-lighter);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 10px;
+    padding: var(--space-xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  .concepts article:last-child,
+  .advanced article:last-child {
+    margin-bottom: 0;
+  }
+
+  .guides ul,
+  .resources ul {
+    padding-left: var(--space-lg);
+    line-height: 1.7;
+  }
+
+  .guides .note {
+    margin-top: var(--space-lg);
+    color: var(--text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .concepts,
+    .advanced {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .concepts > article,
+    .advanced > article {
+      margin-bottom: 0;
+    }
+  }
+</style>

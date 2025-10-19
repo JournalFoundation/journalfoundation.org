@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Journal Protocol Stack — Journal Foundation"
+  description="Discover how Journal Vault, Cypherlot, and open apps form the privacy-first Journal Protocol Stack."
+>
+  <div class="stack-page">
+    <header class="hero">
+      <h1>The Journal Protocol Stack</h1>
+      <p class="hero-lead">
+        Open protocols for privacy-first applications. We build the infrastructure so anyone can create
+        software without surrendering data to platforms.
+      </p>
+      <p class="hero-context">
+        Today's web stacks leak metadata, centralize power, and turn humans into products. The Journal Protocol
+        Stack is a custody-first alternative for developers, researchers, and communities that refuse
+        surveillance capitalism.
+      </p>
+    </header>
+
+    <section class="problem">
+      <h2>Why existing approaches fail</h2>
+      <p>
+        Encryption without custody still concentrates power. Federation without anonymization still leaks
+        metadata. App stores still demand lock-in. The Journal Stack pairs encrypted storage, capability-based
+        networking, and swappable applications so humans—not platforms—retain control.
+      </p>
+    </section>
+
+    <section class="layers">
+      <div class="section-header">
+        <h2>Three Layers</h2>
+        <p class="subtitle">Protocols that let apps run without platforms</p>
+      </div>
+
+      <div class="diagram">
+        <div class="diagram-connector"></div>
+        <article class="layer-card">
+          <h3>📦 Layer 1: Journal Vault</h3>
+          <p class="layer-what"><strong>What:</strong> Encrypted, graph-aware personal data storage</p>
+          <p class="layer-purpose"><strong>Purpose:</strong> Where your data lives</p>
+          <ul class="feature-list">
+            <li>Encrypted at rest using AES-256-GCM</li>
+            <li>Segmented capability-based access control</li>
+            <li>Graph-structured for AI and retrieval-augmented generation</li>
+            <li>Self-hostable with commodity hardware</li>
+          </ul>
+          <p class="layer-link"><a href="/specs">Technical details →</a></p>
+        </article>
+
+        <article class="layer-card">
+          <h3>🔒 Layer 2: Cypherlot</h3>
+          <p class="layer-what"><strong>What:</strong> Network access layer with capability-based sharing</p>
+          <p class="layer-purpose"><strong>Purpose:</strong> How data is shared safely</p>
+          <ul class="feature-list">
+            <li>Scoped, expiring, revocable capability tokens</li>
+            <li>Oblivious HTTP blind relays to protect metadata</li>
+            <li>NAT traversal—no static IP required</li>
+            <li>Selective exfiltration prevents bulk data seizure</li>
+          </ul>
+          <p class="layer-link"><a href="/specs/rfc-0001-core">Protocol RFC →</a></p>
+        </article>
+
+        <article class="layer-card">
+          <h3>📱 Layer 3: Apps</h3>
+          <p class="layer-what"><strong>What:</strong> User-facing applications</p>
+          <p class="layer-purpose"><strong>Purpose:</strong> How humans interact with their data</p>
+          <p class="layer-remark">
+            Apps are swappable. Data stays in your vault—clients compete on experience, not custody.
+          </p>
+          <h4>Example apps developers could build:</h4>
+          <ul class="feature-list">
+            <li>Private messaging and group chat</li>
+            <li>Photo sharing without surveillance feeds</li>
+            <li>Small-network social or community spaces</li>
+            <li>Voice memo journals and family audio archives</li>
+            <li>AI copilots using your personal history safely</li>
+          </ul>
+          <p class="layer-link"><a href="/docs">For developers →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="anonymization">
+      <h2>Why Anonymization Matters</h2>
+      <p class="intro">
+        Decentralization isn't enough. Federation moved data off platforms but left metadata, correlation, and
+        coercion intact. The Journal Stack designs anonymity into every layer.
+      </p>
+      <div class="decentralization-grid">
+        <div class="panel panel--warning">
+          <h3>What decentralization alone gives you</h3>
+          <ul>
+            <li>Your data on "your" server—but admins see everything</li>
+            <li>Metadata exposed to observers and traffic analysts</li>
+            <li>IP correlation reveals who talks to whom and when</li>
+            <li>Encrypted blobs can still be seized and archived</li>
+            <li>Quantum futures threaten retroactive decryption</li>
+          </ul>
+        </div>
+        <div class="panel panel--success">
+          <h3>What anonymization adds</h3>
+          <ul>
+            <li>Blind relays limit metadata even to operators</li>
+            <li>Capability tokens replace global identity registries</li>
+            <li>Selective exfiltration throttles mass download</li>
+            <li>Forward secrecy & key rotation blunt quantum attacks</li>
+            <li>Plausible deniability for everyday participants</li>
+          </ul>
+        </div>
+      </div>
+      <blockquote class="callout">
+        "Even though the data is encrypted, you still don't want it shared with everyone on the Internet. You don't
+        want a nation-state to download all your data now and decrypt it later."
+      </blockquote>
+      <p>
+        Dive deep into the threat model and anonymization research in our
+        <a href="/whitepapers">whitepapers</a> and the <a href="/docs/20-explanations/threat-model-overview">threat model guide</a>.
+      </p>
+      <p class="whitepaper-link"><a href="/whitepapers">Read the whitepaper →</a></p>
+    </section>
+
+    <section class="status">
+      <h2>Current Status</h2>
+      <div class="status-table">
+        <div class="status-card">
+          <h3>Journal Vault</h3>
+          <p><strong>Status:</strong> Draft specification</p>
+          <p><a href="/specs">Review specs</a></p>
+        </div>
+        <div class="status-card">
+          <h3>Cypherlot</h3>
+          <p><strong>Status:</strong> RFC 0001 in community review</p>
+          <p><a href="/specs/rfc-0001-core">Read RFC</a></p>
+        </div>
+        <div class="status-card">
+          <h3>Reference Apps & SDKs</h3>
+          <p><strong>Status:</strong> Proof-of-concept implementations</p>
+          <p><a href="https://github.com/journalfoundation" rel="noopener" target="_blank">View on GitHub</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="roles">
+      <h2>Get Started</h2>
+      <p class="roles-lead">Choose the path that matches your role in the ecosystem.</p>
+      <div class="roles-grid">
+        <article class="role-card">
+          <h3>🛠️ Developers</h3>
+          <p>Build on open protocols without inventing your own cryptography.</p>
+          <ul>
+            <li>Read the specifications</li>
+            <li>Bootstrap with our quickstart guides</li>
+            <li>Join technical discussions and RFC reviews</li>
+          </ul>
+          <p class="card-link"><a href="/docs">Start building →</a></p>
+        </article>
+        <article class="role-card">
+          <h3>💰 Funders & Advisors</h3>
+          <p>Accelerate privacy infrastructure with transparent governance.</p>
+          <ul>
+            <li>Explore financial reports and roadmap</li>
+            <li>Support audits, research, and community education</li>
+            <li>Connect for partnerships and grants</li>
+          </ul>
+          <p class="card-link"><a href="/governance#funding">Support the mission →</a></p>
+        </article>
+        <article class="role-card">
+          <h3>📚 Privacy Learners</h3>
+          <p>Understand metadata, surveillance, and self-custody at your own pace.</p>
+          <ul>
+            <li>Study foundational concepts and guides</li>
+            <li>Share resources with communities and classrooms</li>
+            <li>Stay updated via blog and podcast</li>
+          </ul>
+          <p class="card-link"><a href="/learn">Visit the learning center →</a></p>
+        </article>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .stack-page {
+    padding: 0 var(--space-md) var(--space-3xl);
+  }
+
+  .hero {
+    max-width: 80ch;
+    margin: var(--space-3xl) auto var(--space-2xl);
+    text-align: left;
+  }
+
+  .hero-lead {
+    font-size: 1.3rem;
+    color: var(--color-text-primary);
+    margin-top: var(--space-md);
+  }
+
+  .hero-context {
+    margin-top: var(--space-md);
+    color: var(--text-muted);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+
+  section {
+    margin: var(--space-3xl) auto;
+    max-width: 960px;
+  }
+
+  .problem {
+    background: var(--void-lighter);
+    border-left: 4px solid var(--electric-blue);
+    padding: var(--space-xl);
+    border-radius: 8px;
+  }
+
+  .layers .diagram {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .layer-card {
+    background: var(--void-lighter);
+    padding: var(--space-xl);
+    border-radius: 12px;
+    border: 1px solid var(--color-border-subtle);
+    position: relative;
+  }
+
+  .diagram-connector {
+    display: none;
+  }
+
+  .feature-list {
+    margin-top: var(--space-md);
+  }
+
+  .feature-list li {
+    margin-bottom: var(--space-sm);
+  }
+
+  .layer-link {
+    margin-top: var(--space-md);
+    font-weight: 600;
+  }
+
+  .layer-remark {
+    margin-top: var(--space-md);
+  }
+
+  .anonymization .intro {
+    color: var(--text-muted);
+  }
+
+  .decentralization-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+  }
+
+  .panel {
+    padding: var(--space-lg);
+    border-radius: 10px;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--void-lighter);
+  }
+
+  .panel--warning {
+    border-color: rgba(245, 158, 11, 0.35);
+  }
+
+  .panel--success {
+    border-color: rgba(16, 185, 129, 0.35);
+  }
+
+  .panel h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .panel ul li {
+    margin-bottom: var(--space-xs);
+  }
+
+  .callout {
+    border-left: 4px solid var(--urgent-amber);
+    background: var(--void-lighter);
+    padding: var(--space-lg);
+    font-style: italic;
+    margin: var(--space-xl) 0;
+  }
+
+  .whitepaper-link {
+    margin-top: var(--space-md);
+    font-weight: 600;
+  }
+
+  .status-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .status-card {
+    background: var(--void-lighter);
+    padding: var(--space-lg);
+    border-radius: 10px;
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .roles {
+    text-align: center;
+  }
+
+  .roles-lead {
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .role-card {
+    background: var(--void-lighter);
+    border-radius: 12px;
+    border: 1px solid var(--color-border-subtle);
+    padding: var(--space-xl);
+    text-align: left;
+  }
+
+  .role-card ul {
+    margin: var(--space-md) 0 var(--space-lg);
+  }
+
+  .card-link {
+    font-weight: 600;
+  }
+
+  @media (min-width: 1024px) {
+    .layers .diagram {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+      position: relative;
+    }
+
+    .diagram-connector {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
+      z-index: -1;
+    }
+
+    .layers section {
+      overflow: visible;
+    }
+  }
+</style>

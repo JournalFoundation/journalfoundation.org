@@ -22,7 +22,15 @@ const currentPath = Astro.url.pathname;
     <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
       <ul class="primary-nav__list">
         <li><a href="/about" class:list={[{ active: currentPath === '/about' }]}>About</a></li>
-        <li><a href="/cypherlots" class:list={[{ active: currentPath === '/cypherlots' }]}>Cypherlots</a></li>
+        <li><a href="/stack" class:list={[{ active: currentPath === '/stack' }]}>Stack</a></li>
+        <li>
+          <a
+            href="/learn"
+            class:list={[{ active: currentPath === '/learn' || currentPath.startsWith('/learn/') }]}
+          >
+            Learn
+          </a>
+        </li>
         <li><a href="/specs" class:list={[{ active: currentPath.startsWith('/specs') }]}>Specs</a></li>
         <li><a href="/docs" class:list={[{ active: currentPath.startsWith('/docs') }]}>Docs</a></li>
         <li><a href="/blog" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a></li>
