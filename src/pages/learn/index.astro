@@ -1,0 +1,238 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy Learning Center — Journal Foundation"
+  description="Explore privacy literacy resources on metadata, encryption, decentralization, and anonymization for every skill level."
+>
+  <main class="learn-page">
+    <section class="hero">
+      <div class="container">
+        <h1>Privacy Learning Center</h1>
+        <p class="lead">Understand digital privacy, security, and sovereignty—whether or not you ever use our protocols.</p>
+        <p>
+          Journal Foundation publishes education for everyone: students, organizers, policymakers, technologists,
+          and people just beginning to question how their data is used. Start with the essentials, then dive into
+          advanced topics when you are ready.
+        </p>
+      </div>
+    </section>
+
+    <section class="why-privacy">
+      <div class="container">
+        <h2>Why Privacy Matters</h2>
+        <div class="content-grid">
+          <article class="card">
+            <h3>Surveillance Capitalism</h3>
+            <p>
+              Advertising networks harvest every click, location ping, and purchase. They build behavioral profiles that
+              predict what we do next—and sell that influence to the highest bidder.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Metadata Exposure</h3>
+            <p>
+              Even when messages are encrypted, metadata reveals who you talk to, when, and how often. Patterns expose
+              relationships, routines, and vulnerabilities.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Algorithmic Manipulation</h3>
+            <p>
+              Recommendation systems decide what we see. Without control, a handful of companies can steer information,
+              culture, and politics at population scale.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="concepts">
+      <div class="container">
+        <h2>Essential Concepts</h2>
+        <div class="concept-list">
+          <article class="concept">
+            <h3>What Is Metadata?</h3>
+            <p>
+              Metadata is data about data—who sent a message, when it was sent, how large it was, where it originated.
+              Think of the outside of an envelope: even without reading the letter, you know the sender, recipient,
+              and timing.
+            </p>
+            <p>
+              Attackers combine these clues to map social graphs or identify whistleblowers. Protecting privacy
+              requires minimizing both content and metadata exposure.
+            </p>
+          </article>
+
+          <article class="concept">
+            <h3>What Is End-to-End Encryption?</h3>
+            <p>
+              End-to-end encryption means only the sender and recipient can read the contents of a message. Services like
+              Signal and WhatsApp use it to prevent eavesdropping by network operators or governments.
+            </p>
+            <p>
+              But encryption doesn't hide metadata. If you text someone every day at 10pm, that pattern is still visible.
+              True privacy pairs encryption with anonymization.
+            </p>
+          </article>
+
+          <article class="concept">
+            <h3>What Is Decentralization?</h3>
+            <p>
+              Decentralization distributes control across many operators. Projects like Mastodon and the Fediverse let
+              communities run their own servers rather than relying on one company.
+            </p>
+            <p>
+              It's a powerful step, but not the final answer. Without metadata protection, decentralized systems can still
+              leak who is talking to whom—and that can be enough to cause harm.
+            </p>
+          </article>
+
+          <article class="concept">
+            <h3>What Is Anonymization?</h3>
+            <p>
+              Anonymization hides the link between people and their data flows. Techniques include traffic mixing,
+              blind relays, and capability-based access so observers can't map relationships or download everything at once.
+            </p>
+            <p>
+              Journal Foundation focuses on anonymization because decentralization alone leaves users exposed to
+              surveillance capitalism and nation-state adversaries.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guides">
+      <div class="container">
+        <h2>Practical Guides</h2>
+        <ul>
+          <li>How to evaluate a "privacy-focused" app</li>
+          <li>How to read a privacy policy</li>
+          <li>How to enable Global Privacy Control</li>
+          <li>How to use Signal safely</li>
+          <li>How to understand app permissions</li>
+          <li>How to protect yourself from surveillance</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="advanced">
+      <div class="container">
+        <h2>Advanced Topics</h2>
+        <div class="content-grid">
+          <article class="card">
+            <h3>Understanding Threat Models</h3>
+            <p>Start with the question: "Who am I protecting against?" Then map capabilities and safeguards.</p>
+          </article>
+          <article class="card">
+            <h3>The China Problem</h3>
+            <p>
+              Quantum decryption plus bulk data seizure means encrypted archives today can become readable tomorrow. Minimize
+              what leaves your vault.
+            </p>
+          </article>
+          <article class="card">
+            <h3>"I Have Nothing to Hide" Is Wrong</h3>
+            <p>
+              Privacy isn't about secrets. It's about dignity, autonomy, and the freedom to experiment without constant
+              observation.
+            </p>
+          </article>
+          <article class="card">
+            <h3>How Influence Works at Scale</h3>
+            <p>
+              Data brokers and recommendation engines weaponize attention. Learn how targeted narratives move markets and
+              elections.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources">
+      <div class="container">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="/whitepapers">Journal Foundation whitepapers</a></li>
+          <li><a href="/stack">Learn about the protocol stack</a></li>
+          <li><a href="https://www.eff.org" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation</a></li>
+          <li><a href="https://www.torproject.org" target="_blank" rel="noopener noreferrer">Tor Project</a></li>
+          <li><a href="https://www.privacyguides.org" target="_blank" rel="noopener noreferrer">Privacy Guides</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .learn-page {
+      padding-bottom: var(--space-3xl);
+    }
+
+    .hero {
+      padding: var(--space-3xl) 0;
+    }
+
+    .lead {
+      font-size: var(--step-1);
+      color: var(--color-text-primary);
+      margin-top: var(--space-md);
+    }
+
+    section {
+      padding: var(--space-3xl) 0;
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .content-grid {
+      display: grid;
+      gap: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: var(--void-lighter);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .concept-list {
+      display: grid;
+      gap: var(--space-2xl);
+    }
+
+    .concept {
+      background: var(--void-lighter);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      border: 1px solid rgba(45, 125, 255, 0.15);
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .guides ul,
+    .resources ul {
+      list-style: disc;
+      padding-left: var(--space-xl);
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    .guides li + li,
+    .resources li + li {
+      margin-top: var(--space-xs);
+    }
+
+    @media (max-width: 720px) {
+      .card,
+      .concept {
+        padding: var(--space-lg);
+      }
+    }
+  </style>
+</BaseLayout>

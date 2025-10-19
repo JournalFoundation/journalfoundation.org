@@ -1,0 +1,483 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="The Journal Protocol Stack — Journal Foundation"
+  description="Learn how the Journal Protocol Stack delivers privacy-first infrastructure across vaults, network sharing, and apps."
+>
+  <main class="stack-page">
+    <section class="hero">
+      <div class="container">
+        <h1>The Journal Protocol Stack</h1>
+        <p class="lead">Open protocols for privacy-first applications.</p>
+        <p class="intro">
+          Surveillance platforms failed to protect us. Journal Foundation stewards infrastructure that
+          keeps data in personal custody, minimizes metadata, and lets anyone build apps without surrendering
+          control to an intermediary.
+        </p>
+        <p class="problem">
+          Existing "decentralized" solutions stop at removing a central company. They rarely solve
+          <strong>custody</strong>, <strong>metadata exposure</strong>, or <strong>AI readiness</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section class="layers">
+      <div class="container">
+        <div class="section-header">
+          <h2>Three Layers</h2>
+          <p class="subtitle">Infrastructure primitives that work together—but can evolve independently.</p>
+        </div>
+
+        <div class="layer-grid">
+          <article class="layer-card card">
+            <h3>📦 Layer 1: Journal Vault</h3>
+            <p class="definition"><strong>What:</strong> Encrypted, graph-aware personal data storage</p>
+            <p class="purpose"><strong>Purpose:</strong> Where your data lives</p>
+            <ul class="feature-list">
+              <li>Encrypted at rest with AES-256-GCM</li>
+              <li>Segmented access control across graph nodes</li>
+              <li>Optimized for AI/RAG workloads and large media</li>
+              <li>Self-hostable on commodity hardware</li>
+            </ul>
+            <p class="link"><a href="/specs">Technical details →</a></p>
+          </article>
+
+          <article class="layer-card card">
+            <h3>🔒 Layer 2: Cypherlot</h3>
+            <p class="definition"><strong>What:</strong> Network access layer with capability-based sharing</p>
+            <p class="purpose"><strong>Purpose:</strong> How data is shared safely</p>
+            <ul class="feature-list">
+              <li>Scoped, expiring, revocable capability tokens</li>
+              <li>Blind relays using Oblivious HTTP for metadata protection</li>
+              <li>NAT traversal—no static IP required</li>
+              <li>Selective exfiltration to prevent bulk data seizure</li>
+            </ul>
+            <p class="link"><a href="/specs/rfc-0001-core">Technical details →</a></p>
+          </article>
+
+          <article class="layer-card card">
+            <h3>📱 Layer 3: Apps (Client Layer)</h3>
+            <p class="definition"><strong>What:</strong> User-facing applications</p>
+            <p class="purpose"><strong>Purpose:</strong> How humans interact with their data</p>
+            <p class="note">Apps are swappable—your data stays in <strong>your</strong> vault.</p>
+            <h4>Example apps developers could build:</h4>
+            <ul class="feature-list">
+              <li>Private messaging</li>
+              <li>Photo sharing without platform custody</li>
+              <li>Social networking with capability-scoped posts</li>
+              <li>Voice memos that stay in your vault</li>
+              <li>AI chat grounded in personal history</li>
+            </ul>
+            <p class="link"><a href="/docs">For developers →</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="diagram">
+      <div class="container">
+        <div class="diagram-card">
+          <h2>Visualizing the Stack</h2>
+          <p>
+            Picture three layers of stewardship: Vaults hold data, Cypherlots govern how encrypted packets leave,
+            and apps request temporary capabilities. Each layer is independently auditable and open specification.
+          </p>
+          <div class="diagram-grid">
+            <div class="diagram-step">
+              <span class="step-label">1</span>
+              <h3>Vault</h3>
+              <p>Encrypted knowledge graph with segmented indexes and large-object storage.</p>
+            </div>
+            <div class="diagram-step">
+              <span class="step-label">2</span>
+              <h3>Cypherlot</h3>
+              <p>Capability broker issuing scoped tokens and routing traffic through blind relays.</p>
+            </div>
+            <div class="diagram-step">
+              <span class="step-label">3</span>
+              <h3>Apps</h3>
+              <p>Interfaces—mobile, desktop, or agents—that request capabilities and render experiences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="anonymization">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Anonymization Matters</h2>
+          <p class="subtitle">Decentralization isn't enough.</p>
+        </div>
+
+        <div class="callout">
+          <h3>The Critical Insight</h3>
+          <p><strong>You can't just decentralize—you have to anonymize.</strong></p>
+          <p>Mastodon and other federated systems solved centralization but created new surveillance vectors.</p>
+        </div>
+
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>❌ What Decentralization Alone Gives You</h4>
+            <ul>
+              <li>Your data on your server (good!)</li>
+              <li>Metadata still exposed to network observers</li>
+              <li>Traffic patterns reveal who you talk to</li>
+              <li>IP addresses correlate to real identity</li>
+              <li>Encrypted data can be seized and stored</li>
+              <li>Quantum computers will eventually decrypt it</li>
+            </ul>
+          </div>
+          <div class="comparison-card success">
+            <h4>✓ What Anonymization Adds</h4>
+            <ul>
+              <li><strong>Metadata minimization:</strong> Blind relays can't see who's talking</li>
+              <li><strong>Traffic obfuscation:</strong> OHTTP hides patterns</li>
+              <li><strong>Capability tokens:</strong> No central identity registry</li>
+              <li><strong>Selective exfiltration:</strong> Prevents bulk data seizure</li>
+              <li><strong>Forward secrecy:</strong> Keys rotate; old data becomes unrecoverable</li>
+            </ul>
+          </div>
+        </div>
+
+        <blockquote class="china-problem">
+          "Even though the data is encrypted, you still don't want it shared with everyone on the Internet. You don't want China
+          to download all your data and then build a post-quantum computer and decrypt everything you've ever said."
+        </blockquote>
+
+        <ul class="solutions">
+          <li><strong>Selective exfiltration:</strong> Vaults only share encrypted data with authorized capability holders.</li>
+          <li><strong>Rate limiting:</strong> Stops bulk download attacks.</li>
+          <li><strong>Blind relays:</strong> Aggregators can't correlate who sent what.</li>
+          <li><strong>Forward secrecy:</strong> Key rotation limits future decryption.</li>
+        </ul>
+
+        <p class="link"><a href="/whitepapers/why-decentralization-failed">Read the whitepaper →</a></p>
+      </div>
+    </section>
+
+    <section class="status">
+      <div class="container">
+        <div class="section-header">
+          <h2>Current Status</h2>
+          <p class="subtitle">Track where each layer sits in the development cycle.</p>
+        </div>
+
+        <div class="status-table" role="table" aria-label="Stack status">
+          <div class="status-row status-head" role="row">
+            <span role="columnheader">Layer</span>
+            <span role="columnheader">Description</span>
+            <span role="columnheader">Status</span>
+          </div>
+          <div class="status-row" role="row">
+            <span role="cell">Journal Vault</span>
+            <span role="cell">Specification drafting, reference storage engine in progress</span>
+            <span role="cell" class="status-pill status-draft">Draft</span>
+          </div>
+          <div class="status-row" role="row">
+            <span role="cell">Cypherlot</span>
+            <span role="cell">Core RFC published, networking reference implementation prototyping</span>
+            <span role="cell" class="status-pill status-alpha">Alpha</span>
+          </div>
+          <div class="status-row" role="row">
+            <span role="cell">Apps & SDKs</span>
+            <span role="cell">CLI tooling available; community client projects forming</span>
+            <span role="cell" class="status-pill status-beta">Early access</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="get-started">
+      <div class="container">
+        <div class="section-header">
+          <h2>Get Started</h2>
+          <p class="subtitle">Choose the path that fits your role.</p>
+        </div>
+
+        <div class="role-grid">
+          <article class="role-card card">
+            <h3>🛠️ Developers</h3>
+            <p>Prototype apps on open protocols with end-to-end custody.</p>
+            <ul>
+              <li>Review specifications and RFCs</li>
+              <li>Use reference SDKs</li>
+              <li>Participate in technical forums</li>
+            </ul>
+            <p class="link"><a href="/docs">Start building →</a></p>
+          </article>
+          <article class="role-card card">
+            <h3>💰 Funders & Advisors</h3>
+            <p>Support protocol development with radical transparency.</p>
+            <ul>
+              <li>View open financial dashboards</li>
+              <li>Join governance discussions</li>
+              <li>Fund targeted research</li>
+            </ul>
+            <p class="link"><a href="/governance#funding">Support the mission →</a></p>
+          </article>
+          <article class="role-card card">
+            <h3>📚 Privacy Learners</h3>
+            <p>Build literacy in surveillance, metadata, and digital sovereignty.</p>
+            <ul>
+              <li>Understand core concepts</li>
+              <li>Explore practical guides</li>
+              <li>Share knowledge with your community</li>
+            </ul>
+            <p class="link"><a href="/learn">Visit the learning center →</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .stack-page {
+      padding-bottom: var(--space-3xl);
+    }
+
+    .hero {
+      padding: var(--space-3xl) 0;
+    }
+
+    .lead {
+      font-size: var(--step-1);
+      color: var(--color-text-primary);
+      margin-top: var(--space-md);
+    }
+
+    .intro,
+    .problem {
+      max-width: 72ch;
+      margin-top: var(--space-md);
+      color: var(--color-text-secondary);
+      font-size: 1.05rem;
+    }
+
+    .problem strong {
+      color: var(--color-text-primary);
+    }
+
+    .layers,
+    .diagram,
+    .anonymization,
+    .status,
+    .get-started {
+      padding: var(--space-3xl) 0;
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .section-header .subtitle {
+      color: var(--color-text-secondary);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .layer-grid,
+    .role-grid {
+      display: grid;
+      gap: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .layer-card h3,
+    .role-card h3 {
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .definition,
+    .purpose,
+    .note {
+      color: var(--color-text-secondary);
+    }
+
+    .note {
+      margin-top: var(--space-sm);
+      font-style: italic;
+    }
+
+    .feature-list {
+      margin: var(--space-md) 0;
+      padding-left: var(--space-lg);
+      color: var(--color-text-secondary);
+    }
+
+    .layer-card .feature-list li + li,
+    .role-card ul li + li,
+    .solutions li + li {
+      margin-top: var(--space-xs);
+    }
+
+    .layer-card .link,
+    .role-card .link,
+    .link {
+      margin-top: var(--space-md);
+    }
+
+    .diagram-card {
+      background: linear-gradient(135deg, rgba(45, 125, 255, 0.08), rgba(13, 210, 128, 0.08));
+      border: 1px solid rgba(45, 125, 255, 0.35);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+    }
+
+    .diagram-grid {
+      display: grid;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .diagram-step {
+      background: var(--void-lighter);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      position: relative;
+    }
+
+    .step-label {
+      position: absolute;
+      top: -16px;
+      left: 16px;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      background: var(--color-accent-azure);
+      color: var(--color-text-inverted);
+      border-radius: 50%;
+      font-weight: 700;
+    }
+
+    .anonymization .callout {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(37, 99, 235, 0.1));
+      border-left: 4px solid var(--urgent-amber);
+      padding: var(--space-xl);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .comparison-grid {
+      display: grid;
+      gap: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .comparison-card {
+      background: var(--void-lighter);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .comparison-card.success {
+      border-color: rgba(13, 210, 128, 0.45);
+    }
+
+    .comparison-card ul {
+      margin-top: var(--space-md);
+      padding-left: var(--space-lg);
+    }
+
+    .china-problem {
+      margin: var(--space-2xl) auto var(--space-xl);
+      max-width: 720px;
+      background: var(--void-lighter);
+      border-left: 4px solid var(--urgent-amber);
+      padding: var(--space-lg);
+      font-style: italic;
+    }
+
+    .solutions {
+      list-style: disc;
+      padding-left: var(--space-xl);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-xl);
+    }
+
+    .status-table {
+      display: grid;
+      gap: var(--space-xs);
+      background: var(--void-lighter);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+    }
+
+    .status-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr auto;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+    }
+
+    .status-head {
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+    }
+
+    .status-row:not(.status-head) {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .status-draft {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--urgent-amber);
+    }
+
+    .status-alpha {
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--color-accent-azure);
+    }
+
+    .status-beta {
+      background: rgba(13, 210, 128, 0.15);
+      color: var(--color-accent-emerald);
+    }
+
+    .role-card ul {
+      list-style: disc;
+      padding-left: var(--space-lg);
+      color: var(--color-text-secondary);
+      margin-top: var(--space-md);
+    }
+
+    @media (max-width: 720px) {
+      .status-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
+        align-items: flex-start;
+      }
+
+      .status-head {
+        display: none;
+      }
+
+      .diagram-card {
+        padding: var(--space-xl);
+      }
+    }
+  </style>
+</BaseLayout>

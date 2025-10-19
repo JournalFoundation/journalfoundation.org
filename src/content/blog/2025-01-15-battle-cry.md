@@ -37,3 +37,13 @@ When individuals have privacy, when they have data security, when they control t
 We can know ourselves. Not some simulacrum Facebook thinks we are. Not who Facebook presents to us people are. But who we actually are, on our own terms.
 
 **That is my battle cry.**
+## What Journal Foundation Does
+
+We're not building apps. We're building the **infrastructure** that lets developers build apps without platforms.
+
+Three layers:
+1. **Vault** - encrypted storage
+2. **Cypherlot** - capability-based sharing
+3. **Apps** - built by independent developers
+
+[Learn about the protocol stack →](/stack)

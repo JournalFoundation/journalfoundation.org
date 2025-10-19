@@ -1,12 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Admonition from "../components/Admonition.astro";
 import { Fragment } from "astro/jsx-runtime";
 
 const meta = {
   title: "About — Journal Foundation",
   description:
-    "Self-host practical things—chat, private files, photos, and AI—then learn the open protocols (Cipherlot & Journal Vault) that make it possible.",
+    "Journal Foundation stewards the Journal Protocol Stack so developers, advocates, and funders can advance privacy-first infrastructure.",
   url: "https://journalfoundation.org/about",
   image: "/images/journal_network_background.png",
 };
@@ -25,79 +24,49 @@ const meta = {
 
   <main class="about">
     <section class="hero">
-      <h1>Custody first. AI without surrender.</h1>
+      <h1>About Journal Foundation</h1>
       <p class="subhead">
-        Use powerful digital tools—including AI—<strong>without</strong> handing your life to a platform.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="/docs/10-how-to/run-a-vault-locally">Self-host your chat</a>
-        <a class="btn" href="/docs/10-how-to/run-a-vault-locally">Share privately</a>
-        <a class="link" href="/cypherlots">Learn the protocols</a>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>What you can do today (in minutes)</h2>
-      <p>
-        Four simple ways to get value—without becoming “a node operator.”
-      </p>
-      <div class="cards">
-        <article class="card">
-          <h3>Self-host your chat (history you actually own)</h3>
-          <p>Keep conversations, system messages, and context on your own device. Add new clients any time.</p>
-          <a class="btn small" href="/docs/10-how-to/run-a-vault-locally">➡️ Self-host your chat</a>
-          <a class="link small" href="/docs/10-how-to/connect-a-client">Connect a client →</a>
-        </article>
-        <article class="card">
-          <h3>Share a private recipe (or an hour-long how-to video)</h3>
-          <p>Send the chili recipe—or a 60-minute walkthrough—to one cousin, not the whole internet. Revocable, auditable access.</p>
-          <a class="btn small" href="/docs/10-how-to/run-a-vault-locally">➡️ Share a private recipe</a>
-        </article>
-        <article class="card">
-          <h3>Share beach photos with Grandma—only Grandma</h3>
-          <p>No feeds, no trackers, no ads. Just your photos, encrypted, delivered to the one person you choose.</p>
-          <a class="btn small" href="/docs/10-how-to/run-a-vault-locally">➡️ Share photos privately</a>
-        </article>
-        <article class="card">
-          <h3>Private AI with your own data and persona</h3>
-          <p>Use AI on <em>your</em> terms: chat history + persona prompts live in your Vault; tools get capability-scoped, time-bound access.</p>
-          <a class="btn small" href="/docs/20-explanations/threat-model-overview">➡️ Run private AI with your data</a>
-        </article>
-      </div>
-      <p class="note">
-        <em>(All of the above are encrypted at rest and in transit. Access is <strong>capability-based</strong> and <strong>revocable</strong>.)</em>
+        We steward open protocols for privacy-first applications—so developers can build alternatives to surveillance capitalism.
       </p>
     </section>
 
     <section class="section">
-      <h2>Under the hood (protocols, not platforms)</h2>
+      <h2>What We Do</h2>
       <p>
-        Platforms come and go. Protocols persist. Journal Foundation publishes open specifications and reference tools so anyone can
-        <strong> own their data</strong>, <strong>grant precise access</strong>, and enjoy rich AI experiences—without lock-in.
+        Journal Foundation develops and maintains the Journal Protocol Stack—three layers that enable apps without platforms.
       </p>
-      <h3>Cipherlot — your personal, encrypted data node</h3>
+      <ul>
+        <li><strong>Journal Vault:</strong> Encrypted, graph-aware storage</li>
+        <li><strong>Cypherlot:</strong> Capability-based sharing protocol</li>
+        <li><strong>Reference implementations:</strong> Open-source SDKs and examples</li>
+      </ul>
       <p>
-        Think “safe-deposit box you control” with precise, revocable capabilities for people, apps, and AI agents. Designed for
-        <strong> easy self-hosting</strong> (no static IP required).
+        <a href="/stack">Learn about the protocol stack →</a>
       </p>
-      <h3>Journal Vault — encryption-first, graph-aware store</h3>
-      <p>
-        Holds large files <strong>and</strong> graph-structured knowledge for modern retrieval/AI. Built with <strong>segments</strong> so different agents can access only what they’re allowed—no more.
-      </p>
-      <p><a class="link" href="/cypherlots">➡️ Learn the protocols (Cipherlot &amp; Journal Vault)</a></p>
     </section>
 
     <section class="section">
-      <h2>Threat model &amp; tradeoffs</h2>
-      <Admonition kind="warning" title="Honest by design">
-        <p><strong>Default defense:</strong> advertisers, data brokers, corporate profiling, and political targeting.</p>
-        <p><strong>We optimize for:</strong> real-world usability and low-friction self-hosting.</p>
-        <p><strong>We do not claim by default:</strong> resistance to a <em>global passive adversary</em> (e.g., nation-state monitoring). Advanced hardening paths are compatible with the spec and will be documented.</p>
-        <p>
-          <em>Honest security beats perfect security nobody deploys.</em>
-          <a href="/docs/20-explanations/threat-model-overview">➡️ Read the threat model</a>
-        </p>
-      </Admonition>
+      <h2>Who We Serve</h2>
+
+      <h3>Developers</h3>
+      <p>
+        We provide specifications and reference implementations so you can build privacy-first apps without reinventing cryptographic primitives or network protocols.
+      </p>
+
+      <h3>Privacy Advocates &amp; Learners</h3>
+      <p>
+        We publish educational resources about surveillance, metadata, and digital sovereignty—whether or not you use our protocols.
+      </p>
+
+      <h3>Researchers</h3>
+      <p>
+        We contribute to the academic understanding of metadata minimization, capability-based security, and anonymization techniques.
+      </p>
+
+      <h3>Funders</h3>
+      <p>
+        We practice radical transparency in governance and finance so you can support protocol development with confidence.
+      </p>
     </section>
 
     <section class="section">
@@ -122,7 +91,7 @@ const meta = {
     <section class="section">
       <h2>Founder’s note</h2>
       <p>
-        I’m <strong>John Benac</strong>. I want modern intelligence—and I refuse the bargain where my data becomes the product. When I couldn’t find a protocol stack that kept data close, safe, and truly useful for AI, I followed a familiar open-source pattern. Inspired by <strong>Linux</strong>, <strong>Git</strong>, and <strong>Wikipedia</strong>, Journal Foundation is building <strong>Cipherlot</strong> and <strong>Journal Vault</strong> as simple, durable primitives—so the ecosystem that grows on top can be open, private, and human-serving.
+        I’m <strong>John Benac</strong>. I want modern intelligence—and I refuse the bargain where my data becomes the product. When I couldn’t find a protocol stack that kept data close, safe, and truly useful for AI, I followed a familiar open-source pattern. Inspired by <strong>Linux</strong>, <strong>Git</strong>, and <strong>Wikipedia</strong>, Journal Foundation is building <strong>Cypherlot</strong> and <strong>Journal Vault</strong> as simple, durable primitives—so the ecosystem that grows on top can be open, private, and human-serving.
       </p>
     </section>
 
@@ -137,24 +106,31 @@ const meta = {
     <section class="section">
       <h2>FAQ</h2>
       <details>
-        <summary>Do I need a static IP or to “support a network”?</summary>
-        <p>No. Cipherlot favors low-friction self-hosting. You’re not “running infrastructure for others”—you’re running <em>yours</em>.</p>
+        <summary>What's the difference between Journal Foundation and the apps?</summary>
+        <p>
+          Journal Foundation develops <strong>protocols</strong>. Apps are built by independent developers using those protocols. We publish reference implementations, but anyone can build apps on the stack.
+        </p>
       </details>
+
       <details>
-        <summary>Where does AI run?</summary>
-        <p>Use the provider you trust (local or cloud). Your Vault controls exactly what they can see and for how long.</p>
+        <summary>Is this like Mozilla and Firefox?</summary>
+        <p>
+          Similar model. Mozilla Foundation stewards web standards; Firefox is one browser implementation. Journal Foundation stewards the protocol stack; individual apps are implementations.
+        </p>
       </details>
+
       <details>
-        <summary>What about metadata?</summary>
-        <p>We minimize what’s needed to function. For stronger protections against global adversaries, follow our hardening guide.</p>
+        <summary>Who funds this?</summary>
+        <p>
+          Currently bootstrapped by the founder. We're seeking funding from privacy-focused donors and grants. See our <a href="/governance#funding">transparency dashboard</a>.
+        </p>
       </details>
+
       <details>
-        <summary>How is this different from federation or blockchain?</summary>
-        <p>Different missions. We avoid tokenomics and global sharding to keep custody complete and dependencies minimal.</p>
-      </details>
-      <details>
-        <summary>Can I share big files?</summary>
-        <p>Yes—Vaults support large media and graph-structured knowledge with capability-scoped, revocable access.</p>
+        <summary>Can I use these protocols commercially?</summary>
+        <p>
+          Yes. The specifications are open, and the reference code is Apache 2.0 licensed. Build commercial apps, charge money, no restrictions.
+        </p>
       </details>
     </section>
   </main>
@@ -175,77 +151,14 @@ const meta = {
       margin-top: 0.75rem;
     }
 
-    .cta {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin: var(--space-lg) 0 var(--space-xl);
-    }
-
-    .btn {
-      padding: 0.7rem 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-
-    .btn.small {
-      padding: 0.55rem 0.85rem;
-      font-size: 0.95rem;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .link {
-      text-decoration: underline;
-    }
-
-    .link.small {
-      font-size: 0.95rem;
-      margin-top: 0.25rem;
-      display: inline-block;
-    }
-
     .section {
       max-width: 74ch;
       margin: 0 auto var(--space-2xl);
     }
 
-    .cards {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      margin: var(--space-lg) 0;
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: var(--space-lg);
-      background: var(--card-bg, #fff);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .note {
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
+    ul {
+      margin: var(--space-md) 0;
+      padding-left: var(--space-lg);
     }
 
     details {
@@ -257,10 +170,13 @@ const meta = {
       border-top: 0;
     }
 
-    @media (prefers-color-scheme: dark) {
-      .card {
-        background: rgba(255, 255, 255, 0.04);
-      }
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    details[open] summary {
+      color: var(--color-accent-emerald);
     }
   </style>
 </BaseLayout>
