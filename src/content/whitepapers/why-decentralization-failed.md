@@ -121,6 +121,18 @@ The next generation of privacy infrastructure must:
 
 Cypherlots provides all four.
 
+## The Journal Stack Solution
+
+Journal Foundation addresses these failures through a three-layer protocol stack:
+
+**Layer 1: Vault** - Encrypted, graph-aware storage you control  
+**Layer 2: Cypherlot** - Capability-based sharing with metadata minimization  
+**Layer 3: Apps** - Swappable clients built by independent developers
+
+This isn't just decentralization. It's anonymization.
+
+[Learn how the stack works →](/stack)
+
 ---
 
 *"It's not enough to decentralize. We have to anonymize."*

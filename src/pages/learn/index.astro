@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Learning Center — Journal Foundation"
+  description="Understand digital privacy, metadata, encryption, and how to protect yourself online."
+>
+  <main class="learn-page">
+    <header class="hero">
+      <h1>Privacy Learning Center</h1>
+      <p class="lead">Understand digital privacy, security, and sovereignty—whether or not you ever use our protocols.</p>
+    </header>
+
+    <section class="section">
+      <h2>Why Privacy Matters</h2>
+      <p>Surveillance capitalism thrives on the stories your data tells. Every search, click, purchase, and location ping contributes to a behavioral profile used to target ads, political messaging, and even prices. When metadata leaks, algorithms learn how to influence you.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Surveillance capitalism</h3>
+          <p>Platforms monetize attention by predicting what will keep you scrolling. That requires collecting and correlating as much personal data as possible.</p>
+        </article>
+        <article class="card">
+          <h3>Metadata exposure</h3>
+          <p>Even if content is encrypted, who you talk to, when, and for how long paints a detailed picture of your life.</p>
+        </article>
+        <article class="card">
+          <h3>Algorithmic manipulation</h3>
+          <p>Recommendation systems decide which posts, videos, and headlines you see. Without privacy safeguards, those systems are optimized for persuasion, not wellbeing.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Essential Concepts</h2>
+      <article class="concept">
+        <h3>What is Metadata?</h3>
+        <p>Metadata is data <em>about</em> data—who sent the message, when it was sent, the device used, and the size of the attachment. Imagine a postcard: everyone can read the address, the postmark, and the sender’s handwriting style even if the message were somehow hidden.</p>
+        <p class="tip">Example: Phone records show you called a mental health hotline every Tuesday at 8pm. That is metadata—no transcript needed.</p>
+      </article>
+      <article class="concept">
+        <h3>What is End-to-End Encryption?</h3>
+        <p>End-to-end encryption (E2EE) means only the sender and recipient can read the contents of a message. Apps like Signal and WhatsApp use E2EE to protect content, but they still need metadata to deliver messages.</p>
+        <p class="tip">E2EE protects conversations from eavesdropping, but it does not hide who is talking or when.</p>
+      </article>
+      <article class="concept">
+        <h3>What is Decentralization?</h3>
+        <p>Decentralized systems distribute data across many nodes instead of a single corporate server. Projects like Mastodon and the Fediverse decentralize control, yet administrators still manage your data and can see metadata.</p>
+        <p class="tip">Decentralization increases resilience, but without anonymization the same metadata leaks persist.</p>
+      </article>
+      <article class="concept">
+        <h3>What is Anonymization?</h3>
+        <p>Anonymization obscures the relationship between people and their data. Techniques like mix networks, blind relays, and capability-based access limit the metadata available to observers.</p>
+        <p class="tip">Traffic analysis, bulk data seizure, and cross-correlation are the threats anonymization addresses.</p>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>Practical Guides</h2>
+      <ul class="guide-list">
+        <li>How to evaluate a “privacy-focused” app</li>
+        <li>How to read a privacy policy</li>
+        <li>How to enable Global Privacy Control</li>
+        <li>How to use Signal safely</li>
+        <li>How to understand app permissions</li>
+        <li>How to protect yourself from surveillance</li>
+      </ul>
+      <p class="note">We’re expanding these guides with workshops, printable checklists, and explainer videos. Subscribe to the <a href="/blog">blog</a> and <a href="/podcast">podcast</a> for updates.</p>
+    </section>
+
+    <section class="section">
+      <h2>Advanced Topics</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Understanding threat models</h3>
+          <p>Who is the adversary? What resources do they have? Threat modeling helps you choose appropriate defenses.</p>
+        </article>
+        <article class="card">
+          <h3>The China problem</h3>
+          <p>Nation-state actors can hoover up encrypted traffic today and decrypt it later with post-quantum capabilities.</p>
+        </article>
+        <article class="card">
+          <h3>“Nothing to hide” is a myth</h3>
+          <p>Privacy protects political dissent, medical decisions, and everyday autonomy. Lack of secrecy is not consent.</p>
+        </article>
+        <article class="card">
+          <h3>Influence at scale</h3>
+          <p>Recommendation engines can tilt elections, markets, and social movements. Understanding their incentives is key to resilience.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Resources</h2>
+      <ul class="resource-list">
+        <li><a href="/whitepapers">Journal Foundation whitepapers</a></li>
+        <li><a href="/stack">Learn about the protocol stack</a></li>
+        <li><a href="https://www.eff.org" rel="noopener" target="_blank">Electronic Frontier Foundation</a></li>
+        <li><a href="https://www.torproject.org" rel="noopener" target="_blank">Tor Project</a></li>
+        <li><a href="https://ssd.eff.org" rel="noopener" target="_blank">Security Education Companion</a></li>
+        <li><a href="https://citizenlab.ca" rel="noopener" target="_blank">Citizen Lab</a></li>
+      </ul>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .learn-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-md) var(--space-4xl);
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .lead {
+    font-size: 1.35rem;
+    color: var(--color-text-primary);
+    margin-top: var(--space-sm);
+  }
+
+  .section {
+    margin-top: var(--space-3xl);
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-lg);
+    text-align: left;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .card {
+    background: var(--void-lighter);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    color: var(--color-text-secondary);
+  }
+
+  .concept {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .concept h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .concept .tip {
+    margin-top: var(--space-sm);
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  .guide-list,
+  .resource-list {
+    list-style: disc;
+    padding-left: var(--space-xl);
+    line-height: 1.8;
+  }
+
+  .note {
+    margin-top: var(--space-md);
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .lead {
+      font-size: 1.2rem;
+    }
+
+    .card,
+    .concept {
+      padding: var(--space-md);
+    }
+  }
+</style>
