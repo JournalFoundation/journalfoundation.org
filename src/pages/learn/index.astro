@@ -1,5 +1,286 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const topicGroups = [
+  {
+    title: "Why Privacy Matters",
+    intro:
+      "Explore the social, political, and economic consequences of living without privacy protections.",
+    items: [
+      {
+        question: "How does surveillance capitalism impact me?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Advertising networks harvest every click, location ping, and purchase to build behavioral profiles that predict what we do next.",
+          },
+          {
+            type: "text",
+            content:
+              "Those profiles are sold to the highest bidder, concentrating power among a handful of platforms that can steer information, culture, and politics at scale.",
+          },
+        ],
+      },
+      {
+        question: "Why is metadata exposure dangerous even with encryption?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Metadata reveals who you talk to, when, and how often. These patterns expose relationships, routines, and vulnerabilities—sometimes more than message contents would.",
+          },
+          {
+            type: "text",
+            content:
+              "Protecting privacy requires minimizing both content and metadata exposure so adversaries cannot map your social graph.",
+          },
+        ],
+      },
+      {
+        question: "What does algorithmic manipulation mean for society?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Recommendation systems decide what we see online. Without accountability, they can nudge public opinion or behavior without our knowledge.",
+          },
+          {
+            type: "text",
+            content:
+              "Understanding these dynamics helps communities push for dignified, autonomy-respecting technology.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Essential Concepts",
+    intro:
+      "Start with the core ideas that underpin private communication and resilient digital ecosystems.",
+    items: [
+      {
+        question: "What is metadata?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Metadata is data about data: who sent a message, when it was sent, how large it was, and where it originated.",
+          },
+          {
+            type: "text",
+            content:
+              "Like the outside of an envelope, metadata offers clues that investigators combine to map social graphs or identify whistleblowers.",
+          },
+        ],
+      },
+      {
+        question: "What is end-to-end encryption?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "End-to-end encryption ensures only the sender and recipient can read a message. Services like Signal and WhatsApp use it to prevent eavesdropping by intermediaries.",
+          },
+          {
+            type: "text",
+            content:
+              "However, encryption alone does not hide metadata. True privacy pairs encryption with anonymization to obscure who is communicating.",
+          },
+        ],
+      },
+      {
+        question: "What is decentralization?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Decentralization distributes control across many operators so that communities can run their own infrastructure, as seen in the Fediverse.",
+          },
+          {
+            type: "text",
+            content:
+              "It is a powerful step, yet without metadata protection decentralized systems can still leak who is talking to whom.",
+          },
+        ],
+      },
+      {
+        question: "What is anonymization?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Anonymization hides the link between people and their data flows using techniques like traffic mixing, blind relays, and capability-based access.",
+          },
+          {
+            type: "text",
+            content:
+              "Journal Foundation focuses on anonymization because decentralization alone leaves users exposed to surveillance capitalism and nation-state adversaries.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Practical Guides",
+    intro:
+      "Apply privacy concepts to your daily life with approachable, task-focused walkthroughs.",
+    items: [
+      {
+        question: "How do I evaluate a \"privacy-focused\" app?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Look beyond marketing. Investigate whether the app collects metadata, centralizes trust, or monetizes attention through ads.",
+          },
+        ],
+      },
+      {
+        question: "How do I read a privacy policy?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Scan for data retention periods, third-party sharing, and whether the provider reserves the right to sell or reuse your information.",
+          },
+        ],
+      },
+      {
+        question: "How do I enable Global Privacy Control?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Use browsers and extensions that broadcast the Global Privacy Control signal, and confirm the websites you rely on honor it.",
+          },
+        ],
+      },
+      {
+        question: "How do I use Signal safely?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Enable disappearing messages, registration lock, and keep your device operating system patched to reduce risks from physical access.",
+          },
+        ],
+      },
+      {
+        question: "How do I understand app permissions?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Review which sensors or data stores an app can access, and revoke permissions that are unrelated to its core function.",
+          },
+        ],
+      },
+      {
+        question: "How do I protect myself from surveillance?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Combine encrypted messaging, anonymized browsing, and compartmentalized identities to limit how much anyone can learn about you.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Advanced Topics",
+    intro:
+      "When you are ready, dive into deeper explorations of threat modeling and systemic risks.",
+    items: [
+      {
+        question: "How do I create a threat model?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Start by asking who you are protecting against, what they can access, and the consequences if they succeed.",
+          },
+          {
+            type: "text",
+            content:
+              "Design layered safeguards so that one failure does not expose everything you care about.",
+          },
+        ],
+      },
+      {
+        question: "What is the China Problem?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "States capable of bulk data seizure and future quantum decryption can store encrypted archives today and decode them later.",
+          },
+          {
+            type: "text",
+            content:
+              "Minimize what leaves your vault, and assume anything stored indefinitely could someday be read.",
+          },
+        ],
+      },
+      {
+        question: "Why is \"I have nothing to hide\" wrong?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Privacy is about dignity, autonomy, and the freedom to experiment without constant observation—not about hiding wrongdoing.",
+          },
+          {
+            type: "text",
+            content:
+              "When privacy erodes, marginalized communities lose the ability to organize, heal, and advocate safely.",
+          },
+        ],
+      },
+      {
+        question: "How does influence work at scale?",
+        answer: [
+          {
+            type: "text",
+            content:
+              "Data brokers and recommendation engines weaponize attention to move markets and elections.",
+          },
+          {
+            type: "text",
+            content:
+              "Learning how narratives are targeted helps inoculate communities against manipulation.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Further Resources",
+    intro: "Continue your learning with trusted organizations and Journal Foundation publications.",
+    items: [
+      {
+        question: "Where can I find credible privacy resources?",
+        answer: [
+          {
+            type: "text",
+            content: "Explore these recommended readings and tools:",
+          },
+          {
+            type: "html",
+            content: `<ul>
+              <li><a href="/whitepapers">Journal Foundation whitepapers</a></li>
+              <li><a href="/stack">Learn about the protocol stack</a></li>
+              <li><a href="https://www.eff.org" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation</a></li>
+              <li><a href="https://www.torproject.org" target="_blank" rel="noopener noreferrer">Tor Project</a></li>
+              <li><a href="https://www.privacyguides.org" target="_blank" rel="noopener noreferrer">Privacy Guides</a></li>
+            </ul>`,
+          },
+        ],
+      },
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -19,148 +300,42 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       </div>
     </section>
 
-    <section class="why-privacy">
+    <section class="topics">
       <div class="container">
-        <h2>Why Privacy Matters</h2>
-        <div class="content-grid">
-          <article class="card">
-            <h3>Surveillance Capitalism</h3>
-            <p>
-              Advertising networks harvest every click, location ping, and purchase. They build behavioral profiles that
-              predict what we do next—and sell that influence to the highest bidder.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Metadata Exposure</h3>
-            <p>
-              Even when messages are encrypted, metadata reveals who you talk to, when, and how often. Patterns expose
-              relationships, routines, and vulnerabilities.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Algorithmic Manipulation</h3>
-            <p>
-              Recommendation systems decide what we see. Without control, a handful of companies can steer information,
-              culture, and politics at population scale.
-            </p>
-          </article>
+        <h2>Learn at Your Own Pace</h2>
+        <p class="section-lead">
+          Browse the questions below and expand the areas that match your current goals. Whether you are new to privacy or
+          refining an advanced practice, each topic distills key takeaways into an accessible format.
+        </p>
+
+        <div class="accordion" role="list">
+          {topicGroups.map((group) => (
+            <article class="topic-group" role="listitem">
+              <header class="group-header">
+                <h3>{group.title}</h3>
+                <p>{group.intro}</p>
+              </header>
+              <ul class="collapsible-list">
+                {group.items.map((item) => (
+                  <li>
+                    <details>
+                      <summary>{item.question}</summary>
+                      <div class="answer">
+                        {item.answer.map((block) =>
+                          block.type === "html" ? (
+                            <div class="rich-block" set:html={block.content} />
+                          ) : (
+                            <p>{block.content}</p>
+                          )
+                        )}
+                      </div>
+                    </details>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
-      </div>
-    </section>
-
-    <section class="concepts">
-      <div class="container">
-        <h2>Essential Concepts</h2>
-        <div class="concept-list">
-          <article class="concept">
-            <h3>What Is Metadata?</h3>
-            <p>
-              Metadata is data about data—who sent a message, when it was sent, how large it was, where it originated.
-              Think of the outside of an envelope: even without reading the letter, you know the sender, recipient,
-              and timing.
-            </p>
-            <p>
-              Attackers combine these clues to map social graphs or identify whistleblowers. Protecting privacy
-              requires minimizing both content and metadata exposure.
-            </p>
-          </article>
-
-          <article class="concept">
-            <h3>What Is End-to-End Encryption?</h3>
-            <p>
-              End-to-end encryption means only the sender and recipient can read the contents of a message. Services like
-              Signal and WhatsApp use it to prevent eavesdropping by network operators or governments.
-            </p>
-            <p>
-              But encryption doesn't hide metadata. If you text someone every day at 10pm, that pattern is still visible.
-              True privacy pairs encryption with anonymization.
-            </p>
-          </article>
-
-          <article class="concept">
-            <h3>What Is Decentralization?</h3>
-            <p>
-              Decentralization distributes control across many operators. Projects like Mastodon and the Fediverse let
-              communities run their own servers rather than relying on one company.
-            </p>
-            <p>
-              It's a powerful step, but not the final answer. Without metadata protection, decentralized systems can still
-              leak who is talking to whom—and that can be enough to cause harm.
-            </p>
-          </article>
-
-          <article class="concept">
-            <h3>What Is Anonymization?</h3>
-            <p>
-              Anonymization hides the link between people and their data flows. Techniques include traffic mixing,
-              blind relays, and capability-based access so observers can't map relationships or download everything at once.
-            </p>
-            <p>
-              Journal Foundation focuses on anonymization because decentralization alone leaves users exposed to
-              surveillance capitalism and nation-state adversaries.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="guides">
-      <div class="container">
-        <h2>Practical Guides</h2>
-        <ul>
-          <li>How to evaluate a "privacy-focused" app</li>
-          <li>How to read a privacy policy</li>
-          <li>How to enable Global Privacy Control</li>
-          <li>How to use Signal safely</li>
-          <li>How to understand app permissions</li>
-          <li>How to protect yourself from surveillance</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="advanced">
-      <div class="container">
-        <h2>Advanced Topics</h2>
-        <div class="content-grid">
-          <article class="card">
-            <h3>Understanding Threat Models</h3>
-            <p>Start with the question: "Who am I protecting against?" Then map capabilities and safeguards.</p>
-          </article>
-          <article class="card">
-            <h3>The China Problem</h3>
-            <p>
-              Quantum decryption plus bulk data seizure means encrypted archives today can become readable tomorrow. Minimize
-              what leaves your vault.
-            </p>
-          </article>
-          <article class="card">
-            <h3>"I Have Nothing to Hide" Is Wrong</h3>
-            <p>
-              Privacy isn't about secrets. It's about dignity, autonomy, and the freedom to experiment without constant
-              observation.
-            </p>
-          </article>
-          <article class="card">
-            <h3>How Influence Works at Scale</h3>
-            <p>
-              Data brokers and recommendation engines weaponize attention. Learn how targeted narratives move markets and
-              elections.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="resources">
-      <div class="container">
-        <h2>Resources</h2>
-        <ul>
-          <li><a href="/whitepapers">Journal Foundation whitepapers</a></li>
-          <li><a href="/stack">Learn about the protocol stack</a></li>
-          <li><a href="https://www.eff.org" target="_blank" rel="noopener noreferrer">Electronic Frontier Foundation</a></li>
-          <li><a href="https://www.torproject.org" target="_blank" rel="noopener noreferrer">Tor Project</a></li>
-          <li><a href="https://www.privacyguides.org" target="_blank" rel="noopener noreferrer">Privacy Guides</a></li>
-        </ul>
       </div>
     </section>
   </main>
@@ -185,53 +360,117 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       border-top: 1px solid var(--color-border-subtle);
     }
 
-    .content-grid {
-      display: grid;
-      gap: var(--space-xl);
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    .topics {
+      background: linear-gradient(180deg, rgba(28, 42, 68, 0.35) 0%, rgba(10, 14, 20, 0.75) 100%);
     }
 
-    .card {
-      background: var(--void-lighter);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: var(--space-xl);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
+    .section-lead {
+      max-width: 60ch;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2xl);
     }
 
-    .concept-list {
+    .accordion {
       display: grid;
       gap: var(--space-2xl);
     }
 
-    .concept {
-      background: var(--void-lighter);
-      border-radius: var(--radius-lg);
+    .topic-group {
+      background: rgba(17, 27, 42, 0.65);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       padding: var(--space-xl);
-      border: 1px solid rgba(45, 125, 255, 0.15);
+      box-shadow: 0 30px 60px rgba(5, 10, 25, 0.25);
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    .group-header h3 {
+      margin-bottom: var(--space-sm);
+      font-size: var(--step-2);
+    }
+
+    .group-header p {
+      color: var(--color-text-secondary);
+      max-width: 60ch;
+    }
+
+    .collapsible-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: grid;
       gap: var(--space-sm);
     }
 
-    .guides ul,
-    .resources ul {
-      list-style: disc;
-      padding-left: var(--space-xl);
+    details {
+      background: rgba(20, 32, 52, 0.9);
+      border: 1px solid rgba(65, 125, 255, 0.25);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) var(--space-lg);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    details[open] {
+      border-color: rgba(90, 150, 255, 0.65);
+      box-shadow: 0 12px 30px rgba(32, 70, 150, 0.25);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: var(--step-0);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-size: var(--step-2);
       color: var(--color-text-secondary);
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .answer {
+      margin-top: var(--space-md);
+      display: grid;
+      gap: var(--space-sm);
+      color: var(--color-text-secondary);
+    }
+
+    .answer p {
+      margin: 0;
       line-height: 1.7;
     }
 
-    .guides li + li,
-    .resources li + li {
-      margin-top: var(--space-xs);
+    .answer ul {
+      margin: 0;
+      padding-left: var(--space-xl);
+      line-height: 1.7;
+    }
+
+    .rich-block :global(a) {
+      color: var(--color-accent-primary);
     }
 
     @media (max-width: 720px) {
-      .card,
-      .concept {
+      .topic-group {
         padding: var(--space-lg);
+      }
+
+      summary {
+        font-size: var(--step--1);
       }
     }
   </style>
