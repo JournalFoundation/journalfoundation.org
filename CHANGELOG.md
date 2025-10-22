@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.6.0...v0.7.0) (2025-10-22)
+
+
+### Features
+
+* add Build page with three-layer development guide ([d0ccb9a](https://github.com/JournalFoundation/journalfoundation.org/commit/d0ccb9aceaecac4ab7f2cc522c0ac8c3ba14f81c))
+
 # [0.6.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.5.0...v0.6.0) (2025-10-22)
 
 
