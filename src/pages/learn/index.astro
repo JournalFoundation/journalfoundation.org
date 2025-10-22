@@ -308,6 +308,38 @@ const topicGroups = [
           refining an advanced practice, each topic distills key takeaways into an accessible format.
         </p>
 
+        <div class="accordion">
+          {topicGroups.map((group) => (
+            <div class="topic-group">
+              <div class="group-header">
+                <h3>{group.title}</h3>
+                <p>{group.intro}</p>
+              </div>
+
+              <ul class="collapsible-list">
+                {group.items.map((item) => (
+                  <li>
+                    <details>
+                      <summary>{item.question}</summary>
+                      <div class="answer">
+                        {item.answer.map((block) =>
+                          block.type === "text" ? (
+                            <p>{block.content}</p>
+                          ) : (
+                            <div class="rich-block" set:html={block.content} />
+                          )
+                        )}
+                      </div>
+                    </details>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <section class="advanced">
       <div class="container">
         <h2>Advanced Topics</h2>
@@ -464,6 +496,31 @@ const topicGroups = [
 
     .rich-block :global(a) {
       color: var(--color-accent-primary);
+    }
+
+    .content-grid {
+      display: grid;
+      gap: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card {
+      background: rgba(17, 27, 42, 0.65);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: var(--space-xl);
+      box-shadow: 0 30px 60px rgba(5, 10, 25, 0.25);
+    }
+
+    .card h3 {
+      margin-bottom: var(--space-sm);
+      font-size: var(--step-1);
+    }
+
+    .card p {
+      color: var(--color-text-secondary);
+      margin: 0;
+      line-height: 1.7;
     }
 
     @media (max-width: 720px) {
