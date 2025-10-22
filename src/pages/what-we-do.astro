@@ -1,0 +1,380 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Fragment } from "astro/jsx-runtime";
+
+const meta = {
+  title: "What We Do — Journal Foundation",
+  description:
+    "Discover how Journal Foundation develops the JournalNet protocol stack—vaults, cypherlots, and reference implementations for a post-surveillance internet.",
+  url: "https://journalfoundation.org/what-we-do",
+  image: "/images/journal_network_background.png",
+};
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+  <Fragment slot="head">
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:image" content={meta.image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={meta.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={meta.url} />
+  </Fragment>
+
+  <main class="what">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">JournalNet Protocol Stack</p>
+        <h1>What We Do</h1>
+        <p class="lead">
+          Journal Foundation publishes the privacy primitives for the post-surveillance internet. We design and
+          maintain the JournalNet stack so every human can steward their own data and collaborate with
+          upstream transformers on their terms.
+        </p>
+        <div class="hero-cta">
+          <a class="btn" href="/stack">Explore the stack →</a>
+          <a class="btn btn--ghost" href="/specs">Read the specifications →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillars" aria-labelledby="pillars-heading">
+      <div class="pillars-header">
+        <h2 id="pillars-heading">Three layers. One promise.</h2>
+        <p class="subtitle">
+          Vaults, cypherlots, and reference implementations form the JournalNet protocol stack. Together they
+          deliver encrypted custody, metadata minimization, and optional collaboration with AI or trusted
+          services.
+        </p>
+      </div>
+      <div class="pillar-grid">
+        <article class="pillar-card">
+          <h3>Journal Vaults</h3>
+          <p>
+            Encrypted, graph-aware data stores that keep personal knowledge in reach yet out of surveillance
+            markets. Vaults power retrieval-augmented AI and everyday journaling without surrendering custody.
+          </p>
+          <a class="text-link" href="/specs/rfc-0002-vault">Specification →</a>
+        </article>
+        <article class="pillar-card">
+          <h3>Cypherlots</h3>
+          <p>
+            Capability brokers that regulate every packet. Cypherlots govern how encrypted data leaves the vault,
+            issuing revocable permissions for people, apps, AIs, or enterprises you invite.
+          </p>
+          <a class="text-link" href="/specs/rfc-0001-core">Specification →</a>
+        </article>
+        <article class="pillar-card">
+          <h3>Reference Implementations</h3>
+          <p>
+            SDKs, CLI tooling, and deployment recipes that prove the stack works. We maintain libraries so
+            builders can plug into JournalNet without rebuilding primitives from scratch.
+          </p>
+          <a class="text-link" href="/docs">Developer docs →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="impact" aria-labelledby="impact-heading">
+      <div class="impact-card">
+        <h2 id="impact-heading">Making data collaboration optional and sovereign</h2>
+        <p>
+          The JournalNet design ensures upstream data transformers—AI models, analytics, or businesses—only see
+          what they should, when they should. Journalzens can consent to granular data flows, revoke access in
+          seconds, and audit every transaction.
+        </p>
+        <p>
+          By separating custody (vaults) from access (cypherlots) and implementation (apps), we make privacy the
+          default posture while keeping data useful for personal insight, cooperative intelligence, and
+          responsible commerce.
+        </p>
+      </div>
+    </section>
+
+    <section class="initiatives" aria-labelledby="initiatives-heading">
+      <h2 id="initiatives-heading">Our active initiatives</h2>
+      <div class="initiative-grid">
+        <article class="initiative">
+          <h3>Publish open specifications</h3>
+          <p>
+            We steward RFC-style specs for every layer of JournalNet. The repository stays canonical, and the
+            community shapes it through transparent proposals, reviews, and governance rituals.
+          </p>
+        </article>
+        <article class="initiative">
+          <h3>Maintain reference code</h3>
+          <p>
+            Journal Foundation manages the economical repository and the surrounding tooling. From DevOps scripts
+            to SDK ergonomics, we ensure anyone can run a vault or cypherlot with minimal friction.
+          </p>
+        </article>
+        <article class="initiative">
+          <h3>Educate &amp; advocate</h3>
+          <p>
+            Privacy is a human right and a competitive advantage. We host workshops, publish explainers, and help
+            people discover their own power to protect data while benefiting from AI.
+          </p>
+        </article>
+        <article class="initiative">
+          <h3>Guide responsible adoption</h3>
+          <p>
+            We support builders, journalzens, and partners with governance models, funding transparency, and
+            roadmaps that invite contribution without speculation or surveillance incentives.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-heading">
+      <div class="cta-card">
+        <h2 id="cta-heading">Ready to engage?</h2>
+        <p>
+          Join the builders shaping JournalNet or onboard as a journalzen maintaining your own private graph.
+        </p>
+        <div class="cta-actions">
+          <a
+            class="btn"
+            href="https://github.com/journalfoundation/journalfoundation.org/blob/main/CONTRIBUTING.md"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contribute on GitHub →
+          </a>
+          <a class="btn btn--ghost" href="/docs/00-getting-started/hello-world">Start your vault →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .what {
+      padding: 0 var(--space-md) var(--space-4xl);
+      display: grid;
+      gap: var(--space-3xl);
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      text-align: left;
+      margin-top: var(--space-3xl);
+    }
+
+    .hero-inner {
+      max-width: 78ch;
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .eyebrow {
+      font-size: var(--step--1);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--color-accent-emerald);
+      margin: 0;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3xs);
+      padding: calc(var(--space-3xs) + 2px) var(--space-md);
+      background: linear-gradient(135deg, rgba(13, 210, 128, 0.85), rgba(69, 180, 255, 0.85));
+      color: var(--color-text-inverted);
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      border: 1px solid rgba(13, 210, 128, 0.4);
+      color: var(--color-accent-emerald);
+      box-shadow: none;
+    }
+
+    .btn--ghost:hover,
+    .btn--ghost:focus-visible {
+      background: rgba(13, 210, 128, 0.1);
+    }
+
+    .pillars {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    .pillars-header {
+      display: grid;
+      gap: var(--space-2xs);
+    }
+
+    .pillars-header h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+
+    .subtitle {
+      color: var(--color-text-muted);
+      margin: 0;
+      max-width: 68ch;
+    }
+
+    .pillar-grid {
+      display: grid;
+      gap: var(--space-lg);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .pillar-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      background: rgba(9, 13, 20, 0.75);
+      display: grid;
+      gap: var(--space-sm);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pillar-card h3 {
+      margin: 0;
+    }
+
+    .pillar-card p {
+      margin: 0;
+      color: var(--color-text-secondary);
+    }
+
+    .text-link {
+      color: var(--color-accent-emerald);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .text-link:hover,
+    .text-link:focus-visible {
+      text-decoration: underline;
+    }
+
+    .impact {
+      display: flex;
+      justify-content: center;
+    }
+
+    .impact-card {
+      max-width: 78ch;
+      padding: var(--space-xl);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(32, 40, 52, 0.6), rgba(12, 18, 26, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: grid;
+      gap: var(--space-md);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .initiatives {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    .initiatives h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+    }
+
+    .initiative-grid {
+      display: grid;
+      gap: var(--space-lg);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .initiative {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      background: rgba(8, 12, 18, 0.8);
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .initiative h3 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .initiative p {
+      margin: 0;
+      color: var(--color-text-secondary);
+    }
+
+    .cta {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cta-card {
+      max-width: 72ch;
+      padding: var(--space-xl);
+      border-radius: var(--radius-xl);
+      background: rgba(11, 16, 24, 0.9);
+      border: 1px solid rgba(13, 210, 128, 0.25);
+      display: grid;
+      gap: var(--space-md);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: var(--space-2xl);
+      }
+
+      .hero-inner {
+        gap: var(--space-md);
+      }
+
+      .pillar-card,
+      .impact-card,
+      .initiative,
+      .cta-card {
+        padding: var(--space-lg);
+      }
+
+      .btn,
+      .btn--ghost {
+        width: 100%;
+      }
+
+      .hero-cta,
+      .cta-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</BaseLayout>

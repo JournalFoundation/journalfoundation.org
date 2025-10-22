@@ -1,0 +1,402 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Fragment } from "astro/jsx-runtime";
+
+const meta = {
+  title: "Who We Are — Journal Foundation",
+  description:
+    "Meet the founders, collaborators, and privacy advocates stewarding the Journal Protocol Stack.",
+  url: "https://journalfoundation.org/who-we-are",
+  image: "/images/journal_network_background.png",
+};
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+  <Fragment slot="head">
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:image" content={meta.image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={meta.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={meta.url} />
+  </Fragment>
+
+  <main class="who">
+    <section class="hero">
+      <p class="eyebrow">Journal Foundation</p>
+      <h1>Who We Are</h1>
+      <p class="lead">
+        We are builders, stewards, and advocates designing privacy-first infrastructure
+        so people own their data and invite collaboration on their own terms.
+      </p>
+    </section>
+
+    <section class="mission">
+      <div class="mission-card">
+        <h2>Why we show up</h2>
+        <p>
+          Journal Foundation is an independent, open-source initiative committed to the JournalNet protocol stack.
+          We believe the post-surveillance internet must be encrypted by default, graph-aware, and human-serving.
+        </p>
+        <p>
+          Our work blends protocol engineering, governance transparency, and education—ensuring anyone can
+          host their own vault, share data safely, and collaborate with AI without surrendering autonomy.
+        </p>
+      </div>
+    </section>
+
+    <section class="team" aria-labelledby="team-heading">
+      <div class="section-heading">
+        <h2 id="team-heading">Leadership &amp; collaborators</h2>
+        <p class="section-subtitle">Open stewardship with room for more voices.</p>
+      </div>
+      <div class="team-grid">
+        <article class="person-card">
+          <a
+            class="card-link"
+            href="https://www.linkedin.com/in/johnbenac/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="portrait" aria-hidden="true">
+              <span class="portrait-label">Founder</span>
+              <span class="portrait-placeholder">John Benac</span>
+            </div>
+            <div class="card-body">
+              <h3>John Benac</h3>
+              <p>Founder &amp; steward of the JournalNet protocol stack.</p>
+            </div>
+            <span class="card-cta" aria-hidden="true">LinkedIn →</span>
+          </a>
+        </article>
+
+        <article class="person-card">
+          <a
+            class="card-link"
+            href="https://www.linkedin.com/in/billbenac/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="portrait" aria-hidden="true">
+              <span class="portrait-label">Co-founder</span>
+              <span class="portrait-placeholder">Bill Benac</span>
+            </div>
+            <div class="card-body">
+              <h3>Bill Benac</h3>
+              <p>Co-founder focused on partnerships, operations, and sustainable growth.</p>
+            </div>
+            <span class="card-cta" aria-hidden="true">LinkedIn →</span>
+          </a>
+        </article>
+
+        <article class="person-card">
+          <a class="card-link" href="/governance">
+            <div class="portrait placeholder">
+              <span class="portrait-label">Advisor</span>
+              <span class="portrait-placeholder">Looking for advisors</span>
+            </div>
+            <div class="card-body">
+              <h3>Advisory Council</h3>
+              <p>
+                We&rsquo;re welcoming privacy, policy, and security advisors. Explore our governance commitments.
+              </p>
+            </div>
+            <span class="card-cta" aria-hidden="true">Governance →</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="community" aria-labelledby="community-heading">
+      <div class="section-heading">
+        <h2 id="community-heading">Join the movement</h2>
+        <p class="section-subtitle">
+          Privacy infrastructure only works when builders and journalzens move in sync.
+        </p>
+      </div>
+
+      <div class="community-grid">
+        <article class="community-card">
+          <div class="badge">Build</div>
+          <h3>Become a builder</h3>
+          <p>
+            Contribute to vaults, cypherlots, SDKs, docs, and tooling. We collaborate in the open and welcome
+            systems engineers, designers, writers, and security reviewers.
+          </p>
+          <a
+            class="community-link"
+            href="https://github.com/journalfoundation/journalfoundation.org/blob/main/CONTRIBUTING.md"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit the contributor guide →
+          </a>
+        </article>
+
+        <article class="community-card">
+          <div class="badge">Journalzen</div>
+          <h3>Become a journalzen</h3>
+          <p>
+            A journalzen authors and maintains their personal knowledge, deciding who sees what and when. Start
+            hosting your vault, learn the sharing workflows, and shape the future of humane AI.
+          </p>
+          <a class="community-link" href="/docs/00-getting-started/hello-world">
+            Read the getting started guide →
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .who {
+      padding: 0 var(--space-md) var(--space-3xl);
+      display: grid;
+      gap: var(--space-3xl);
+    }
+
+    .hero {
+      max-width: 72ch;
+      margin: var(--space-3xl) auto 0;
+      text-align: left;
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .eyebrow {
+      font-size: var(--step--1);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--color-accent-emerald);
+      margin: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      margin: 0;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--color-text-secondary);
+      max-width: 60ch;
+    }
+
+    .mission {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mission-card {
+      max-width: 70ch;
+      padding: var(--space-xl);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(32, 40, 52, 0.6), rgba(12, 18, 26, 0.9));
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .section-heading {
+      display: grid;
+      gap: var(--space-2xs);
+      margin-bottom: var(--space-lg);
+      text-align: left;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+    }
+
+    .section-subtitle {
+      color: var(--color-text-muted);
+      margin: 0;
+      max-width: 60ch;
+    }
+
+    .team {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      gap: var(--space-lg);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .person-card {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      background: rgba(12, 18, 26, 0.6);
+      overflow: hidden;
+      transition: transform var(--duration-base) var(--easing-standard),
+        border-color var(--duration-base) var(--easing-standard);
+    }
+
+    .card-link {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      gap: var(--space-md);
+    }
+
+    .person-card:hover,
+    .person-card:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(13, 210, 128, 0.4);
+    }
+
+    .portrait {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 200px;
+      background: repeating-linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.08) 12px,
+          rgba(255, 255, 255, 0.02) 12px,
+          rgba(255, 255, 255, 0.02) 24px
+        ),
+        radial-gradient(circle at 20% 20%, rgba(13, 210, 128, 0.15), transparent 55%);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .portrait.placeholder {
+      background: repeating-linear-gradient(
+          135deg,
+          rgba(13, 210, 128, 0.16),
+          rgba(13, 210, 128, 0.16) 12px,
+          rgba(13, 210, 128, 0.04) 12px,
+          rgba(13, 210, 128, 0.04) 24px
+        ),
+        radial-gradient(circle at 80% 30%, rgba(13, 210, 128, 0.25), transparent 50%);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .portrait-label {
+      position: absolute;
+      top: var(--space-xs);
+      left: var(--space-xs);
+      background: rgba(5, 7, 10, 0.7);
+      border-radius: var(--radius-pill);
+      padding: calc(var(--space-4xs) + 2px) var(--space-2xs);
+      font-size: var(--step--1);
+      letter-spacing: 0.2em;
+    }
+
+    .portrait-placeholder {
+      font-size: var(--step-1);
+      text-align: center;
+      padding: 0 var(--space-md);
+    }
+
+    .card-body {
+      padding: 0 var(--space-lg) var(--space-lg);
+      display: grid;
+      gap: var(--space-2xs);
+    }
+
+    .card-body h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .card-body p {
+      margin: 0;
+      color: var(--color-text-secondary);
+    }
+
+    .card-cta {
+      padding: 0 var(--space-lg) var(--space-lg);
+      font-weight: 600;
+      color: var(--color-accent-emerald);
+    }
+
+    .community {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .community-grid {
+      display: grid;
+      gap: var(--space-lg);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .community-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      background: rgba(9, 13, 20, 0.8);
+      display: grid;
+      gap: var(--space-sm);
+      box-shadow: var(--shadow-md);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--space-4xs) + 2px) var(--space-xs);
+      border-radius: var(--radius-pill);
+      background: rgba(13, 210, 128, 0.15);
+      border: 1px solid rgba(13, 210, 128, 0.35);
+      color: var(--color-accent-emerald);
+      font-size: var(--step--1);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .community-card h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .community-card p {
+      margin: 0;
+      color: var(--color-text-secondary);
+    }
+
+    .community-link {
+      color: var(--color-accent-emerald);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .community-link:hover,
+    .community-link:focus-visible {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: var(--space-2xl);
+        text-align: left;
+      }
+
+      .mission-card {
+        padding: var(--space-lg);
+      }
+
+      .card-body,
+      .card-cta {
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+      }
+
+      .community-card {
+        padding: var(--space-lg);
+      }
+    }
+  </style>
+</BaseLayout>
