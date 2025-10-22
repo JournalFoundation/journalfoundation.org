@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.4.0...v0.5.0) (2025-10-22)
+
+
+### Features
+
+* update website content and fix file permissions ([ffe6c00](https://github.com/JournalFoundation/journalfoundation.org/commit/ffe6c005c5531233e93973eb0d2d75ba030ad598))
+
 # [0.4.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.3.0...v0.4.0) (2025-10-17)
 
 
