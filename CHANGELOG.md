@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.5.0...v0.6.0) (2025-10-22)
+
+
+### Features
+
+* add JournalNet page with interactive network visualization ([1b3f23e](https://github.com/JournalFoundation/journalfoundation.org/commit/1b3f23e40dcba88837d14e711608ebab0dddb757))
+
 # [0.5.0](https://github.com/JournalFoundation/journalfoundation.org/compare/v0.4.0...v0.5.0) (2025-10-22)
 
 
