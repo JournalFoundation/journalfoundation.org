@@ -1,0 +1,245 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Fragment } from "astro/jsx-runtime";
+
+const meta = {
+  title: "What We Do — Journal Foundation",
+  description:
+    "Journal Foundation develops the JournalNet protocol stack, publishes reference implementations, and teaches communities how to live private, data-sovereign lives.",
+  url: "https://journalfoundation.org/what-we-do",
+  image: "/images/journal_network_background.png",
+};
+
+const layers = [
+  {
+    title: "Vaults",
+    subtitle: "Encrypted, graph-aware personal data stores",
+    description:
+      "Vaults keep data in the custody of the human who generated it. They expose capability-scoped APIs so upstream transformers can request just-enough access when you allow it.",
+  },
+  {
+    title: "Cypherlots",
+    subtitle: "Capability-based sharing and consent",
+    description:
+      "Cypherlots express who can read, write, or transform data and under what conditions. They enforce revocability and accountability without central platforms.",
+  },
+  {
+    title: "Reference implementations",
+    subtitle: "SDKs, tooling, and example apps",
+    description:
+      "We ship working code so builders can experiment quickly—from local development sandboxes to production-ready deployment blueprints.",
+  },
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+  <Fragment slot="head">
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:image" content={meta.image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={meta.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={meta.url} />
+  </Fragment>
+
+  <main class="what">
+    <section class="hero">
+      <h1>What We Do</h1>
+      <p class="lead">
+        Journal Foundation develops the JournalNet protocol stack—the privacy primitives and protocols for the post-surveillance internet. We publish the specifications, reference code, and playbooks so anyone can run their own infrastructure.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>JournalNet protocol stack</h2>
+      <p class="section-intro">
+        Our stack is three tightly-coupled layers designed to make private data useful without surrendering control. Each layer can be adopted independently, but together they provide the guarantees an autonomy-first future demands.
+      </p>
+      <div class="layer-grid">
+        {layers.map((layer) => (
+          <article class="layer card">
+            <h3>{layer.title}</h3>
+            <p class="layer-subtitle">{layer.subtitle}</p>
+            <p>{layer.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How we deliver</h2>
+      <div class="deliver-grid">
+        <article class="deliver card">
+          <h3>Publish specifications</h3>
+          <p>
+            We maintain open specifications that define the protocols, threat models, and interoperability contracts. Builders use them to create compatible services and products.
+          </p>
+          <a class="link" href="/specs">Explore the specs →</a>
+        </article>
+        <article class="deliver card">
+          <h3>Ship reference implementations</h3>
+          <p>
+            Working code—from vault runtimes to cypherlot brokers—proves the specs, accelerates adoption, and offers a transparent baseline for security review.
+          </p>
+          <a class="link" href="/docs">Browse the docs →</a>
+        </article>
+        <article class="deliver card">
+          <h3>Steward the economical repository</h3>
+          <p>
+            Our economical repository tracks funding sources, resource allocation, and sustainability experiments so supporters know how the work is resourced.
+          </p>
+          <a class="link" href="/governance">See governance &amp; finance →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Education &amp; advocacy</h2>
+      <div class="education card">
+        <p>
+          We teach communities why privacy matters, how to reclaim their data, and how to participate in a healthier internet. Workshops, explainers, and learning paths equip future journalzens—citizens who author and maintain their personal data—to work with upstream AI and partner services on their own terms.
+        </p>
+        <div class="cta-group">
+          <a class="btn" href="/learn">Visit privacy learning hub</a>
+          <a class="btn" href="/docs/00-getting-started/hello-world">Start as a journalzen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .what {
+      padding: 0 var(--space-md) var(--space-3xl);
+    }
+
+    .hero {
+      max-width: 80ch;
+      margin: var(--space-3xl) auto var(--space-2xl);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.25rem);
+      margin-bottom: var(--space-sm);
+    }
+
+    .lead {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin: 0 auto;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto var(--space-2xl);
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+    }
+
+    .section-intro {
+      max-width: 78ch;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .layer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .card {
+      background: rgba(8, 12, 18, 0.8);
+      border: 1px solid rgba(94, 114, 148, 0.32);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-lg, 0 18px 32px rgba(2, 6, 14, 0.45));
+    }
+
+    .layer h3 {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-2xs);
+    }
+
+    .layer-subtitle {
+      font-weight: 600;
+      color: var(--color-accent-emerald);
+      margin-bottom: var(--space-2xs);
+    }
+
+    .deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .deliver h3 {
+      font-size: 1.45rem;
+      margin-bottom: var(--space-2xs);
+    }
+
+    .link {
+      display: inline-flex;
+      color: var(--electric-blue);
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: var(--space-sm);
+    }
+
+    .link:hover,
+    .link:focus-visible {
+      text-decoration: underline;
+    }
+
+    .education {
+      display: grid;
+      gap: var(--space-md);
+      text-align: center;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--space-3xs) + 3px) var(--space-md);
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, rgba(76, 201, 240, 0.18), rgba(13, 210, 128, 0.22));
+      border: 1px solid rgba(76, 201, 240, 0.45);
+      color: var(--color-text-primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform var(--duration-base) var(--easing-standard),
+        box-shadow var(--duration-base) var(--easing-standard);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(76, 201, 240, 0.28);
+    }
+
+    @media (max-width: 720px) {
+      .lead {
+        font-size: 1.05rem;
+      }
+
+      .card {
+        padding: var(--space-md);
+      }
+    }
+  </style>
+</BaseLayout>

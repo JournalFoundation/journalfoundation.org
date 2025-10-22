@@ -1,0 +1,261 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Fragment } from "astro/jsx-runtime";
+
+const meta = {
+  title: "Who We Are — Journal Foundation",
+  description:
+    "Meet the founders, collaborators, and community invitations shaping Journal Foundation's privacy-first internet.",
+  url: "https://journalfoundation.org/who-we-are",
+  image: "/images/journal_network_background.png",
+};
+
+const leadership = [
+  {
+    name: "John Benac",
+    role: "Founder & Protocol Architect",
+    description:
+      "John started Journal Foundation to build the JournalNet protocol stack so people—not platforms—control the robots that learn from their data.",
+    link: "https://www.linkedin.com/in/johnbenac/",
+    linkLabel: "LinkedIn",
+    placeholder: "Founder portrait pending",
+  },
+  {
+    name: "Bill Benac",
+    role: "Co-founder",
+    description:
+      "Bill stewards the operational backbone that keeps the protocol effort grounded in sustainable governance and delivery.",
+    link: "https://www.linkedin.com/in/billbenac/",
+    linkLabel: "LinkedIn",
+    placeholder: "Co-founder portrait pending",
+  },
+  {
+    name: "Advisory Council",
+    role: "Seeking privacy, cryptography, and governance advisors",
+    description:
+      "We're opening seats for advisors who can stress-test the roadmap, pressure-test cryptographic choices, and hold us accountable to transparent stewardship.",
+    link: "/governance",
+    linkLabel: "Review governance →",
+    placeholder: "Advisor seat open",
+  },
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+  <Fragment slot="head">
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:image" content={meta.image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={meta.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={meta.url} />
+  </Fragment>
+
+  <main class="who">
+    <section class="hero">
+      <h1>Who We Are</h1>
+      <p class="intro">
+        Journal Foundation is built by people who refuse surveillance defaults. We design infrastructure that keeps personal data in human custody and we invite collaborators who feel the same urgency.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Leadership &amp; collaborators</h2>
+      <div class="card-grid">
+        {leadership.map((person) => (
+          <article class="profile card">
+            <div class="avatar" aria-hidden="true">
+              <span>{person.placeholder}</span>
+            </div>
+            <div class="profile-body">
+              <h3>{person.name}</h3>
+              <p class="role">{person.role}</p>
+              <p>{person.description}</p>
+              <p class="profile-link">
+                <a href={person.link} target={person.link.startsWith('http') ? '_blank' : undefined} rel={person.link.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                  {person.linkLabel}
+                </a>
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Join the movement</h2>
+      <div class="invite-grid">
+        <article class="invite card">
+          <h3>Become a builder</h3>
+          <p>
+            Help ship the JournalNet protocol stack—vaults, cypherlots, and reference apps—that lets people grant access to their data on their own terms.
+          </p>
+          <a class="btn" href="https://github.com/JournalFoundation/journalfoundation.org/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">
+            Builder contributing guide →
+          </a>
+        </article>
+        <article class="invite card">
+          <h3>Become a journalzen</h3>
+          <p>
+            A journalzen authors and maintains their personal data, deciding when upstream AI or partner services can transform it—always with consent and revocability.
+          </p>
+          <a class="btn" href="/docs/00-getting-started/hello-world">
+            Getting started guide →
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .who {
+      padding: 0 var(--space-md) var(--space-3xl);
+    }
+
+    .hero {
+      max-width: 72ch;
+      margin: var(--space-3xl) auto var(--space-xl);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.25rem);
+      margin-bottom: var(--space-sm);
+    }
+
+    .intro {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin: 0 auto;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto var(--space-2xl);
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      margin-bottom: var(--space-lg);
+      text-align: center;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .card {
+      background: rgba(8, 12, 18, 0.75);
+      border: 1px solid rgba(94, 114, 148, 0.3);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      box-shadow: var(--shadow-lg, 0 18px 32px rgba(2, 6, 14, 0.45));
+    }
+
+    .profile {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .avatar {
+      flex: 0 0 120px;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-md);
+      border: 2px dashed rgba(94, 114, 148, 0.6);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      padding: var(--space-sm);
+      background: rgba(17, 24, 33, 0.6);
+    }
+
+    .profile-body {
+      display: grid;
+      gap: var(--space-2xs);
+    }
+
+    .profile-body h3 {
+      font-size: 1.35rem;
+      margin: 0;
+    }
+
+    .role {
+      color: var(--color-accent-emerald);
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .profile-link a {
+      color: var(--electric-blue);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .profile-link a:hover,
+    .profile-link a:focus-visible {
+      text-decoration: underline;
+    }
+
+    .invite-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .invite {
+      text-align: left;
+    }
+
+    .invite h3 {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-2xs);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3xs);
+      padding: calc(var(--space-3xs) + 2px) var(--space-md);
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, rgba(13, 210, 128, 0.2), rgba(76, 201, 240, 0.2));
+      border: 1px solid rgba(13, 210, 128, 0.4);
+      color: var(--color-text-primary);
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: var(--space-sm);
+      transition: transform var(--duration-base) var(--easing-standard),
+        box-shadow var(--duration-base) var(--easing-standard);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(13, 210, 128, 0.25);
+    }
+
+    @media (max-width: 720px) {
+      .profile {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .avatar {
+        width: 140px;
+        margin: 0 auto;
+      }
+
+      .profile-body {
+        text-align: center;
+      }
+    }
+  </style>
+</BaseLayout>

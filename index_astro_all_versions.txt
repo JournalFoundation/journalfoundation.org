@@ -37,7 +37,7 @@ import BattleCry from '../components/BattleCry.astro';
       <a href="/docs/quickstart" class="cta cta-primary">
         🛠️ Run a Cypherlot
       </a>
-      <a href="/about" class="cta cta-secondary">
+      <a href="/who-we-are" class="cta cta-secondary">
         📢 Join the Movement
       </a>
       <a href="/governance" class="cta cta-tertiary">
@@ -531,7 +531,7 @@ import BattleCry from '../components/BattleCry.astro';
       <a href="/docs/quickstart" class="btn btn--primary">
         🛠️ Run a Cypherlot
       </a>
-      <a href="/about" class="btn btn--secondary">
+      <a href="/who-we-are" class="btn btn--secondary">
         📢 Join the Movement
       </a>
       <a href="/governance" class="btn btn--tertiary">
@@ -980,7 +980,7 @@ import BattleCry from '../components/BattleCry.astro';
       <a href="/docs/quickstart" class="btn btn--primary">
         🛠️ Build an App
       </a>
-      <a href="/about" class="btn btn--secondary">
+      <a href="/who-we-are" class="btn btn--secondary">
         📢 Join the Movement
       </a>
       <a href="/governance" class="btn btn--tertiary">
