@@ -13,6 +13,9 @@ export default defineConfig({
   vite: {
     build: {
       cssCodeSplit: false
+    },
+    optimizeDeps: {
+      include: ['force-graph']
     }
   },
   compressHTML: true,

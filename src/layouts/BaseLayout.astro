@@ -40,8 +40,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   
   <!-- Security (implement these in server config) -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="Referrer-Policy" content="no-referrer">
+  <meta name="referrer" content="no-referrer">
+  <!-- Frame-ancestors restrictions must be set via HTTP headers. -->
   
   <title>{title}</title>
 </head>
