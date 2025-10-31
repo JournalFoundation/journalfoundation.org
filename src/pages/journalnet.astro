@@ -82,82 +82,136 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   const container = document.getElementById('graph-container');
   if (container) {
-    
+
     // Generate network data
     const numVaults = 8;
     const numApps = 5;
     const numRelays = 3;
-    
-    const vaults = Array.from({length: numVaults}, (_, i) => ({
-      id: `vault-${i}`,
-      type: 'vault',
-      label: `Vault ${i + 1}`
-    }));
-    
-    const apps = Array.from({length: numApps}, (_, i) => ({
-      id: `app-${i}`,
-      type: 'app',
-      label: `App ${i + 1}`
-    }));
-    
-    const relays = Array.from({length: numRelays}, (_, i) => ({
-      id: `relay-${i}`,
-      type: 'relay',
-      label: `Relay ${i + 1}`
-    }));
-    
-    const nodes = [...vaults, ...apps, ...relays];
-    
+
+    const createNodes = (count, type, labelPrefix) =>
+      Array.from({ length: count }, (_, i) => ({
+        id: `${type}-${i}`,
+        type,
+        label: `${labelPrefix} ${i + 1}`
+      }));
+
+    const addLayerPositions = (nodes, x) => {
+      const centerOffset = (nodes.length - 1) / 2;
+      return nodes.map((node, index) => ({
+        ...node,
+        fx: x,
+        fy: (index - centerOffset) * 80 + (Math.random() - 0.5) * 30,
+        pulseOffset: Math.random() * Math.PI * 2
+      }));
+    };
+
+    const vaults = addLayerPositions(createNodes(numVaults, 'vault', 'Vault'), 240);
+    const relays = addLayerPositions(createNodes(numRelays, 'relay', 'Relay'), 0);
+    const apps = addLayerPositions(createNodes(numApps, 'app', 'App'), -240);
+
+    const nodes = [...apps, ...relays, ...vaults];
+
     // Create connections: apps -> relays -> vaults
     const links = [];
-    
-    apps.forEach(app => {
-      // Each app connects to 1-2 relays
-      const numRelayConnections = Math.floor(Math.random() * 2) + 1;
-      const connectedRelays = relays
-        .sort(() => Math.random() - 0.5)
-        .slice(0, numRelayConnections);
-      
-      connectedRelays.forEach(relay => {
-        links.push({
-          source: app.id,
-          target: relay.id
+
+    const createFlow = (sourceSet, targetSet, minConnections, maxConnections) => {
+      sourceSet.forEach(source => {
+        const connectionCount = Math.floor(Math.random() * (maxConnections - minConnections + 1)) + minConnections;
+        const connectedTargets = [...targetSet]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, connectionCount);
+
+        connectedTargets.forEach(target => {
+          links.push({
+            source: source.id,
+            target: target.id,
+            speed: 0.002 + Math.random() * 0.004
+          });
         });
       });
-    });
-    
-    relays.forEach(relay => {
-      // Each relay connects to 2-4 vaults
-      const numVaultConnections = Math.floor(Math.random() * 3) + 2;
-      const connectedVaults = vaults
-        .sort(() => Math.random() - 0.5)
-        .slice(0, numVaultConnections);
-      
-      connectedVaults.forEach(vault => {
-        links.push({
-          source: relay.id,
-          target: vault.id
-        });
-      });
-    });
-    
+    };
+
+    createFlow(apps, relays, 1, 2);
+    createFlow(relays, vaults, 2, 4);
+
     const data = { nodes, links };
-    
+
+    const typeColors = {
+      vault: '#0dd280',
+      app: '#2d7dff',
+      relay: '#f5b400'
+    };
+
+    const hexToRgb = (hex) => {
+      const sanitized = hex.replace('#', '');
+      const bigint = parseInt(sanitized, 16);
+      const r = (bigint >> 16) & 255;
+      const g = (bigint >> 8) & 255;
+      const b = bigint & 255;
+      return `${r}, ${g}, ${b}`;
+    };
+
     const Graph = ForceGraph()(container)
       .graphData(data)
-      .nodeLabel('label')
-      .nodeColor(node => {
-        if (node.type === 'vault') return '#0dd280';
-        if (node.type === 'app') return '#2d7dff';
-        if (node.type === 'relay') return '#f5b400';
-        return '#666';
-      })
-      .nodeRelSize(6)
-      .linkColor(() => 'rgba(255, 255, 255, 0.15)')
-      .linkWidth(2)
       .backgroundColor('#05070a')
+      .nodeLabel('label')
+      .linkColor(() => 'rgba(255, 255, 255, 0.2)')
+      .linkWidth(1.5)
+      .linkDirectionalParticles(4)
+      .linkDirectionalParticleWidth(3)
+      .linkDirectionalParticleColor(() => 'rgba(255, 255, 255, 0.85)')
+      .linkDirectionalParticleSpeed(link => link.speed)
+      .nodeRelSize(6)
       .width(container.clientWidth)
       .height(500);
+
+    Graph.nodeCanvasObject((node, ctx, globalScale) => {
+      const color = typeColors[node.type] ?? '#888888';
+      const baseRadius = 6;
+      const time = Date.now();
+      const pulse = (Math.sin((time / 500) + (node.pulseOffset ?? 0)) + 1) / 2;
+      const pulseRadius = baseRadius + pulse * 4;
+
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, pulseRadius, 0, Math.PI * 2, false);
+      ctx.fillStyle = `rgba(${hexToRgb(color)}, 0.2)`;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, baseRadius, 0, Math.PI * 2, false);
+      ctx.fillStyle = color;
+      ctx.fill();
+
+      if (globalScale > 1.4) {
+        ctx.font = `${12 / globalScale}px var(--font-sans, 'Inter', sans-serif)`;
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(node.label, node.x, node.y + baseRadius + 4);
+      }
+    });
+
+    Graph.nodeCanvasObjectMode(() => 'replace');
+    Graph.autoPauseRedraw(false);
+    Graph.d3Force('link').distance(140).strength(1);
+    Graph.d3Force('charge').strength(-180);
+
+    const resizeObserver = new ResizeObserver(entries => {
+      for (const entry of entries) {
+        const { width } = entry.contentRect;
+        Graph.width(width);
+        Graph.refresh();
+      }
+    });
+
+    resizeObserver.observe(container);
+
+    const animate = () => {
+      Graph.refresh();
+      requestAnimationFrame(animate);
+    };
+
+    animate();
   }
 </script>
 
