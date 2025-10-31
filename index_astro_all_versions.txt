@@ -77,7 +77,7 @@ import BattleCry from '../components/BattleCry.astro';
             <li><strong>Federation centralizes:</strong> Your instance admin sees everything</li>
             <li><strong>Correlation attacks:</strong> Traffic patterns reveal identity</li>
             <li><strong>No plausible deniability:</strong> Encrypted data can be seized</li>
-            <li><strong>The China problem:</strong> Download now, decrypt with quantum later</li>
+            <li><strong>Harvest-now, decrypt-later threat:</strong> Download now, decrypt with quantum later</li>
           </ul>
         </div>
         
@@ -571,7 +571,7 @@ import BattleCry from '../components/BattleCry.astro';
             <li><strong>Federation centralizes:</strong> Your instance admin sees everything</li>
             <li><strong>Correlation attacks:</strong> Traffic patterns reveal identity</li>
             <li><strong>No plausible deniability:</strong> Encrypted data can be seized</li>
-            <li><strong>The China problem:</strong> Download now, decrypt with quantum later</li>
+            <li><strong>Harvest-now, decrypt-later threat:</strong> Download now, decrypt with quantum later</li>
           </ul>
         </div>
         
@@ -1020,7 +1020,7 @@ import BattleCry from '../components/BattleCry.astro';
             <li><strong>Federation centralizes:</strong> Your instance admin sees everything</li>
             <li><strong>Correlation attacks:</strong> Traffic patterns reveal identity</li>
             <li><strong>No plausible deniability:</strong> Encrypted data can be seized</li>
-            <li><strong>The China problem:</strong> Download now, decrypt with quantum later</li>
+            <li><strong>Harvest-now, decrypt-later threat:</strong> Download now, decrypt with quantum later</li>
           </ul>
         </div>
         
@@ -1469,7 +1469,7 @@ import BattleCry from '../components/BattleCry.astro';
             <li><strong>Federation centralizes:</strong> Your instance admin sees everything</li>
             <li><strong>Correlation attacks:</strong> Traffic patterns reveal identity</li>
             <li><strong>No plausible deniability:</strong> Encrypted data can be seized</li>
-            <li><strong>The China problem:</strong> Download now, decrypt with quantum later</li>
+            <li><strong>Harvest-now, decrypt-later threat:</strong> Download now, decrypt with quantum later</li>
           </ul>
         </div>
 
@@ -1866,7 +1866,7 @@ import BattleCry from '../components/BattleCry.astro';
             <li><strong>Federation centralizes:</strong> Your instance admin sees everything</li>
             <li><strong>Correlation attacks:</strong> Traffic patterns reveal identity</li>
             <li><strong>No plausible deniability:</strong> Encrypted data can be seized</li>
-            <li><strong>The China problem:</strong> Download now, decrypt with quantum later</li>
+            <li><strong>Harvest-now, decrypt-later threat:</strong> Download now, decrypt with quantum later</li>
           </ul>
         </div>
         
@@ -2285,7 +2285,7 @@ import BattleCry from '../components/BattleCry.astro';
             <li><strong>Federation centralizes:</strong> Your instance admin sees everything</li>
             <li><strong>Correlation attacks:</strong> Traffic patterns reveal identity</li>
             <li><strong>No plausible deniability:</strong> Encrypted data can be seized</li>
-            <li><strong>The China problem:</strong> Download now, decrypt with quantum later</li>
+            <li><strong>Harvest-now, decrypt-later threat:</strong> Download now, decrypt with quantum later</li>
           </ul>
         </div>
         
@@ -2685,7 +2685,7 @@ import BattleCry from '../components/BattleCry.astro';
             <li><strong>Federation centralizes:</strong> Your instance admin sees everything</li>
             <li><strong>Correlation attacks:</strong> Traffic patterns reveal identity</li>
             <li><strong>No plausible deniability:</strong> Encrypted data can be seized</li>
-            <li><strong>The China problem:</strong> Download now, decrypt with quantum later</li>
+            <li><strong>Harvest-now, decrypt-later threat:</strong> Download now, decrypt with quantum later</li>
           </ul>
         </div>
         

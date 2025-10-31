@@ -46,13 +46,13 @@ Even with encrypted content, metadata exposes:
 - Interest inference (which communities you join)
 - Political affiliation (which instance you choose)
 
-### 2.2 The China Problem
+### 2.2 Harvest-Now, Decrypt-Later Threats
 
-**Adversary strategy:**
-1. Download all encrypted data now
-2. Store for decades
-3. Decrypt when quantum computers arrive
-4. Retroactively surveil historical communications
+**Adversary strategy (state-level passive observers):**
+1. Download encrypted traffic in bulk today
+2. Store it indefinitely in national archives
+3. Await cryptanalytic breakthroughs or practical quantum computers
+4. Retroactively surveil historical communications once the math catches up
 
 **Decentralization doesn't stop this. Anonymization does.**
 
