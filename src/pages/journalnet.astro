@@ -82,42 +82,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   const container = document.getElementById('graph-container');
   if (container) {
-    
+
     // Generate network data
     const numVaults = 8;
     const numApps = 5;
     const numRelays = 3;
-    
+
+    const typeColors = {
+      vault: '#0dd280',
+      app: '#2d7dff',
+      relay: '#f5b400'
+    };
+
     const vaults = Array.from({length: numVaults}, (_, i) => ({
       id: `vault-${i}`,
       type: 'vault',
       label: `Vault ${i + 1}`
     }));
-    
+
     const apps = Array.from({length: numApps}, (_, i) => ({
       id: `app-${i}`,
       type: 'app',
       label: `App ${i + 1}`
     }));
-    
+
     const relays = Array.from({length: numRelays}, (_, i) => ({
       id: `relay-${i}`,
       type: 'relay',
       label: `Relay ${i + 1}`
     }));
-    
+
     const nodes = [...vaults, ...apps, ...relays];
-    
+
     // Create connections: apps -> relays -> vaults
     const links = [];
-    
+
     apps.forEach(app => {
       // Each app connects to 1-2 relays
       const numRelayConnections = Math.floor(Math.random() * 2) + 1;
       const connectedRelays = relays
         .sort(() => Math.random() - 0.5)
         .slice(0, numRelayConnections);
-      
+
       connectedRelays.forEach(relay => {
         links.push({
           source: app.id,
@@ -125,14 +131,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
       });
     });
-    
+
     relays.forEach(relay => {
       // Each relay connects to 2-4 vaults
       const numVaultConnections = Math.floor(Math.random() * 3) + 2;
       const connectedVaults = vaults
         .sort(() => Math.random() - 0.5)
         .slice(0, numVaultConnections);
-      
+
       connectedVaults.forEach(vault => {
         links.push({
           source: relay.id,
@@ -140,24 +146,84 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
       });
     });
-    
-    const data = { nodes, links };
-    
+
+    const nodeLookup = new Map();
+    nodes.forEach((node, index) => {
+      node.__pulsePhase = (index / nodes.length) * Math.PI * 2;
+      nodeLookup.set(node.id, node);
+    });
+
+    const assignLayerPositions = () => {
+      const horizontalSpacing = Math.min(container.clientWidth / 6, 160);
+      const layerConfig = {
+        app: { nodes: apps, y: -160 },
+        relay: { nodes: relays, y: 0 },
+        vault: { nodes: vaults, y: 160 }
+      };
+
+      Object.values(layerConfig).forEach(({ nodes: layerNodes, y }) => {
+        const startX = -((layerNodes.length - 1) / 2) * horizontalSpacing;
+        layerNodes.forEach((node, layerIndex) => {
+          node.fx = startX + layerIndex * horizontalSpacing;
+          node.fy = y;
+          node.x = node.fx;
+          node.y = node.fy;
+        });
+      });
+    };
+
+    assignLayerPositions();
+
+    const resolveNode = (maybeNode) => {
+      if (typeof maybeNode === 'object' && maybeNode !== null) {
+        return maybeNode;
+      }
+      return nodeLookup.get(maybeNode);
+    };
+
     const Graph = ForceGraph()(container)
-      .graphData(data)
+      .graphData({ nodes, links })
       .nodeLabel('label')
-      .nodeColor(node => {
-        if (node.type === 'vault') return '#0dd280';
-        if (node.type === 'app') return '#2d7dff';
-        if (node.type === 'relay') return '#f5b400';
-        return '#666';
+      .nodeCanvasObjectMode(() => 'replace')
+      .nodeCanvasObject((node, ctx) => {
+        const color = typeColors[node.type] || '#666';
+        const baseRadius = 8;
+        const time = (typeof performance !== 'undefined' && performance.now)
+          ? performance.now()
+          : Date.now();
+        const pulse = (Math.sin(time / 600 + node.__pulsePhase) + 1) / 2;
+        const radius = baseRadius + pulse * 3;
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius + 3, 0, Math.PI * 2, false);
+        ctx.fillStyle = `${color}22`;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = color;
+        ctx.fill();
       })
-      .nodeRelSize(6)
+      .linkDirectionalParticles(3)
+      .linkDirectionalParticleWidth(3)
+      .linkDirectionalParticleSpeed(() => 0.012)
+      .linkDirectionalParticleColor(link => {
+        const sourceNode = resolveNode(link.source);
+        return typeColors[sourceNode?.type] || '#ffffff';
+      })
+      .linkDirectionalArrowLength(6)
+      .linkDirectionalArrowRelPos(1)
       .linkColor(() => 'rgba(255, 255, 255, 0.15)')
       .linkWidth(2)
       .backgroundColor('#05070a')
       .width(container.clientWidth)
       .height(500);
+
+    window.addEventListener('resize', () => {
+      assignLayerPositions();
+      Graph.width(container.clientWidth);
+      Graph.d3ReheatSimulation();
+    });
   }
 </script>
 
@@ -188,12 +254,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
 
   #graph-container {
+    position: relative;
     width: 100%;
     height: 500px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--color-surface-void);
     border: 1px solid var(--color-border-subtle);
+  }
+
+  #graph-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(45, 125, 255, 0.12) 0%,
+      rgba(45, 125, 255, 0.08) 32%,
+      rgba(245, 180, 0, 0.12) 33%,
+      rgba(245, 180, 0, 0.08) 65%,
+      rgba(13, 210, 128, 0.12) 66%,
+      rgba(13, 210, 128, 0.08) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #graph-container canvas {
+    position: relative;
+    z-index: 1;
   }
 
   .graph-legend {
