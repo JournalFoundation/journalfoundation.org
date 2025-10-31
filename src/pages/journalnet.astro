@@ -82,42 +82,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   const container = document.getElementById('graph-container');
   if (container) {
-    
+
+    const layerConfig = {
+      app: { order: 0, color: '#2d7dff' },
+      relay: { order: 1, color: '#f5b400' },
+      vault: { order: 2, color: '#0dd280' }
+    };
+
     // Generate network data
     const numVaults = 8;
     const numApps = 5;
     const numRelays = 3;
-    
+
     const vaults = Array.from({length: numVaults}, (_, i) => ({
       id: `vault-${i}`,
       type: 'vault',
       label: `Vault ${i + 1}`
     }));
-    
+
     const apps = Array.from({length: numApps}, (_, i) => ({
       id: `app-${i}`,
       type: 'app',
       label: `App ${i + 1}`
     }));
-    
+
     const relays = Array.from({length: numRelays}, (_, i) => ({
       id: `relay-${i}`,
       type: 'relay',
       label: `Relay ${i + 1}`
     }));
-    
-    const nodes = [...vaults, ...apps, ...relays];
-    
+
+    const nodes = [...apps, ...relays, ...vaults];
+
     // Create connections: apps -> relays -> vaults
     const links = [];
-    
+
     apps.forEach(app => {
-      // Each app connects to 1-2 relays
-      const numRelayConnections = Math.floor(Math.random() * 2) + 1;
       const connectedRelays = relays
-        .sort(() => Math.random() - 0.5)
-        .slice(0, numRelayConnections);
-      
+        .map(relay => ({ relay, weight: Math.random() }))
+        .sort((a, b) => a.weight - b.weight)
+        .slice(0, 2)
+        .map(entry => entry.relay);
+
       connectedRelays.forEach(relay => {
         links.push({
           source: app.id,
@@ -125,14 +131,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
       });
     });
-    
+
     relays.forEach(relay => {
-      // Each relay connects to 2-4 vaults
-      const numVaultConnections = Math.floor(Math.random() * 3) + 2;
       const connectedVaults = vaults
-        .sort(() => Math.random() - 0.5)
-        .slice(0, numVaultConnections);
-      
+        .map(vault => ({ vault, weight: Math.random() }))
+        .sort((a, b) => a.weight - b.weight)
+        .slice(0, 4)
+        .map(entry => entry.vault);
+
       connectedVaults.forEach(vault => {
         links.push({
           source: relay.id,
@@ -140,24 +146,102 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
       });
     });
-    
-    const data = { nodes, links };
-    
+
+    const layerSpacing = 160;
+    const horizontalSpacing = 130;
+
+    const typeMeta = nodes.reduce((acc, node) => {
+      const meta = acc[node.type] ?? { count: 0 };
+      meta.count += 1;
+      acc[node.type] = meta;
+      return acc;
+    }, {});
+
+    Object.keys(typeMeta).forEach(type => {
+      const meta = typeMeta[type];
+      meta.midpoint = (meta.count - 1) / 2;
+      meta.index = 0;
+    });
+
+    const positionedNodes = nodes.map(node => {
+      const meta = typeMeta[node.type];
+      const offsetIndex = meta.index++;
+
+      const fx = (offsetIndex - meta.midpoint) * horizontalSpacing;
+      const fy = (layerConfig[node.type].order - 1) * layerSpacing;
+
+      return {
+        ...node,
+        fx,
+        fy,
+        x: fx,
+        y: fy
+      };
+    });
+
+    const data = { nodes: positionedNodes, links };
+
     const Graph = ForceGraph()(container)
       .graphData(data)
       .nodeLabel('label')
-      .nodeColor(node => {
-        if (node.type === 'vault') return '#0dd280';
-        if (node.type === 'app') return '#2d7dff';
-        if (node.type === 'relay') return '#f5b400';
-        return '#666';
-      })
       .nodeRelSize(6)
-      .linkColor(() => 'rgba(255, 255, 255, 0.15)')
-      .linkWidth(2)
       .backgroundColor('#05070a')
+      .linkColor(() => 'rgba(255, 255, 255, 0.2)')
+      .linkWidth(1.5)
+      .linkDirectionalArrowLength(3)
+      .linkDirectionalArrowRelPos(0.98)
+      .linkDirectionalParticles(4)
+      .linkDirectionalParticleWidth(() => 4)
+      .linkDirectionalParticleSpeed(() => 0.004)
       .width(container.clientWidth)
       .height(500);
+
+    const getNodeColor = node => layerConfig[node.type]?.color ?? '#666';
+
+    Graph.linkDirectionalParticleColor(link => {
+      const sourceNode = typeof link.source === 'object'
+        ? link.source
+        : positionedNodes.find(node => node.id === link.source);
+      return getNodeColor(sourceNode ?? {});
+    });
+
+    Graph.nodeCanvasObject((node, ctx, globalScale) => {
+      const baseSize = 10;
+      const pulse = (Date.now() % 2000) / 2000;
+      const radius = baseSize / Math.sqrt(globalScale);
+      const glowRadius = radius + (Math.sin(pulse * Math.PI * 2) + 1) * 4;
+
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+
+      const gradient = ctx.createRadialGradient(node.x, node.y, radius * 0.4, node.x, node.y, glowRadius);
+      const color = getNodeColor(node);
+      gradient.addColorStop(0, color);
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, glowRadius, 0, 2 * Math.PI, false);
+      ctx.fill();
+
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
+      ctx.fill();
+      ctx.restore();
+    });
+
+    Graph.nodePointerAreaPaint((node, color, ctx) => {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, 14, 0, 2 * Math.PI, false);
+      ctx.fill();
+    });
+
+    Graph.onEngineStop(() => {
+      Graph.zoomToFit(400, 90);
+    });
   }
 </script>
 
@@ -188,12 +272,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
 
   #graph-container {
+    position: relative;
     width: 100%;
     height: 500px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--color-surface-void);
     border: 1px solid var(--color-border-subtle);
+  }
+
+  #graph-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(45, 125, 255, 0.08) 0%,
+        rgba(45, 125, 255, 0.08) 33%,
+        rgba(245, 180, 0, 0.08) 33%,
+        rgba(245, 180, 0, 0.08) 66%,
+        rgba(13, 210, 128, 0.08) 66%,
+        rgba(13, 210, 128, 0.08) 100%
+      );
+    mix-blend-mode: screen;
+    opacity: 0.4;
+    pointer-events: none;
   }
 
   .graph-legend {
