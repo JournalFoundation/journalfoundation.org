@@ -28,7 +28,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <span class="dot app"></span> Apps (request capabilities)
           </span>
           <span class="legend-item">
-            <span class="dot relay"></span> Blind relays (metadata protection)
+            <span class="dot cipherlot"></span> Cipherlots (metadata protection)
           </span>
         </div>
       </div>
@@ -84,71 +84,64 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   if (container) {
     
     // Generate network data
-    const numVaults = 8;
-    const numApps = 5;
-    const numRelays = 3;
-    
+    const numVaults = 10;
+    const numApps = 6;
+    const numCipherlots = 6;
+
     const vaults = Array.from({length: numVaults}, (_, i) => ({
       id: `vault-${i}`,
       type: 'vault',
       label: `Vault ${i + 1}`
     }));
-    
+
     const apps = Array.from({length: numApps}, (_, i) => ({
       id: `app-${i}`,
       type: 'app',
       label: `App ${i + 1}`
     }));
-    
-    const relays = Array.from({length: numRelays}, (_, i) => ({
-      id: `relay-${i}`,
-      type: 'relay',
-      label: `Relay ${i + 1}`
+
+    const cipherlots = Array.from({length: numCipherlots}, (_, i) => ({
+      id: `cipherlot-${i}`,
+      type: 'cipherlot',
+      label: `Cipherlot ${i + 1}`
     }));
-    
-    const nodes = [...apps, ...relays, ...vaults];
 
-    // Arrange nodes into visual layers (apps -> relays -> vaults)
-    const layerSpacing = 170;
-    const horizontalSpacing = 140;
+    const nodes = [...apps, ...cipherlots, ...vaults];
 
-    const positionLayer = (layerNodes, layerIndex) => {
-      const offset = (layerNodes.length - 1) / 2;
-      layerNodes.forEach((node, index) => {
-        node.fx = (index - offset) * horizontalSpacing;
-        node.fy = (layerIndex - 1) * layerSpacing;
-      });
-    };
+    // Organic relationship map between vaults, cipherlots, and apps
+    const cipherlotRelationships = [
+      { id: 'cipherlot-0', apps: [0, 1, 3], vaults: [0, 1, 4] },
+      { id: 'cipherlot-1', apps: [1, 2, 4], vaults: [2, 5] },
+      { id: 'cipherlot-2', apps: [0, 2, 5], vaults: [1, 3, 6, 7] },
+      { id: 'cipherlot-3', apps: [3], vaults: [3, 8] },
+      { id: 'cipherlot-4', apps: [4, 5], vaults: [4, 6, 8] },
+      { id: 'cipherlot-5', apps: [2, 5], vaults: [] }
+    ];
 
-    positionLayer(apps, 0);
-    positionLayer(relays, 1);
-    positionLayer(vaults, 2);
-
-    // Deterministic connections: apps -> relays -> vaults to highlight the flow
-    const links = [];
-
-    apps.forEach((app, index) => {
-      const relay = relays[index % relays.length];
-      links.push({ source: app.id, target: relay.id });
-    });
-
-    relays.forEach((relay, index) => {
-      const firstVaultIndex = (index * 2) % vaults.length;
-      const connectedVaults = [
-        vaults[firstVaultIndex],
-        vaults[(firstVaultIndex + 1) % vaults.length]
-      ];
-
-      connectedVaults.forEach(vault => {
-        links.push({ source: relay.id, target: vault.id });
-      });
-    });
+    const links = cipherlotRelationships.flatMap(({ id, apps: connectedApps, vaults: connectedVaults }) => [
+      ...connectedApps.map(appIndex => ({
+        source: `app-${appIndex}`,
+        target: id
+      })),
+      ...connectedVaults.map(vaultIndex => ({
+        source: id,
+        target: `vault-${vaultIndex}`
+      }))
+    ]);
 
     const data = { nodes, links };
 
+    const connectionCounts = links.reduce((acc, link) => {
+      const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+      const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+      acc[sourceId] = (acc[sourceId] || 0) + 1;
+      acc[targetId] = (acc[targetId] || 0) + 1;
+      return acc;
+    }, {});
+
     const layerColors = {
       app: '#2d7dff',
-      relay: '#f5b400',
+      cipherlot: '#f5b400',
       vault: '#0dd280'
     };
 
@@ -160,9 +153,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       .nodeLabel('label')
       .backgroundColor('#05070a')
       .width(container.clientWidth)
-      .height(500)
+      .height(520)
       .nodeCanvasObject((node, ctx) => {
-        const radius = 12;
+        const baseRadius = 9;
+        const connections = connectionCounts[node.id] || 0;
+        const radius = baseRadius + Math.min(connections, 5);
         const pulse = (Math.sin(Date.now() / 400) + 1) / 2; // 0 -> 1
         const glowRadius = radius + pulse * 6;
 
@@ -170,6 +165,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         ctx.arc(node.x, node.y, glowRadius, 0, 2 * Math.PI, false);
         ctx.fillStyle = `${layerColors[node.type]}22`;
         ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius + 3, 0, 2 * Math.PI, false);
+        ctx.strokeStyle = `${layerColors[node.type]}55`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
 
         ctx.beginPath();
         ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
@@ -181,30 +182,73 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         const type = nodeTypeLookup[sourceId] || 'app';
         return `${layerColors[type]}33`;
       })
-      .linkWidth(2)
-      .linkDirectionalParticles(3)
-      .linkDirectionalParticleWidth(3)
-      .linkDirectionalParticleSpeed(() => 0.012)
-      .cooldownTicks(0);
+      .linkWidth(link => {
+        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+        const type = nodeTypeLookup[targetId] || 'vault';
+        return type === 'vault' ? 2.4 : 1.6;
+      })
+      .linkCurvature(0.35)
+      .linkDirectionalParticles(4)
+      .linkDirectionalParticleWidth(2.5)
+      .linkDirectionalParticleSpeed(link => {
+        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+        return nodeTypeLookup[sourceId] === 'app' ? 0.016 : 0.009;
+      })
+      .cooldownTicks(320);
+
+    const hashNumber = text => {
+      let hash = 0;
+      for (let i = 0; i < text.length; i += 1) {
+        hash = (hash << 5) - hash + text.charCodeAt(i);
+        hash |= 0;
+      }
+      return Math.abs(hash);
+    };
+
+    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+    nodes.forEach((node, index) => {
+      const radius = 120 + (hashNumber(node.id) % 80);
+      const angle = index * goldenAngle;
+      node.x = Math.cos(angle) * radius;
+      node.y = Math.sin(angle) * radius;
+    });
 
     const chargeForce = Graph.d3Force('charge');
     if (chargeForce) {
-      chargeForce.strength(-80);
+      chargeForce.strength(-160);
     }
 
-    // Ensure positions remain layered and respond to resize
+    const linkForce = Graph.d3Force('link');
+    if (linkForce) {
+      linkForce.distance(link => 110 + (hashNumber(`${link.source}-${link.target}`) % 90));
+      linkForce.strength(link => (nodeTypeLookup[typeof link.source === 'object' ? link.source.id : link.source] === 'app' ? 0.08 : 0.12));
+    }
+
+    let zoomedToFit = false;
     Graph.onEngineStop(() => {
-      nodes.forEach(node => {
-        node.fx = node.x;
-        node.fy = node.y;
-      });
+      if (!zoomedToFit) {
+        zoomedToFit = true;
+        Graph.zoomToFit(400, 100);
+      }
     });
+
+    let resizeRaf;
+    const queueZoomToFit = () => {
+      if (!zoomedToFit) return;
+      if (resizeRaf) {
+        cancelAnimationFrame(resizeRaf);
+      }
+      resizeRaf = requestAnimationFrame(() => {
+        Graph.zoomToFit(400, 100);
+      });
+    };
 
     if ('ResizeObserver' in window) {
       const resizeObserver = new ResizeObserver(entries => {
         for (const entry of entries) {
           const { width } = entry.contentRect;
           Graph.width(width);
+          queueZoomToFit();
         }
       });
 
@@ -212,6 +256,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     } else {
       window.addEventListener('resize', () => {
         Graph.width(container.clientWidth);
+        queueZoomToFit();
       });
     }
   }
@@ -245,7 +290,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   #graph-container {
     width: 100%;
-    height: 500px;
+    height: 520px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--color-surface-void);
@@ -282,7 +327,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     background: #2d7dff;
   }
 
-  .dot.relay {
+  .dot.cipherlot {
     background: #f5b400;
   }
 
