@@ -1,11 +1,21 @@
 ---
+import logoImage from '../content/press/journalfoundation.png';
+
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header" data-nav-state="closed">
   <div class="container site-header__inner">
     <a href="/" class="logo">
-      <span class="logo-sigil" aria-hidden="true">⚡</span>
+      <img
+        class="logo-image"
+        src={logoImage.src}
+        width={logoImage.width}
+        height={logoImage.height}
+        alt="Journal Foundation logo"
+        loading="eager"
+        decoding="async"
+      />
       <span class="logo-label">Journal Foundation</span>
     </a>
 
@@ -38,14 +48,8 @@ const currentPath = Astro.url.pathname;
           </a>
         </li>
         <li><a href="/journalnet" class:list={[{ active: currentPath === '/journalnet' }]}>JournalNet</a></li>
-        <li><a href="/stack" class:list={[{ active: currentPath === '/stack' }]}>Stack</a></li>
         <li><a href="/learn" class:list={[{ active: currentPath.startsWith('/learn') }]}>Learn</a></li>
-        <li><a href="/specs" class:list={[{ active: currentPath.startsWith('/specs') }]}>Specs</a></li>
-        <li><a href="/docs" class:list={[{ active: currentPath.startsWith('/docs') }]}>Docs</a></li>
         <li><a href="/build" class:list={[{ active: currentPath === '/build' }]}>Build</a></li>
-        <li><a href="/blog" class:list={[{ active: currentPath.startsWith('/blog') }]}>Blog</a></li>
-        <li><a href="/podcast" class:list={[{ active: currentPath.startsWith('/podcast') }]}>Podcast</a></li>
-        <li><a href="/governance" class:list={[{ active: currentPath === '/governance' }]}>Governance</a></li>
         <li><a href="/press" class:list={[{ active: currentPath === '/press' }]}>Press</a></li>
       </ul>
     </nav>
@@ -178,16 +182,13 @@ const currentPath = Astro.url.pathname;
     color: var(--color-text-primary);
   }
 
-  .logo-sigil {
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--color-accent-emerald), var(--color-accent-azure));
+  .logo-image {
+    display: block;
+    width: clamp(40px, 4vw, 52px);
+    height: auto;
     border-radius: var(--radius-md);
-    color: var(--color-text-inverted);
-    font-size: 1.1rem;
     box-shadow: var(--shadow-sm);
+    background-color: var(--color-surface); /* ensure transparent edges blend well */
   }
 
   .menu-toggle {
