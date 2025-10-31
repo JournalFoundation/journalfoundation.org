@@ -1,11 +1,21 @@
 ---
+import logoImage from '../content/press/journalfoundation.png';
+
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header" data-nav-state="closed">
   <div class="container site-header__inner">
     <a href="/" class="logo">
-      <span class="logo-sigil" aria-hidden="true">⚡</span>
+      <img
+        class="logo-image"
+        src={logoImage.src}
+        width={logoImage.width}
+        height={logoImage.height}
+        alt="Journal Foundation logo"
+        loading="eager"
+        decoding="async"
+      />
       <span class="logo-label">Journal Foundation</span>
     </a>
 
@@ -172,16 +182,13 @@ const currentPath = Astro.url.pathname;
     color: var(--color-text-primary);
   }
 
-  .logo-sigil {
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--color-accent-emerald), var(--color-accent-azure));
+  .logo-image {
+    display: block;
+    width: clamp(40px, 4vw, 52px);
+    height: auto;
     border-radius: var(--radius-md);
-    color: var(--color-text-inverted);
-    font-size: 1.1rem;
     box-shadow: var(--shadow-sm);
+    background-color: var(--color-surface); /* ensure transparent edges blend well */
   }
 
   .menu-toggle {
