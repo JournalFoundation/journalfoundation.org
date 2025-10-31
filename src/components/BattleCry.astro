@@ -1,37 +1,90 @@
 <div class="battle-cry-section">
-  <h1 class="battle-cry">PRIVACY. SECURITY. SOVEREIGNTY.</h1>
-  <p class="tagline">We're building the infrastructure for a post-surveillance web.</p>
-  <p class="tagline-secondary">Decentralization isn't enough. We have to anonymize.</p>
-  <slot />
+  <div class="battle-cry-inner">
+    <h1 class="battle-cry">PRIVACY. SECURITY. SOVEREIGNTY.</h1>
+    <p class="tagline">We're building the infrastructure for a post-surveillance web.</p>
+    <p class="tagline-secondary">Decentralization isn't enough. We have to anonymize.</p>
+    <div class="battle-cry-slot">
+      <slot />
+    </div>
+  </div>
 </div>
 
 <style>
   .battle-cry-section {
-    text-align: center;
-    padding: var(--space-3xl) 0;
+    padding: var(--space-4xl) 0 var(--space-3xl);
   }
-  
+
+  .battle-cry-inner {
+    width: min(1100px, 100% - 2 * var(--space-md));
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .battle-cry {
+    width: 100%;
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 900;
     background: linear-gradient(135deg, var(--encrypted-green), var(--electric-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: var(--space-md);
+    margin: 0;
     letter-spacing: -0.03em;
   }
-  
+
+  .tagline,
+  .tagline-secondary {
+    margin: 0;
+    width: 100%;
+  }
+
   .tagline {
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     color: var(--text-secondary);
-    margin-bottom: var(--space-xl);
   }
-  
+
   .tagline-secondary {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: var(--urgent-amber);
-    margin-top: var(--space-sm);
     font-weight: 600;
+  }
+
+  .battle-cry-slot {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    width: 100%;
+  }
+
+  .battle-cry-slot :global(.hero-quote) {
+    margin: 0;
+  }
+
+  .battle-cry-slot :global(.cta-group) {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 720px) {
+    .battle-cry-inner {
+      align-items: center;
+      text-align: center;
+    }
+
+    .battle-cry {
+      text-align: center;
+    }
+
+    .tagline,
+    .tagline-secondary {
+      text-align: center;
+    }
+
+    .battle-cry-slot :global(.cta-group) {
+      justify-content: center;
+    }
   }
 </style>
