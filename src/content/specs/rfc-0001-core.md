@@ -47,7 +47,7 @@ Cipherlots defends against:
 1. **Platform surveillance** (Facebook, Google model)
 2. **Federation surveillance** (Mastodon admin model)  
 3. **Metadata correlation** (NSA bulk collection model)
-4. **Bulk seizure + quantum decryption** (China problem)
+4. **Bulk seizure + quantum decryption** (harvest-now, decrypt-later threat)
 5. **Traffic analysis** (Tor adversary model)
 
 Cipherlots does NOT defend against:
