@@ -43,7 +43,7 @@ We're not building apps. We're building the **infrastructure** that lets develop
 
 Three layers:
 1. **Vault** - encrypted storage
-2. **Cypherlot** - capability-based sharing
+2. **Cipherlot** - capability-based sharing
 3. **Apps** - built by independent developers
 
 [Learn about the protocol stack →](/stack)

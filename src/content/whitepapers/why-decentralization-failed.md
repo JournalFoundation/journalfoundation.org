@@ -13,7 +13,7 @@ The last decade of "decentralized social networks" failed not because of bad tec
 
 **Decentralization is necessary but not sufficient.**
 
-This paper demonstrates why metadata exposure in federated systems creates surveillance vectors as dangerous as centralized platforms, and how Cypherlots' anonymization architecture addresses these threats.
+This paper demonstrates why metadata exposure in federated systems creates surveillance vectors as dangerous as centralized platforms, and how Cipherlots' anonymization architecture addresses these threats.
 
 ## 1. The Decentralization Illusion
 
@@ -86,7 +86,7 @@ Prevent bulk download:
 - No global index of vaults
 - Out-of-band discovery only
 
-## 4. Comparison: Signal vs Mastodon vs Cypherlots
+## 4. Comparison: Signal vs Mastodon vs Cipherlots
 
 ### Signal
 - ✓ End-to-end encryption
@@ -102,7 +102,7 @@ Prevent bulk download:
 - ✗ All metadata exposed
 - ✗ Instance admin surveillance
 
-### Cypherlots
+### Cipherlots
 - ✓ End-to-end encryption
 - ✓ Metadata minimization (blind relays)
 - ✓ Decentralized hosting
@@ -119,7 +119,7 @@ The next generation of privacy infrastructure must:
 3. Decentralize control (unlike Signal)
 4. Prevent bulk seizure (unlike Mastodon)
 
-Cypherlots provides all four.
+Cipherlots provides all four.
 
 ---
 
@@ -129,7 +129,7 @@ Cypherlots provides all four.
 Journal Foundation addresses these failures through a three-layer protocol stack:
 
 **Layer 1: Vault** - Encrypted, graph-aware storage you control  
-**Layer 2: Cypherlot** - Capability-based sharing with metadata minimization  
+**Layer 2: Cipherlot** - Capability-based sharing with metadata minimization  
 **Layer 3: Apps** - Swappable clients built by independent developers
 
 This isn't just decentralization. It's anonymization.
