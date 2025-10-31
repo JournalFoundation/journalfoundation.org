@@ -6,17 +6,17 @@ author: "John Benac"
 tags: ["battle-cry", "foundation", "manifesto"]
 ---
 
-I get emotional when I repeat my battle cry. It's a hill for me to die on.
+I get emotional when I repeat the promise that keeps me building.
 
 **Privacy. Security. Sovereignty.**
 
-The world is being destroyed by Google, Facebook, TikTok, Uber. Not just harmed—**destroyed**. And I think I can save the goddamn world.
+The world we rely on is being reshaped by Google, Facebook, TikTok, Uber. Not just nudged—**reshaped**. And I believe we can guide that change toward something healthier.
 
 ## The Boa Constrictor
 
-Mark Zuckerberg and Elon Musk have their clutches in us collectively as Americans and humans. We're down bleeding on the mat as these two behemoths—Facebook and Twitter and Amazon and Google—tighten and tighten the screws.
+Mark Zuckerberg and Elon Musk wield outsized influence over how we connect and communicate. It can feel suffocating when platforms as large as Facebook, X, Amazon, and Google dictate the defaults for the rest of us.
 
-We're not breathing. We're just getting squeezed.
+We deserve room to breathe.
 
 All of our screens, all of the time, are giving us algorithmic manipulation. The top 10 on Netflix. The movies at theaters. The news feeds. Even the music I listen to. It's called the monoculture.
 
@@ -24,17 +24,17 @@ All of our screens, all of the time, are giving us algorithmic manipulation. The
 
 Right now it's a screen next to us. But soon it's a smiling face—your best friend—and every 10th sentence is an advertisement.
 
-The hypnotism by robots is coming, whether I do it or not.
+Predictive interfaces are already here, and more personable assistants are coming fast.
 
-If I don't create this slippery, swirly, free, radical way for us to have OUR robots—our FREE robots—then it's lights out for human free thought and diversity.
+If we don't create open, humane alternatives—tools that belong to the people who use them—we risk narrowing the space for independent thought and diverse communities.
 
-It's a new dark age.
+We can build a brighter digital future.
 
 ## The Solution
 
-When individuals have privacy, when they have data security, when they control their data—corporations can't touch us because they don't know us.
+When individuals have privacy, when they have data security, when they control their data—corporations no longer dictate the terms because they don't hold every insight about us.
 
-We can know ourselves. Not some simulacrum Facebook thinks we are. Not who Facebook presents people to us as. But who we actually are, on our own terms.
+We can understand ourselves. Not some simulacrum Facebook assembles. Not a profile curated by an algorithm. But who we are, on our own terms.
 
 **That is my battle cry.**
 ## What Journal Foundation Does

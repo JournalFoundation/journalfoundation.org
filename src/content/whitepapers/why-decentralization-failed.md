@@ -34,7 +34,7 @@ This paper demonstrates why metadata exposure in federated systems creates surve
 
 ## 2. The Metadata Problem
 
-> "We kill people based on metadata." — Former NSA Director Michael Hayden
+> Former NSA Director Michael Hayden has acknowledged that metadata analysis has informed life-and-death decisions—a stark reminder of what is at stake.
 
 ### 2.1 What Metadata Reveals
 
