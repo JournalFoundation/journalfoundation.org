@@ -28,13 +28,13 @@ The hypnotism by robots is coming, whether I do it or not.
 
 If I don't create this slippery, swirly, free, radical way for us to have OUR robots—our FREE robots—then it's lights out for human free thought and diversity.
 
-It's a new dark ages.
+It's a new dark age.
 
 ## The Solution
 
 When individuals have privacy, when they have data security, when they control their data—corporations can't touch us because they don't know us.
 
-We can know ourselves. Not some simulacrum Facebook thinks we are. Not who Facebook presents to us people are. But who we actually are, on our own terms.
+We can know ourselves. Not some simulacrum Facebook thinks we are. Not who Facebook presents people to us as. But who we actually are, on our own terms.
 
 **That is my battle cry.**
 ## What Journal Foundation Does
