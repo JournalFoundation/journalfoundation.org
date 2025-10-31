@@ -1,10 +1,10 @@
 ---
 rfc: 1
-title: "Cypherlot Core Protocol"
+title: "Cipherlot Core Protocol"
 status: "Draft"
 date: 2025-01-15
 authors: ["John Benac"]
-abstract: "This document specifies the core Cypherlot protocol, including encryption requirements, capability-based sharing, and discovery mechanisms."
+abstract: "This document specifies the core Cipherlot protocol, including encryption requirements, capability-based sharing, and discovery mechanisms."
 ---
 
 > **Status:** Draft  
@@ -16,7 +16,7 @@ This document is a Draft RFC and may be updated, replaced, or obsoleted by other
 
 ## Abstract
 
-A Cypherlot is a personal, encrypted data node that enables sovereignty over digital information through capability-based sharing and metadata minimization. This specification defines the core protocol requirements.
+A Cipherlot is a personal, encrypted data node that enables sovereignty over digital information through capability-based sharing and metadata minimization. This specification defines the core protocol requirements.
 
 ## 1. Introduction
 
@@ -32,7 +32,7 @@ Existing decentralized systems (Mastodon, Diaspora, ActivityPub) solve the centr
 - **Bulk seizure:** Encrypted data can be downloaded and stored for future decryption
 - **Quantum threat:** Post-quantum computers will retroactively decrypt today's traffic
 
-**Cypherlots provides anonymization, not just decentralization:**
+**Cipherlots provides anonymization, not just decentralization:**
 
 - **Metadata minimization:** Blind relays that can't see message contents or routing
 - **Traffic obfuscation:** OHTTP prevents correlation of communication patterns
@@ -42,7 +42,7 @@ Existing decentralized systems (Mastodon, Diaspora, ActivityPub) solve the centr
 
 ### 1.2 Threat Model
 
-Cypherlots defends against:
+Cipherlots defends against:
 
 1. **Platform surveillance** (Facebook, Google model)
 2. **Federation surveillance** (Mastodon admin model)  
@@ -50,7 +50,7 @@ Cypherlots defends against:
 4. **Bulk seizure + quantum decryption** (China problem)
 5. **Traffic analysis** (Tor adversary model)
 
-Cypherlots does NOT defend against:
+Cipherlots does NOT defend against:
 
 - Compromised end-user devices
 - Physical coercion with key disclosure
@@ -65,7 +65,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ### 2.1 Core Components
 
-A Cypherlot consists of:
+A Cipherlot consists of:
 
 - **Vault**: Encrypted storage backend
 - **Capability Manager**: Grant/revoke access tokens
@@ -97,7 +97,7 @@ capability := HMAC-SHA256(secret, scope || resource || exp || nonce)
 
 ### 4.1 Threat Model
 
-Cypherlots defend against:
+Cipherlots defend against:
 
 - Platform surveillance
 - Metadata correlation
@@ -106,7 +106,7 @@ Cypherlots defend against:
 
 ### 4.2 Limitations
 
-Cypherlots do NOT protect against:
+Cipherlots do NOT protect against:
 
 - Compromised client devices
 - Physical coercion with key disclosure

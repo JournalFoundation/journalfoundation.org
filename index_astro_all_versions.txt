@@ -35,7 +35,7 @@ import BattleCry from '../components/BattleCry.astro';
     
     <div class="cta-group">
       <a href="/docs/quickstart" class="cta cta-primary">
-        🛠️ Run a Cypherlot
+        🛠️ Run a Cipherlot
       </a>
       <a href="/about" class="cta cta-secondary">
         📢 Join the Movement
@@ -83,7 +83,7 @@ import BattleCry from '../components/BattleCry.astro';
         
         <div class="explainer-card">
           <div class="explainer-number">3</div>
-          <h3>The Cypherlots Difference</h3>
+          <h3>The Cipherlots Difference</h3>
           <p>Infrastructure for sovereignty, not another social network:</p>
           <ul>
             <li>Encrypted by default, not optional</li>
@@ -114,7 +114,7 @@ import BattleCry from '../components/BattleCry.astro';
         <p><strong>If we don't create this free, radical way for humans to have THEIR OWN robots—then it's lights out for human free thought and diversity. It's a new dark ages.</strong></p>
       </div>
       
-      <p class="urgency-conclusion">That's why Cypherlots exist. That's why this foundation exists.</p>
+      <p class="urgency-conclusion">That's why Cipherlots exist. That's why this foundation exists.</p>
     </div>
   </section>
   
@@ -129,11 +129,11 @@ import BattleCry from '../components/BattleCry.astro';
       <div class="explainer-grid">
         <div class="explainer-card">
           <h3>🛠️ For Developers</h3>
-          <p>Run a Cypherlot in under 60 seconds:</p>
-          <pre><code>docker run -d --name cypherlot \
+          <p>Run a Cipherlot in under 60 seconds:</p>
+          <pre><code>docker run -d --name cipherlot \
   -p 443:443 \
-  -v $HOME/cypherlot:/data \
-  ghcr.io/journalfoundation/cypherlot:0.1</code></pre>
+  -v $HOME/cipherlot:/data \
+  ghcr.io/journalfoundation/cipherlot:0.1</code></pre>
           <p class="card-link"><a href="/docs/quickstart">View full documentation →</a></p>
         </div>
         
@@ -164,16 +164,16 @@ import BattleCry from '../components/BattleCry.astro';
     </div>
   </section>
   
-  <!-- Cypherlots Explainer -->
-  <section class="cypherlots-section">
+  <!-- Cipherlots Explainer -->
+  <section class="cipherlots-section">
     <div class="container">
       <div class="section-header">
-        <h2>What Is a Cypherlot?</h2>
+        <h2>What Is a Cipherlot?</h2>
         <p class="subtitle">A personal, encrypted data node that lets you share exactly what you intend—with no platform in the middle.</p>
       </div>
       
-      <div class="cypherlots-content">
-        <p class="intro">A <strong>Cypherlot</strong> is a privacy primitive for people, not platforms:</p>
+      <div class="cipherlots-content">
+        <p class="intro">A <strong>Cipherlot</strong> is a privacy primitive for people, not platforms:</p>
         
         <ul class="feature-list">
           <li>
@@ -213,7 +213,7 @@ import BattleCry from '../components/BattleCry.astro';
         </blockquote>
         
         <div class="cta-group" style="justify-content: center; margin-top: var(--space-xl);">
-          <a href="/cypherlots" class="cta cta-secondary">Learn More About Cypherlots →</a>
+          <a href="/cipherlots" class="cta cta-secondary">Learn More About Cipherlots →</a>
         </div>
       </div>
     </div>
@@ -439,8 +439,8 @@ import BattleCry from '../components/BattleCry.astro';
     margin-top: var(--space-lg);
   }
   
-  /* Cypherlots Section */
-  .cypherlots-content {
+  /* Cipherlots Section */
+  .cipherlots-content {
     max-width: 800px;
     margin: 0 auto;
   }
@@ -529,7 +529,7 @@ import BattleCry from '../components/BattleCry.astro';
     
     <div class="cta-group">
       <a href="/docs/quickstart" class="btn btn--primary">
-        🛠️ Run a Cypherlot
+        🛠️ Run a Cipherlot
       </a>
       <a href="/about" class="btn btn--secondary">
         📢 Join the Movement
@@ -577,7 +577,7 @@ import BattleCry from '../components/BattleCry.astro';
         
         <div class="explainer-card card">
           <div class="explainer-number">3</div>
-          <h3>The Cypherlots Difference</h3>
+          <h3>The Cipherlots Difference</h3>
           <p>Infrastructure for sovereignty, not another social network:</p>
           <ul>
             <li>Encrypted by default, not optional</li>
@@ -608,7 +608,7 @@ import BattleCry from '../components/BattleCry.astro';
         <p><strong>If we don't create this free, radical way for humans to have THEIR OWN robots—then it's lights out for human free thought and diversity. It's a new dark ages.</strong></p>
       </div>
       
-      <p class="urgency-conclusion">That's why Cypherlots exist. That's why this foundation exists.</p>
+      <p class="urgency-conclusion">That's why Cipherlots exist. That's why this foundation exists.</p>
     </div>
   </section>
   
@@ -623,11 +623,11 @@ import BattleCry from '../components/BattleCry.astro';
       <div class="explainer-grid">
         <div class="explainer-card card">
           <h3>🛠️ For Developers</h3>
-          <p>Run a Cypherlot in under 60 seconds:</p>
-          <pre><code>docker run -d --name cypherlot \
+          <p>Run a Cipherlot in under 60 seconds:</p>
+          <pre><code>docker run -d --name cipherlot \
   -p 443:443 \
-  -v $HOME/cypherlot:/data \
-  ghcr.io/journalfoundation/cypherlot:0.1</code></pre>
+  -v $HOME/cipherlot:/data \
+  ghcr.io/journalfoundation/cipherlot:0.1</code></pre>
           <p class="card-link"><a href="/docs/quickstart">View full documentation →</a></p>
         </div>
         
@@ -658,16 +658,16 @@ import BattleCry from '../components/BattleCry.astro';
     </div>
   </section>
   
-  <!-- Cypherlots Explainer -->
-  <section class="cypherlots-section">
+  <!-- Cipherlots Explainer -->
+  <section class="cipherlots-section">
     <div class="container">
       <div class="section-header">
-        <h2>What Is a Cypherlot?</h2>
+        <h2>What Is a Cipherlot?</h2>
         <p class="subtitle">A personal, encrypted data node that lets you share exactly what you intend—with no platform in the middle.</p>
       </div>
       
-      <div class="cypherlots-content">
-        <p class="intro">A <strong>Cypherlot</strong> is a privacy primitive for people, not platforms:</p>
+      <div class="cipherlots-content">
+        <p class="intro">A <strong>Cipherlot</strong> is a privacy primitive for people, not platforms:</p>
         
         <ul class="feature-list">
           <li>
@@ -707,7 +707,7 @@ import BattleCry from '../components/BattleCry.astro';
         </blockquote>
         
         <div class="cta-group" style="justify-content: center; margin-top: var(--space-xl);">
-          <a href="/cypherlots" class="btn btn--secondary">Learn More About Cypherlots →</a>
+          <a href="/cipherlots" class="btn btn--secondary">Learn More About Cipherlots →</a>
         </div>
       </div>
     </div>
@@ -888,8 +888,8 @@ import BattleCry from '../components/BattleCry.astro';
     margin-top: var(--space-lg);
   }
   
-  /* Cypherlots Section */
-  .cypherlots-content {
+  /* Cipherlots Section */
+  .cipherlots-content {
     max-width: 800px;
     margin: 0 auto;
   }
@@ -1026,7 +1026,7 @@ import BattleCry from '../components/BattleCry.astro';
         
         <div class="explainer-card card">
           <div class="explainer-number">3</div>
-          <h3>The Cypherlots Difference</h3>
+          <h3>The Cipherlots Difference</h3>
           <p>Infrastructure for sovereignty, not another social network:</p>
           <ul>
             <li>Encrypted by default, not optional</li>
@@ -1057,7 +1057,7 @@ import BattleCry from '../components/BattleCry.astro';
         <p><strong>If we don't create this free, radical way for humans to have THEIR OWN robots—then it's lights out for human free thought and diversity. It's a new dark ages.</strong></p>
       </div>
       
-      <p class="urgency-conclusion">That's why Cypherlots exist. That's why this foundation exists.</p>
+      <p class="urgency-conclusion">That's why Cipherlots exist. That's why this foundation exists.</p>
     </div>
   </section>
   
@@ -1072,11 +1072,11 @@ import BattleCry from '../components/BattleCry.astro';
       <div class="explainer-grid">
         <div class="explainer-card card">
           <h3>🛠️ For Developers</h3>
-          <p>Prototype with Cypherlots in under 60 seconds:</p>
-          <pre><code>docker run -d --name cypherlot \
+          <p>Prototype with Cipherlots in under 60 seconds:</p>
+          <pre><code>docker run -d --name cipherlot \
   -p 443:443 \
-  -v $HOME/cypherlot:/data \
-  ghcr.io/journalfoundation/cypherlot:0.1</code></pre>
+  -v $HOME/cipherlot:/data \
+  ghcr.io/journalfoundation/cipherlot:0.1</code></pre>
           <p class="card-link"><a href="/docs/quickstart">View full documentation →</a></p>
         </div>
         
@@ -1107,16 +1107,16 @@ import BattleCry from '../components/BattleCry.astro';
     </div>
   </section>
   
-  <!-- Cypherlots Explainer -->
-  <section class="cypherlots-section">
+  <!-- Cipherlots Explainer -->
+  <section class="cipherlots-section">
     <div class="container">
       <div class="section-header">
-        <h2>What Is a Cypherlot?</h2>
+        <h2>What Is a Cipherlot?</h2>
         <p class="subtitle">A personal, encrypted data node that lets you share exactly what you intend—with no platform in the middle.</p>
       </div>
       
-      <div class="cypherlots-content">
-        <p class="intro">A <strong>Cypherlot</strong> is a privacy primitive for people, not platforms:</p>
+      <div class="cipherlots-content">
+        <p class="intro">A <strong>Cipherlot</strong> is a privacy primitive for people, not platforms:</p>
         
         <ul class="feature-list">
           <li>
@@ -1156,7 +1156,7 @@ import BattleCry from '../components/BattleCry.astro';
         </blockquote>
         
         <div class="cta-group" style="justify-content: center; margin-top: var(--space-xl);">
-          <a href="/cypherlots" class="btn btn--secondary">Learn More About Cypherlots →</a>
+          <a href="/cipherlots" class="btn btn--secondary">Learn More About Cipherlots →</a>
         </div>
       </div>
     </div>
@@ -1337,8 +1337,8 @@ import BattleCry from '../components/BattleCry.astro';
     margin-top: var(--space-lg);
   }
   
-  /* Cypherlots Section */
-  .cypherlots-content {
+  /* Cipherlots Section */
+  .cipherlots-content {
     max-width: 800px;
     margin: 0 auto;
   }
@@ -1524,7 +1524,7 @@ import BattleCry from '../components/BattleCry.astro';
           <p>Encrypted storage you control</p>
         </div>
         <div class="stack-layer">
-          <h3>🔒 Layer 2: Cypherlot</h3>
+          <h3>🔒 Layer 2: Cipherlot</h3>
           <p>Capability-based sharing</p>
         </div>
         <div class="stack-layer">
@@ -1972,7 +1972,7 @@ import BattleCry from '../components/BattleCry.astro';
           <p>Encrypted storage you control</p>
         </div>
         <div class="stack-layer">
-          <h3>🔒 Layer 2: Cypherlot</h3>
+          <h3>🔒 Layer 2: Cipherlot</h3>
           <p>Capability-based sharing</p>
         </div>
         <div class="stack-layer">
@@ -2391,7 +2391,7 @@ import BattleCry from '../components/BattleCry.astro';
           <p>Encrypted storage you control</p>
         </div>
         <div class="stack-layer">
-          <h3>🔒 Layer 2: Cypherlot</h3>
+          <h3>🔒 Layer 2: Cipherlot</h3>
           <p>Capability-based sharing</p>
         </div>
         <div class="stack-layer">
@@ -2740,7 +2740,7 @@ import BattleCry from '../components/BattleCry.astro';
           <p>Encrypted storage you control</p>
         </div>
         <div class="stack-layer">
-          <h3>🔒 Layer 2: Cypherlot</h3>
+          <h3>🔒 Layer 2: Cipherlot</h3>
           <p>Capability-based sharing</p>
         </div>
         <div class="stack-layer">
