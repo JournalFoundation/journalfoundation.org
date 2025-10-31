@@ -106,58 +106,114 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       label: `Relay ${i + 1}`
     }));
     
-    const nodes = [...vaults, ...apps, ...relays];
-    
-    // Create connections: apps -> relays -> vaults
+    const nodes = [...apps, ...relays, ...vaults];
+
+    // Arrange nodes into visual layers (apps -> relays -> vaults)
+    const layerSpacing = 170;
+    const horizontalSpacing = 140;
+
+    const positionLayer = (layerNodes, layerIndex) => {
+      const offset = (layerNodes.length - 1) / 2;
+      layerNodes.forEach((node, index) => {
+        node.fx = (index - offset) * horizontalSpacing;
+        node.fy = (layerIndex - 1) * layerSpacing;
+      });
+    };
+
+    positionLayer(apps, 0);
+    positionLayer(relays, 1);
+    positionLayer(vaults, 2);
+
+    // Deterministic connections: apps -> relays -> vaults to highlight the flow
     const links = [];
-    
-    apps.forEach(app => {
-      // Each app connects to 1-2 relays
-      const numRelayConnections = Math.floor(Math.random() * 2) + 1;
-      const connectedRelays = relays
-        .sort(() => Math.random() - 0.5)
-        .slice(0, numRelayConnections);
-      
-      connectedRelays.forEach(relay => {
-        links.push({
-          source: app.id,
-          target: relay.id
-        });
-      });
+
+    apps.forEach((app, index) => {
+      const relay = relays[index % relays.length];
+      links.push({ source: app.id, target: relay.id });
     });
-    
-    relays.forEach(relay => {
-      // Each relay connects to 2-4 vaults
-      const numVaultConnections = Math.floor(Math.random() * 3) + 2;
-      const connectedVaults = vaults
-        .sort(() => Math.random() - 0.5)
-        .slice(0, numVaultConnections);
-      
+
+    relays.forEach((relay, index) => {
+      const firstVaultIndex = (index * 2) % vaults.length;
+      const connectedVaults = [
+        vaults[firstVaultIndex],
+        vaults[(firstVaultIndex + 1) % vaults.length]
+      ];
+
       connectedVaults.forEach(vault => {
-        links.push({
-          source: relay.id,
-          target: vault.id
-        });
+        links.push({ source: relay.id, target: vault.id });
       });
     });
-    
+
     const data = { nodes, links };
-    
+
+    const layerColors = {
+      app: '#2d7dff',
+      relay: '#f5b400',
+      vault: '#0dd280'
+    };
+
+    const nodeTypeLookup = Object.fromEntries(nodes.map(node => [node.id, node.type]));
+
     const Graph = ForceGraph()(container)
       .graphData(data)
+      .nodeId('id')
       .nodeLabel('label')
-      .nodeColor(node => {
-        if (node.type === 'vault') return '#0dd280';
-        if (node.type === 'app') return '#2d7dff';
-        if (node.type === 'relay') return '#f5b400';
-        return '#666';
-      })
-      .nodeRelSize(6)
-      .linkColor(() => 'rgba(255, 255, 255, 0.15)')
-      .linkWidth(2)
       .backgroundColor('#05070a')
       .width(container.clientWidth)
-      .height(500);
+      .height(500)
+      .nodeCanvasObject((node, ctx) => {
+        const radius = 12;
+        const pulse = (Math.sin(Date.now() / 400) + 1) / 2; // 0 -> 1
+        const glowRadius = radius + pulse * 6;
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, glowRadius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = `${layerColors[node.type]}22`;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = layerColors[node.type];
+        ctx.fill();
+      })
+      .linkColor(link => {
+        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+        const type = nodeTypeLookup[sourceId] || 'app';
+        return `${layerColors[type]}33`;
+      })
+      .linkWidth(2)
+      .linkDirectionalParticles(3)
+      .linkDirectionalParticleWidth(3)
+      .linkDirectionalParticleSpeed(() => 0.012)
+      .cooldownTicks(0);
+
+    const chargeForce = Graph.d3Force('charge');
+    if (chargeForce) {
+      chargeForce.strength(-80);
+    }
+
+    // Ensure positions remain layered and respond to resize
+    Graph.onEngineStop(() => {
+      nodes.forEach(node => {
+        node.fx = node.x;
+        node.fy = node.y;
+      });
+    });
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(entries => {
+        for (const entry of entries) {
+          const { width } = entry.contentRect;
+          Graph.width(width);
+        }
+      });
+
+      resizeObserver.observe(container);
+    } else {
+      window.addEventListener('resize', () => {
+        Graph.width(container.clientWidth);
+      });
+    }
   }
 </script>
 
