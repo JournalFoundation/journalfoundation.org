@@ -10,6 +10,9 @@ export default defineConfig({
       wrap: true
     }
   },
+  redirects: {
+    '/mozfest': 'https://calendly.com/john-benac/30min'
+  },
   vite: {
     build: {
       cssCodeSplit: false
