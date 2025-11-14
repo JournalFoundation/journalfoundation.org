@@ -13,23 +13,55 @@ import BattleCry from '../components/BattleCry.astro';
       publishingPrinciples: 'https://journalfoundation.org/privacy'
     })}
   </script>
-  <div class="journalnet-banner">
-    <p>
-      <strong>JournalNet</strong>: Privacy-first communications network from Journal Foundation.
-      <a href="/journalnet" class="journalnet-link">Meet the product →</a>
-      <span aria-hidden="true" class="journalnet-separator">•</span>
-      <a href="/docs" class="journalnet-link">Start building with JournalNet →</a>
-    </p>
+  <div class="journalnet-banner" role="complementary">
+    <p class="journalnet-eyebrow">Featured protocol</p>
+    <div class="journalnet-content">
+      <div class="journalnet-copy">
+        <strong>JournalNet</strong>
+        <span class="journalnet-tagline">Our privacy-first communications network.</span>
+      </div>
+      <div class="journalnet-actions">
+        <a href="/journalnet" class="journalnet-link">Meet the product →</a>
+        <a href="/docs" class="journalnet-link">Start building →</a>
+      </div>
+    </div>
   </div>
 
   <!-- Hero -->
   <BattleCry>
     <div class="hero-quote">
-      <p><strong>JournalNet is our flagship encrypted data layer</strong>—protocols and tooling so people and organizations can steward sensitive personal data without ceding custody. <a href="/journalnet">Learn about JournalNet →</a></p>
-      <p><strong>Some data must remain more private than the rest</strong>; ISO 29100 calls it sensitive PII, and today it flows through brokers, platforms, and AI systems that shape us without consent.</p>
-      <p>Software is dissolving into intent. Bespoke, disposable apps will sit atop whatever data layer we tolerate. If we hand that layer to platforms, they control us. If we keep it encrypted and sovereign, we decide when and how intelligence meets our memories.</p>
-      <p>In a world where intent and data are scarce resources, we insist they stay with the individual and optionally trusted partners—friends, cooperatives, or the AI providers we authorize.</p>
-      <p><strong>We're building protocols for people to “have” their data and “use” it too—local or mirrored vaults, selective accessibility, and frontier LLMs that never inherit surveillance.</strong></p>
+      <p>
+        <strong>JournalNet is our flagship encrypted data layer</strong>—protocols and tooling so people and organizations can steward sensitive personal data without ceding custody.
+      </p>
+      <p>
+        <strong>Some data must remain more private than the rest.</strong> Today, sensitive PII moves through brokers, platforms, and AI systems that shape us without consent.
+      </p>
+      <div class="hero-points" role="list">
+        <div class="hero-point" role="listitem">
+          <span class="hero-point-icon" aria-hidden="true">🔐</span>
+          <div>
+            <h3>Keep custody</h3>
+            <p>Encrypted vaults and mirrored storage mean your data stays sovereign while remaining useful.</p>
+          </div>
+        </div>
+        <div class="hero-point" role="listitem">
+          <span class="hero-point-icon" aria-hidden="true">🛰️</span>
+          <div>
+            <h3>Minimize metadata</h3>
+            <p>Blind relays and capability-based sharing prevent brokers and intermediaries from mapping intent.</p>
+          </div>
+        </div>
+        <div class="hero-point" role="listitem">
+          <span class="hero-point-icon" aria-hidden="true">🤖</span>
+          <div>
+            <h3>Trust the intelligence you invite</h3>
+            <p>Frontier LLMs interact through permissions you set—no inherited surveillance, only deliberate access.</p>
+          </div>
+        </div>
+      </div>
+      <p class="hero-link">
+        <a href="/journalnet">Learn about the Journal Protocol Stack →</a>
+      </p>
     </div>
     
     <div class="cta-group">
@@ -181,45 +213,66 @@ import BattleCry from '../components/BattleCry.astro';
 <style>
   /* Hero Quote */
   .journalnet-banner {
-    background: rgba(45, 125, 255, 0.12);
-    border: 1px solid rgba(45, 125, 255, 0.4);
-    border-radius: var(--radius-lg);
+    background: rgba(45, 125, 255, 0.08);
+    border: 1px solid rgba(45, 125, 255, 0.28);
+    border-radius: var(--radius-xl);
     margin: 0 auto var(--space-xl);
-    max-width: min(960px, 100%);
-    padding: var(--space-sm) var(--space-lg);
-    text-align: center;
-    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    max-width: min(980px, 100%);
+    padding: var(--space-md) var(--space-xl);
+    color: var(--color-text-primary);
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .journalnet-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    color: var(--color-accent-azure);
+    margin: 0;
+  }
+
+  .journalnet-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .journalnet-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .journalnet-copy strong {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     color: var(--color-text-primary);
   }
 
-  .journalnet-banner p {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    align-items: center;
-    justify-content: center;
+  .journalnet-tagline {
+    color: var(--text-secondary);
   }
 
-  .journalnet-banner strong {
-    color: var(--color-accent-azure);
-    font-weight: 700;
+  .journalnet-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
   }
 
   .journalnet-link {
     color: var(--color-accent-emerald);
     font-weight: 600;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4xs);
   }
 
   .journalnet-link:hover,
   .journalnet-link:focus {
     text-decoration: underline;
-  }
-
-  .journalnet-separator {
-    color: var(--color-border-stronger);
-    font-weight: 700;
   }
 
   .hero-quote {
@@ -246,6 +299,49 @@ import BattleCry from '../components/BattleCry.astro';
   .hero-quote strong {
     color: var(--color-accent-emerald);
     font-weight: 700;
+  }
+
+  .hero-points {
+    display: grid;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+  }
+
+  .hero-point {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-sm);
+    align-items: start;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-lg);
+    background: rgba(12, 20, 30, 0.6);
+    border: 1px solid rgba(45, 125, 255, 0.2);
+  }
+
+  .hero-point h3 {
+    margin: 0 0 var(--space-4xs);
+    font-size: 1.05rem;
+    color: var(--color-text-primary);
+  }
+
+  .hero-point p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+  }
+
+  .hero-point-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .hero-link {
+    margin-top: var(--space-md);
+  }
+
+  .hero-link a {
+    color: var(--color-accent-emerald);
+    font-weight: 600;
   }
 
   /* CTAs */
@@ -425,11 +521,21 @@ import BattleCry from '../components/BattleCry.astro';
   
   /* Responsive */
   @media (max-width: 768px) {
+    .journalnet-content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .journalnet-actions {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
     .cta-group {
       flex-direction: column;
       align-items: stretch;
     }
-    
+
     .cta {
       justify-content: center;
     }
