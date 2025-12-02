@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="MozFest — Journal Foundation"
+  description="Thanks for connecting at MozFest. Reach John via email, WhatsApp, or Signal to keep the conversation going."
+>
+  <div class="container prose mozfest" style="margin-top: var(--space-xl); margin-bottom: var(--space-3xl);">
+    <h1>Let’s keep the MozFest conversation going</h1>
+    <p class="lead">
+      It was great connecting with you at MozFest. I’d love to continue the discussion—please reach out through the
+      channel that works best for you.
+    </p>
+    <ul class="contact-list">
+      <li>
+        <strong>Email:</strong>
+        <a href="mailto:john@journalfoundation.org" rel="nofollow">john@journalfoundation.org</a>
+      </li>
+      <li>
+        <strong>WhatsApp:</strong>
+        <a href="https://wa.me/12063272904" rel="nofollow">+1 (206) 327-2904</a>
+      </li>
+      <li>
+        <strong>Signal:</strong>
+        <a href="tel:+12815325205" rel="nofollow">+1 (281) 532-5205</a>
+      </li>
+    </ul>
+    <p>Looking forward to continuing the conversation.</p>
+  </div>
+</BaseLayout>
+
+<style>
+  .mozfest .lead {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .mozfest .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0;
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .mozfest .contact-list li {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    background: var(--void-lighter);
+    color: var(--text-primary);
+  }
+
+  .mozfest .contact-list a {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-secondary);
+  }
+
+  .mozfest .contact-list a:hover {
+    color: var(--link-primary);
+    border-bottom-color: var(--link-primary);
+  }
+</style>
