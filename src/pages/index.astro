@@ -25,13 +25,44 @@ import BattleCry from '../components/BattleCry.astro';
   <!-- Hero -->
   <BattleCry>
     <div class="hero-quote">
-      <p><strong>JournalNet is our flagship encrypted data layer</strong>—protocols and tooling so people and organizations can steward sensitive personal data without ceding custody. <a href="/journalnet">Learn about JournalNet →</a></p>
-      <p><strong>Some data must remain more private than the rest</strong>; ISO 29100 calls it sensitive PII, and today it flows through brokers, platforms, and AI systems that shape us without consent.</p>
-      <p>Software is dissolving into intent. Bespoke, disposable apps will sit atop whatever data layer we tolerate. If we hand that layer to platforms, they control us. If we keep it encrypted and sovereign, we decide when and how intelligence meets our memories.</p>
-      <p>In a world where intent and data are scarce resources, we insist they stay with the individual and optionally trusted partners—friends, cooperatives, or the AI providers we authorize.</p>
-      <p><strong>We're building protocols for people to “have” their data and “use” it too—local or mirrored vaults, selective accessibility, and frontier LLMs that never inherit surveillance.</strong></p>
+      <p class="hero-lede">
+        <strong>JournalNet is our flagship encrypted data layer.</strong>
+        Keep intent and sensitive personal data inside custody-first vaults while still collaborating with people and AI you trust.
+        <a href="/journalnet">Learn about JournalNet →</a>
+      </p>
+      <p>
+        Disposable apps shouldn't translate your memories into behavioral nudges.
+        We're designing protocols so the encrypted data layer stays sovereign—even when interfaces change.
+      </p>
+      <div class="hero-highlights" role="list">
+        <article class="hero-highlight" role="listitem">
+          <span class="hero-highlight-icon" aria-hidden="true">🔐</span>
+          <div>
+            <h4>Encrypted custody</h4>
+            <p>Vault-first storage keeps keys with individuals and trusted circles.</p>
+          </div>
+        </article>
+        <article class="hero-highlight" role="listitem">
+          <span class="hero-highlight-icon" aria-hidden="true">🕵️‍♀️</span>
+          <div>
+            <h4>Metadata minimization</h4>
+            <p>Blind relays and differential routing hide who talks to whom.</p>
+          </div>
+        </article>
+        <article class="hero-highlight" role="listitem">
+          <span class="hero-highlight-icon" aria-hidden="true">🤖</span>
+          <div>
+            <h4>AI without surveillance</h4>
+            <p>Frontier models can assist without inheriting a shadow archive.</p>
+          </div>
+        </article>
+      </div>
+      <p class="hero-footer">
+        Sensitive intent should never be a growth hack.
+        We're standardizing selective access, accountable governance, and post-quantum resilience so people decide how intelligence meets their data.
+      </p>
     </div>
-    
+
     <div class="cta-group">
       <a href="/docs" class="btn btn--primary">
         🛠️ Build Apps
@@ -44,6 +75,53 @@ import BattleCry from '../components/BattleCry.astro';
       </a>
     </div>
   </BattleCry>
+
+  <section class="snapshot-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What You Can Do in Minutes</h2>
+        <p class="subtitle">Six quick wins to explore, teach, and deploy JournalNet.</p>
+      </div>
+      <div class="snapshot-grid">
+        <article class="snapshot-card card">
+          <span class="snapshot-icon" aria-hidden="true">1</span>
+          <h3>Skim the stack</h3>
+          <p>Review the Vault → Cipherlot → Apps architecture at a glance.</p>
+          <a class="snapshot-link" href="/stack">See the overview →</a>
+        </article>
+        <article class="snapshot-card card">
+          <span class="snapshot-icon" aria-hidden="true">2</span>
+          <h3>Try the quickstart</h3>
+          <p>Spin up a local vault and share data capabilities in under ten minutes.</p>
+          <a class="snapshot-link" href="/docs">Open the quickstart →</a>
+        </article>
+        <article class="snapshot-card card">
+          <span class="snapshot-icon" aria-hidden="true">3</span>
+          <h3>Map your data</h3>
+          <p>Identify sensitive flows with our privacy worksheets for teams.</p>
+          <a class="snapshot-link" href="/learn">Download worksheets →</a>
+        </article>
+        <article class="snapshot-card card">
+          <span class="snapshot-icon" aria-hidden="true">4</span>
+          <h3>Teach a workshop</h3>
+          <p>Use ready-to-share decks that explain selective access and blind relays.</p>
+          <a class="snapshot-link" href="/learn">Browse teaching kits →</a>
+        </article>
+        <article class="snapshot-card card">
+          <span class="snapshot-icon" aria-hidden="true">5</span>
+          <h3>Audit governance</h3>
+          <p>Inspect transparency reports and funding flows for the network.</p>
+          <a class="snapshot-link" href="/governance">Review governance →</a>
+        </article>
+        <article class="snapshot-card card">
+          <span class="snapshot-icon" aria-hidden="true">6</span>
+          <h3>Join the signal</h3>
+          <p>Subscribe for changelog updates and testnet invitations.</p>
+          <a class="snapshot-link" href="/press">Get updates →</a>
+        </article>
+      </div>
+    </div>
+  </section>
   
   <!-- Three Part Explainer -->
   <section class="explainer-section">
@@ -181,13 +259,12 @@ import BattleCry from '../components/BattleCry.astro';
 <style>
   /* Hero Quote */
   .journalnet-banner {
-    background: rgba(45, 125, 255, 0.12);
-    border: 1px solid rgba(45, 125, 255, 0.4);
+    background: rgba(45, 125, 255, 0.08);
+    border: 1px solid rgba(45, 125, 255, 0.25);
     border-radius: var(--radius-lg);
-    margin: 0 auto var(--space-xl);
+    margin: var(--space-lg) auto var(--space-2xl);
     max-width: min(960px, 100%);
-    padding: var(--space-sm) var(--space-lg);
-    text-align: center;
+    padding: var(--space-xs) var(--space-lg);
     font-size: clamp(0.95rem, 2vw, 1.05rem);
     color: var(--color-text-primary);
   }
@@ -198,7 +275,14 @@ import BattleCry from '../components/BattleCry.astro';
     flex-wrap: wrap;
     gap: var(--space-xs);
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .journalnet-banner p > * {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
   }
 
   .journalnet-banner strong {
@@ -246,6 +330,48 @@ import BattleCry from '../components/BattleCry.astro';
   .hero-quote strong {
     color: var(--color-accent-emerald);
     font-weight: 700;
+  }
+
+  .hero-lede {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    line-height: 1.6;
+  }
+
+  .hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+    background: rgba(17, 24, 33, 0.6);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(45, 125, 255, 0.25);
+  }
+
+  .hero-highlight {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-sm);
+    align-items: start;
+  }
+
+  .hero-highlight h4 {
+    margin: 0 0 var(--space-2xs);
+    color: var(--color-text-primary);
+  }
+
+  .hero-highlight p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .hero-highlight-icon {
+    font-size: 1.75rem;
+  }
+
+  .hero-footer {
+    font-weight: 500;
   }
 
   /* CTAs */
@@ -393,10 +519,67 @@ import BattleCry from '../components/BattleCry.astro';
     font-size: 1.25rem;
     margin-top: var(--space-lg);
   }
-  
+
   /* Stack Explainer */
   .stack-explainer {
     background: rgba(45, 125, 255, 0.06);
+  }
+
+  /* Snapshot Section */
+  .snapshot-section {
+    background: linear-gradient(135deg, rgba(45, 125, 255, 0.05), rgba(16, 185, 129, 0.05));
+  }
+
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .snapshot-card {
+    position: relative;
+    padding-top: var(--space-xl);
+    border-color: rgba(45, 125, 255, 0.25);
+    min-height: 220px;
+  }
+
+  .snapshot-card h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .snapshot-card p {
+    color: var(--text-secondary);
+  }
+
+  .snapshot-icon {
+    position: absolute;
+    top: -22px;
+    left: var(--space-md);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--void);
+    border: 2px solid rgba(45, 125, 255, 0.6);
+    font-weight: 700;
+    color: var(--color-accent-azure);
+  }
+
+  .snapshot-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    color: var(--color-accent-emerald);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .snapshot-link:hover,
+  .snapshot-link:focus {
+    text-decoration: underline;
   }
 
   .stack-grid {
@@ -429,9 +612,15 @@ import BattleCry from '../components/BattleCry.astro';
       flex-direction: column;
       align-items: stretch;
     }
-    
+
     .cta {
       justify-content: center;
+    }
+
+    .journalnet-banner p {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2xs);
     }
   }
 </style>
